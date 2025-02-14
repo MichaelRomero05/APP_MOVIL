@@ -8,35 +8,39 @@
 |-- 01. Configurar el Entorno de Desarrollo ---------------------------------------------------------------------------------------------------|
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.01. Instalar Visual Studio Code -> https://code.visualstudio.com/download y en el asistente de instalación dejar marcada la opción
+--- 01.01. Instalar Visual Studio Code -> https://code.visualstudio.com/download y en el asistente de instalación dejar marcada la opción.
            “Agregar PATH…”
 
 --- 01.02. Instalar las siguientes extensiones en Visual Studio Code:
 
-           Suministran funciones nativas de React y Redux
-                ES7 React/Redux/React-Native snippets
+           ES7 React/Redux/React-Native snippets
+           Simple React Snippets
+           Auto Close Tag
+           Paste JSON as Code
+           TypeScript importer
 
-           Provee de un conjuto de ayudas
-                Simple React Snippets
+--- 01.03. Instalar Android Studio -> https://developer.android.com/studio?hl=es-419. Seleccionarla opción
+           'android-studio-2024.2.2.13-windows.exe'. Dejar habilitado 'Android Virtual Device'
 
-           Ayuda para la creación de etiquetas (tags)
-               Auto Close Tag
+--- 01.04. Instalar node.js -> https://nodejs.org/es/. Descargar la última versión LTS.
+--- 01.05. Crear una carpeta raíz para los proyectos en el computador -> 'Escritorio/react_native'
+--- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'react_native'
+--- 01.07. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+--- 01.08. Verificar versión de node.js en la terminal:
 
-           Se usa para manipular código JSON
-               Paste JSON as Code
-               TypeScript importer
+           PS C:\Users\Aprendiz\Desktop\react_native> node --version
 
---- 01.03. Instalar Android Studio desde la página oficial de Android Studio https://developer.android.com/studio?hl=es-419 / Seleccionar
-           la opción 'android-studio-2024.2.2.13-windows.exe'. Dejar habilitado 'Android Virtual Device'
+--- 01.09. Configurar las variables de entorno creando las rutas de acceso para el SDK de Java y Android SDK:
 
-
-
-
---- 01.03. Instalar node.js -> https://nodejs.org/es/
-
+           01. Buscar en el menú de búsqueda de Windows 'Editar las variables de entorno del sistema'
+           02. Dar clic en 'Variables de entorno…'
+           03. Dar clic en 'nuevo'
 
 
 
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+|-------------------------------------------------------- ¡ AQUÍ VOY ! ------------------------------------------------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------------------------|
 
 
 --- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir los siguientes comandos:
@@ -55,7 +59,7 @@
 
 --- 01.05. Crear una carpeta raíz para los proyectos en el computador -> 'Escritorio/angular'
 --- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'
---- 01.07. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+
 --- 01.08. Instalar Angular escribiendo en la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular> npm install -g @angular/cli
