@@ -13,22 +13,19 @@
 
 --- 01.02. Instalar las siguientes extensiones en Visual Studio Code:
 
-           Auto Close Tag
-           Auto Complete Tag
-           Auto Rename Tag
-           Code Runner
-           HTML CSS Support
-           IntelliSense for CSS class names in HTML
-           JavaScript (ES6) code snippets
-           Live Server
-           Material Icon Theme
-           Path IntelliSense
-           Prettier - Code formatter
+           Suministran funciones nativas de React y Redux
+                ES7 React/Redux/React-Native snippets
 
-           Angular Essentials (Version 18)
-           Angular Language Service
-           Angular Snippets (Version 18)
-           TypeScript Importer
+           Provee de un conjuto de ayudas
+                Simple React Snippets
+
+           Ayuda para la creación de etiquetas (tags)
+               Auto Close Tag
+
+           Para manipular JSON
+               Paste JSON as Code
+               TypeScript importer
+
 
 --- 01.03. Instalar node.js -> https://nodejs.org/es/
 --- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir los siguientes comandos:
