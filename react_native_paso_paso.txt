@@ -22,12 +22,23 @@
            Ayuda para la creación de etiquetas (tags)
                Auto Close Tag
 
-           Para manipular JSON
+           Se usa para manipular código JSON
                Paste JSON as Code
                TypeScript importer
 
+--- 01.03. Instalar Android Studio desde la página oficial de Android Studio https://developer.android.com/studio?hl=es-419 / Seleccionar
+           la opción 'android-studio-2024.2.2.13-windows.exe'. Dejar habilitado 'Android Virtual Device'
+
+
+
 
 --- 01.03. Instalar node.js -> https://nodejs.org/es/
+
+
+
+
+
+
 --- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir los siguientes comandos:
 
            PS C:\Windows\system32> Get-ExecutionPolicy
