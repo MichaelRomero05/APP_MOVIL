@@ -68,11 +68,11 @@
 --- 01.11. Crear el Emulador:
 
              01. Abrir Android Studio
-             02. Seleccionar 'More Actions / Virtual Device Manager' (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png)
+             02. Seleccionar 'More Actions / Virtual Device Manager' (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
              03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las 
-                 aplicaciones sin restricciones (icono de Play Store), por ejemplo, 'Pixel 4' (Ver )
-             04. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener 
-                 la API correspondiente
+                 aplicaciones sin restricciones (icono de Play Store), por ejemplo, 'Pixel 4' 
+                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img02.png).
+             04. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
              05. Dar clic a 'Finish' / 'Next' / 'Finish', para dejar las opciones por defecto
 
 --- 01.12. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
