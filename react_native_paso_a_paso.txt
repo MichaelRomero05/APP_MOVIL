@@ -16,39 +16,49 @@
 |-- 01. Preparar el Entorno de Desarrollo ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.01. Instalar Visual Studio Code. En el asistente de instalación dejar marcado: “Agregar PATH…”:
 
-             https://code.visualstudio.com/download
 
---- 01.02. Abrir Visual Studio Code e instalar las siguientes extensiones:
-
-             ES7 React/Redux/React-Native snippets
-             Simple React Snippets
-             Auto Close Tag
-             Paste JSON as Code
-             TypeScript importer
-
---- 01.03. Instalar node.js. Descargar la última versión LTS:
-
-             https://nodejs.org/es/
-
---- 01.04. Instalar Postman para realizar peticiones HTTP (opcional):
-
-             https://www.postman.com/downloads/
-
---- 01.05. Crear una carpeta para los proyectos de REACT NATIVE en el computador (carpeta raíz):
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+--- 01.01. Crear una carpeta para los proyectos de REACT NATIVE en el computador (carpeta raíz):
 
              'Escritorio/react_native'
 
---- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'react_native'
 
---- 01.07. Abrir una nueva terminal en vs code:
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+--- 01.02. Instalar node.js:
 
-             'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+            01. Descargar la última version LTS de 'node.js': https://nodejs.org/es/ e instalarla
 
---- 01.08. Verificar la versión de node.js en la terminal:
 
-             PS C:\..\react_native> node --version
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+--- 01.03. Instalar Visual Studio Code:
+
+            01. Descargar Visual Studio Code. En el asistente de instalación dejar marcado: “Agregar PATH…”: https://code.visualstudio.com/download
+
+            02. Abrir Visual Studio Code e instalar las siguientes extensiones:
+
+                    ES7 React/Redux/React-Native snippets
+                    Simple React Snippets
+                    Auto Close Tag
+                    Paste JSON as Code
+                    TypeScript importer
+
+            03. Asociar la carpeta creada en el punto '01.01.' con Visual Studio Code, es decir,'Escritorio/react_native'
+
+            04. Abrir una nueva terminal en vs code:
+
+                    'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+
+            05. Verificar la versión de node.js en la terminal:
+
+                    PS C:\..\react_native> node --version
+
+
+--- 01.05. Instalar Android Studio
+
+            01.  Descargar Android Studio https://developer.android.com/studio?hl=es-419. Seleccionar la opción 'android-studio-2024.2.2.13-windows.exe' o 
+
+
 
 --- 01.09. Instalar Android Studio -> https://developer.android.com/studio?hl=es-419. Seleccionar la opción 'android-studio-2024.2.2.13-windows.exe' o 
            superior. Dejar habilitado 'Android Virtual Device'
@@ -68,17 +78,58 @@
 --- 01.11. Crear el Emulador:
 
              01. Abrir Android Studio
-             02. Seleccionar 'More Actions / Virtual Device Manager' (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
+             02. Seleccionar 'More Actions / Virtual Device Manager' 
+                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
              03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las 
-                 aplicaciones sin restricciones (icono de Play Store), por ejemplo, 'Pixel 4' 
-                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img02.png).
-             04. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
-             05. Dar clic a 'Finish' / 'Next' / 'Finish', para dejar las opciones por defecto
+                 aplicaciones sin restricciones 
+                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img02.png)
+             04. Seleccionar, por ejemplo, 'Pixel 4' con el icono de Play Store
+                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img03.png).
+             05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
+                 (Ver )
+             06. Dar clic a 'Finish' / 'Next' / 'Finish'. Dejar las opciones por defecto
+                 (Ver )
 
 --- 01.12. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
+           (Ver )
+
+--- 01.13. En la parte superior del emulador, deslizar para visualizar las notificaciones, esperar hasta que termine la configuración.
+           (Ver )
+           y dar clic en el área azul, lleva a la siguiente pantalla
+           (Ver )
+
+--- 01.14. Mas adelante, ingresar en el emulador, su correo 'Gmail'.
+
+--- 01.15. Instalar Expo CLI, desde el siguiente enlace https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f. Una interfaz de línea de 
+           comandos que permite montar un servidor para correr el proyecto en localmente, construir proyectos sencillos y publicarlo.
+             (Ver )
+
+             01. Copiar el comando 'npm install -g expo-cli exp'
+             02. Abrir el 'Power Shell como administrador' / pegar el comando / presionar ENTER
+                 (Ver)
+             03. Verificar con 'expo --version'
+             04. Si hay problemas con versiones desactualizadas, ejecutar:
+                 
+                 npm uninstall -g expo-cli
+                 npm install –save-dev expo-cli
+
+             05. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
+                    "scripts":{ "start": "expo start"} por "scripts":{ "start": "npx expo start"}
+
+
+--- 01.16. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar los 
+           puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
+
+           Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un puerto 
+           específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
+
+
+--- 01.04. Instalar Postman
+
+            01. Descargar Postman para realizar peticiones HTTP: https://www.postman.com/downloads/
+
 
 
 ¡ AQUÍ VOY !
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
