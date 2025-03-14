@@ -23,14 +23,14 @@
 |-- 01.01. Instalar node.js: ----------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar la última version LTS de 'node.js': https://nodejs.org/es/ e instalarla
+            01. Descargar la última version LTS de 'node.js': https://nodejs.org/es/ e instalarla.
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 01.02. Instalar Visual Studio Code: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Visual Studio Code. En el asistente de instalación dejar marcado: “Agregar PATH…”: https://code.visualstudio.com/download
+            01. Descargar Visual Studio Code: https://code.visualstudio.com/download. En el asistente de instalación dejar marcado: “Agregar PATH…”
 
             02. Abrir Visual Studio Code e instalar las siguientes extensiones:
 
@@ -40,32 +40,67 @@
                     Paste JSON as Code
                     TypeScript importer
 
-            03. Crear una carpeta raíz de los proyectos de REACT NATIVE en el computador: 'Escritorio/react_native'
+            03. Crear la carpeta raíz de los proyectos de REACT NATIVE en el computador: 'Escritorio/react_native'
 
             04. Asociar la carpeta 'Escritorio/react_native' con Visual Studio Code
 
-            04. Abrir una nueva terminal en vs code:
+            05. Abrir una nueva terminal en vs code:
 
                     'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 
-            05. Verificar la versión de node.js en la terminal:
+            06. Verificar la versión de node.js en la terminal:
 
                     PS C:\..\react_native> node --version
 
 
---- 01.05. Instalar Android Studio
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.03. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01.  Descargar Android Studio https://developer.android.com/studio?hl=es-419. Seleccionar la opción 'android-studio-2024.2.2.13-windows.exe' o
+            01. Descargar Android Studio: https://developer.android.com/studio?hl=es-419. Seleccionar la versión más reciente e instalarla. Dejar
+                habilitado 'Android Virtual Device'. (Ver )
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.04. Crear el Emulador en Android Studio: ---------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Abrir Android Studio
+
+            02. Seleccionar 'More Actions / Virtual Device Manager'
+                (Ver )
+
+            03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las
+                aplicaciones sin restricciones
+                (Ver )
+
+            04. Seleccionar, por ejemplo, 'Pixel 4' con el icono de Play Store
+                (Ver )
+
+            05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
+                (Ver )
+
+            06. Dar clic a 'Finish' / 'Next' / 'Finish'. Dejar las opciones por defecto
+                (Ver )
+
+            07. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
+                (Ver )
+
+            08. En la parte superior del emulador, deslizar para visualizar las notificaciones, esperar hasta que termine la configuración.
+                (Ver )
+                y dar clic en el área azul, lleva a la siguiente pantalla
+                (Ver )
+
+            09. Mas adelante, ingresar en el emulador, su correo 'Gmail'.
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.05. Configurar las 'Variables de entorno del sistema': -------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.09. Instalar Android Studio -> https://developer.android.com/studio?hl=es-419. Seleccionar la opción 'android-studio-2024.2.2.13-windows.exe' o
-           superior. Dejar habilitado 'Android Virtual Device'
+             01. Buscar en el menú Windows 'Editar las variables de entorno del sistema' para enrutar al SDK de Java y Android SDK
 
---- 01.10. Configurar las 'Variables de Entorno' creando las rutas de acceso para el SDK de Java y Android SDK:
-
-             01. Buscar en el menú Windows 'Editar las variables de entorno del sistema'
              02. Dar clic en 'Variables de entorno…'
+
              03. En las 'Variables de usuario' dar clic en 'Nueva...'
 
                  Nombre de la variable: JAVA_HOME
@@ -74,56 +109,43 @@
                  Nombre de la variable: ANDROID_HOME
                  Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
 
---- 01.11. Crear el Emulador:
 
-             01. Abrir Android Studio
-             02. Seleccionar 'More Actions / Virtual Device Manager'
-                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
-             03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las
-                 aplicaciones sin restricciones
-                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img02.png)
-             04. Seleccionar, por ejemplo, 'Pixel 4' con el icono de Play Store
-                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img03.png).
-             05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
-                 (Ver )
-             06. Dar clic a 'Finish' / 'Next' / 'Finish'. Dejar las opciones por defecto
-                 (Ver )
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.06. Instalar Expo CLI: ---------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.12. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
-           (Ver )
+            Expo CLI es una interfaz de línea de comandos que permite montar un servidor para correr el proyecto localmente, construir proyectos
+            sencillos y publicarlos.
 
---- 01.13. En la parte superior del emulador, deslizar para visualizar las notificaciones, esperar hasta que termine la configuración.
-           (Ver )
-           y dar clic en el área azul, lleva a la siguiente pantalla
-           (Ver )
+            01. Descargar Expo CLI: https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f.
+                (Ver )
 
---- 01.14. Mas adelante, ingresar en el emulador, su correo 'Gmail'.
+            02. Copiar el comando 'npm install -g expo-cli exp'
 
---- 01.15. Instalar Expo CLI, desde el siguiente enlace https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f. Una interfaz de línea de
-           comandos que permite montar un servidor para correr el proyecto en localmente, construir proyectos sencillos y publicarlo.
-             (Ver )
+            03. Abrir el 'Power Shell como administrador' / pegar el comando / presionar ENTER
+                (Ver)
 
-             01. Copiar el comando 'npm install -g expo-cli exp'
-             02. Abrir el 'Power Shell como administrador' / pegar el comando / presionar ENTER
-                 (Ver)
-             03. Verificar con 'expo --version'
-             04. Si hay problemas con versiones desactualizadas, ejecutar:
+            04. Verificar con 'expo --version'
+
+            05. Si hay problemas con versiones desactualizadas, ejecutar:
 
                  npm uninstall -g expo-cli
                  npm install –save-dev expo-cli
 
-             05. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
+            06. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
                     "scripts":{ "start": "expo start"} por "scripts":{ "start": "npx expo start"}
 
 
---- 01.16. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar los
-           puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
+            07. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar
+                los puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
 
-           Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un puerto
-           específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
+                Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un puerto
+                específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
 
 
---- 01.04. Instalar Postman
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.07. Instalar Postman: ---------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar Postman para realizar peticiones HTTP: https://www.postman.com/downloads/
 
