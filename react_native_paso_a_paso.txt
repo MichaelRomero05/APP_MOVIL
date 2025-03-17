@@ -35,7 +35,7 @@
 
             02. Instalar Visual Studio Code.
 
-                    NOTA:   En el asistente de instalación dejar marcado “Agregar PATH…”.
+                    ⦿   En el asistente de instalación dejar marcado:   ☑ “Agregar PATH…”.
             
             03. Abrir Visual Studio Code y asociar con la carpeta 'Escritorio/react_native' del punto '01.01.'.
             
@@ -43,15 +43,15 @@
 
             05. Instalar las siguientes extensiones en Visual Studio Code:
 
-                    ⦿ ES7 React/Redux/React-Native snippets
-                    ⦿ Simple React Snippets
-                    ⦿ Auto Close Tag
-                    ⦿ Paste JSON as Code
-                    ⦿ TypeScript importer
+                    ⦿   ES7 React/Redux/React-Native snippets
+                    ⦿   Simple React Snippets
+                    ⦿   Auto Close Tag
+                    ⦿   Paste JSON as Code
+                    ⦿   TypeScript importer
 
             06. Abrir una 'Terminal' en Visual Studio Code:
 
-                    'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'  
+                    ⦿   'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'  
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,14 +60,14 @@
 
             01. Descargar 'node.js': https://nodejs.org/es/.
 
-                    NOTA:   Descargar la última version LTS                        
+                    ⦿   Descargar la última version LTS                        
             
             02. Instalar node.js.
 
             03. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
 
-                    PS C:\..\react_native> node --version
-                    PS C:\..\react_native> npm --version
+                    ⦿   PS C:\..\react_native> node --version
+                    ⦿   PS C:\..\react_native> npm --version
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -94,12 +94,11 @@
 
              03. En las 'Variables de usuario' dar clic en 'Nueva...'
 
-                 Nombre de la variable: JAVA_HOME
-                 Valor de la variable:  'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
+                    Nombre de la variable: JAVA_HOME
+                    Valor de la variable:  'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
 
-                 Nombre de la variable: ANDROID_HOME
-                 Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
-
+                    Nombre de la variable: ANDROID_HOME
+                    Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
