@@ -31,13 +31,17 @@
 |-- 01.02. Instalar Visual Studio Code: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Visual Studio Code: https://code.visualstudio.com/download. 
-                
-                    NOTA: En el asistente de instalación dejar marcado “Agregar PATH…”
+            01. Descargar 'Visual Studio Code': https://code.visualstudio.com/download.                 
 
-            02. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' del punto '01.01.'.
+            02. Instalar Visual Studio Code.
 
-            03. Instalar las siguientes extensiones en Visual Studio Code:
+                    NOTA:   En el asistente de instalación dejar marcado “Agregar PATH…”.
+            
+            03. Abrir Visual Studio Code y asociar con la carpeta 'Escritorio/react_native' del punto '01.01.'.
+            
+            04. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' del punto '01.01.01.'.
+
+            05. Instalar las siguientes extensiones en Visual Studio Code:
 
                     ES7 React/Redux/React-Native snippets
                     Simple React Snippets
@@ -45,7 +49,7 @@
                     Paste JSON as Code
                     TypeScript importer
 
-            04. Abrir una 'Terminal' en Visual Studio Code:
+            06. Abrir una 'Terminal' en Visual Studio Code:
 
                     'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'  
 
@@ -54,9 +58,13 @@
 |-- 01.03. Instalar node.js: ----------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar la última version LTS de 'node.js': https://nodejs.org/es/ e instalarla.
+            01. Descargar 'node.js': https://nodejs.org/es/.
 
-            02. Verificar la versión de 'node.js' y 'npm' en la terminal de Visual Studio Code:
+                    NOTA:   Descargar la última version LTS                        
+            
+            02. Instalar node.js.
+
+            03. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
 
                     PS C:\..\react_native> node --version
                     PS C:\..\react_native> npm --version
@@ -66,10 +74,14 @@
 |-- 01.04. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Android Studio: https://developer.android.com/studio?hl=es-419. 
+            01. Descargar 'Android Studio': https://developer.android.com/studio?hl=es-419. 
+            
+            02. Instalar Android Studio: https://developer.android.com/studio?hl=es-419. 
                 
-                    NOTA: Seleccionar la versión más reciente e instalarla. Dejarhabilitado 'Android Virtual Device'. 
-                    (Ver: )
+                    NOTA:   ⦿ Instalar la versión más reciente.
+                            (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
+
+                            ⦿ Dejar habilitado:   ☑ 'Android Virtual Device'. 
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
