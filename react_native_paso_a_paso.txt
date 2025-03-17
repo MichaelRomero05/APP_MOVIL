@@ -78,10 +78,10 @@
             
             02. Instalar Android Studio: https://developer.android.com/studio?hl=es-419. 
                 
-                    NOTA:   ⦿ Instalar la versión más reciente.
-                               (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
+                    ⦿   Instalar la versión más reciente.
+                         (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
 
-                            ⦿ Dejar habilitado:   ☑ 'Android Virtual Device'. 
+                    ⦿   Dejar habilitado:   ☑ 'Android Virtual Device'. 
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -94,11 +94,11 @@
 
              03. En las 'Variables de usuario' dar clic en 'Nueva...'
 
-                    Nombre de la variable: JAVA_HOME
-                    Valor de la variable:  'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
+                    ⦿   Nombre de la variable:  JAVA_HOME
+                    ⦿   Valor de la variable:   'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
 
-                    Nombre de la variable: ANDROID_HOME
-                    Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
+                    ⦿   Nombre de la variable:  ANDROID_HOME
+                    ⦿   Valor de la variable:   'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -107,20 +107,20 @@
 
             01. Abrir Android Studio
 
-            02. Seleccionar 'More Actions / Virtual Device Manager'
-                (Ver )
+            02. Seleccionar 'More Actions / Virtual Device Manager':
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img02.png)
 
             03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las
-                aplicaciones sin restricciones
-                (Ver )
+                aplicaciones sin restricciones:
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img03.png)
 
             04. Seleccionar, por ejemplo, 'Pixel 4' con el icono de Play Store
-                (Ver )
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img04.png)
 
             05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
                 (Ver )
 
-            06. Dar clic a 'Finish' / 'Next' / 'Finish'. Dejar las opciones por defecto
+            06. Dar clic a 'Finish' / 'Next' / 'Finish' (Dejar las opciones por defecto).
                 (Ver )
 
             07. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
