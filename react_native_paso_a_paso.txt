@@ -7,7 +7,7 @@
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
 ||| -- 02.                                                                                                                                             |||
 |||                                                                                                                                                    |||
-||| -- AUTOR:           Adaptación hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller Elaborado por el Instructor MAURICIO LARA. SENA, 2024 |||
+||| -- AUTOR:           Adaptación hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller corregido por el Instructor MAURICIO LARA. SENA, 2024 |||
 ||| -- BIBLIOGRAFÍA:    https://github.com/ProfeAlbeiro/react_native/blob/main/sources/docs/taller_react_native.docx                                   |||
 |||                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -21,12 +21,22 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.01. Instalar Visual Studio Code: -----------------------------------------------------------------------------------------------------------------|
+|-- 01.01. Crear la carpeta para los proyectos REACT NATIVE: --------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Visual Studio Code: https://code.visualstudio.com/download. En el asistente de instalación dejar marcado: “Agregar PATH…”
+            01. Crear una carpeta denominada 'react_native' en el 'Escritorio'. Esta va a servir como raíz de los proyectos de REACT NATIVE.
+            
+                  
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.02. Instalar Visual Studio Code: -----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            02. Abrir Visual Studio Code e instalar las siguientes extensiones:
+            01. Descargar Visual Studio Code: https://code.visualstudio.com/download. 
+                NOTA: En el asistente de instalación dejar marcado “Agregar PATH…”
+
+            02. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' (Ver punto '01.01.').
+
+            03. Instalar las siguientes extensiones en Visual Studio Code:
 
                     ES7 React/Redux/React-Native snippets
                     Simple React Snippets
@@ -34,32 +44,48 @@
                     Paste JSON as Code
                     TypeScript importer
 
-            03. Crear la carpeta raíz de los proyectos de REACT NATIVE en el computador: 'Escritorio/react_native'
+            04. Abrir una 'Terminal' en Visual Studio Code:
 
-            04. Asociar la carpeta 'Escritorio/react_native' con Visual Studio Code
+                    'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'  
 
-            05. Abrir una nueva terminal en vs code:
-
-                    'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'            
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.02. Instalar node.js: ----------------------------------------------------------------------------------------------------------------------------|
+|-- 01.03. Instalar node.js: ----------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar la última version LTS de 'node.js': https://nodejs.org/es/ e instalarla.
 
-            02. Verificar la versión de 'node.js' y 'npm' en la terminal:
+            02. Verificar la versión de 'node.js' y 'npm' en la terminal de Visual Studio Code:
 
                     PS C:\..\react_native> node --version
                     PS C:\..\react_native> npm --version
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.03. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
+|-- 01.04. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar Android Studio: https://developer.android.com/studio?hl=es-419. Seleccionar la versión más reciente e instalarla. Dejar
                 habilitado 'Android Virtual Device'. (Ver )
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.05. Configurar las 'Variables de entorno del sistema': -------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+             01. Buscar en el menú Windows 'Editar las variables de entorno del sistema' para enrutar al SDK de Java y Android SDK
+
+             02. Dar clic en 'Variables de entorno…'
+
+             03. En las 'Variables de usuario' dar clic en 'Nueva...'
+
+                 Nombre de la variable: JAVA_HOME
+                 Valor de la variable:  'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
+
+                 Nombre de la variable: ANDROID_HOME
+                 Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
+
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 01.04. Crear el Emulador en Android Studio: ---------------------------------------------------------------------------------------------------------|
@@ -92,23 +118,6 @@
                 (Ver )
 
             09. Mas adelante, ingresar en el emulador, su correo 'Gmail'.
-
-
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.05. Configurar las 'Variables de entorno del sistema': -------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-             01. Buscar en el menú Windows 'Editar las variables de entorno del sistema' para enrutar al SDK de Java y Android SDK
-
-             02. Dar clic en 'Variables de entorno…'
-
-             03. En las 'Variables de usuario' dar clic en 'Nueva...'
-
-                 Nombre de la variable: JAVA_HOME
-                 Valor de la variable:  'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
-
-                 Nombre de la variable: ANDROID_HOME
-                 Valor de la variable:  'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
