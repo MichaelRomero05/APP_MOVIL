@@ -32,9 +32,10 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar Visual Studio Code: https://code.visualstudio.com/download. 
-                NOTA: En el asistente de instalación dejar marcado “Agregar PATH…”
+                
+                    NOTA: En el asistente de instalación dejar marcado “Agregar PATH…”
 
-            02. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' (Ver punto '01.01.').
+            02. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' del punto '01.01.'.
 
             03. Instalar las siguientes extensiones en Visual Studio Code:
 
@@ -65,8 +66,10 @@
 |-- 01.04. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Android Studio: https://developer.android.com/studio?hl=es-419. Seleccionar la versión más reciente e instalarla. Dejar
-                habilitado 'Android Virtual Device'. (Ver )
+            01. Descargar Android Studio: https://developer.android.com/studio?hl=es-419. 
+                
+                    NOTA: Seleccionar la versión más reciente e instalarla. Dejarhabilitado 'Android Virtual Device'. 
+                    (Ver: )
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
