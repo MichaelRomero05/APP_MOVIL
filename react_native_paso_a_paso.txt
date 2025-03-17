@@ -43,11 +43,11 @@
 
             05. Instalar las siguientes extensiones en Visual Studio Code:
 
-                    ES7 React/Redux/React-Native snippets
-                    Simple React Snippets
-                    Auto Close Tag
-                    Paste JSON as Code
-                    TypeScript importer
+                    ⦿ ES7 React/Redux/React-Native snippets
+                    ⦿ Simple React Snippets
+                    ⦿ Auto Close Tag
+                    ⦿ Paste JSON as Code
+                    ⦿ TypeScript importer
 
             06. Abrir una 'Terminal' en Visual Studio Code:
 
@@ -79,7 +79,7 @@
             02. Instalar Android Studio: https://developer.android.com/studio?hl=es-419. 
                 
                     NOTA:   ⦿ Instalar la versión más reciente.
-                            (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
+                               (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
 
                             ⦿ Dejar habilitado:   ☑ 'Android Virtual Device'. 
 
