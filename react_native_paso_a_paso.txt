@@ -5,7 +5,7 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                    |||
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
-||| -- 02.                                                                                                                                             |||
+||| -- 02.  CREAR UNA APP                                                                                                                              |||
 |||                                                                                                                                                    |||
 ||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
 |||                     del ORIGINAL elaborado por el Instructor MARCO LEÓN MORA. SENA, 2023.                                                          |||
@@ -73,7 +73,16 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.04. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
+|-- 01.04. Instalar Postman: ----------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Descargar 'Postman' para realizar peticiones HTTP: https://www.postman.com/downloads/
+
+            02. Instalar 'Postman'.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.05. Instalar Android Studio: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Descargar 'Android Studio': https://developer.android.com/studio?hl=es-419. 
@@ -99,7 +108,7 @@
                     
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.05. Configurar las 'Variables de entorno del sistema': -------------------------------------------------------------------------------------------|
+|-- 01.06. Configurar las 'Variables de entorno del sistema': -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
              01. Buscar en el menú Windows 'Editar las variables de entorno del sistema' para enrutar al SDK de Java y Android SDK
@@ -140,30 +149,40 @@
                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img06.png)
 
             08. Se ha instalado el emulador.
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img07.png)                
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img07.png)
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.06. Instalar Expo CLI: ---------------------------------------------------------------------------------------------------------------------------|
+|-- 01.05. Instalar Expo CLI: ---------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             Expo CLI es una interfaz de línea de comandos que permite montar un servidor para correr el proyecto localmente, construir proyectos
-            sencillos y publicarlos.
+            sencillos y publicarlos. Para más información: 
 
-            01. Descargar Expo CLI: https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f.
-                (Ver )
+                    ⦿   https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f
+                    ⦿   https://blog.expo.dev/the-new-expo-cli-f4250d8e3421
 
-            02. Copiar el comando 'npm install -g expo-cli exp'
+            01. En la terminal de 'Visual Studio Code', instalar Expo CLI:
 
-            03. Abrir el 'Power Shell como administrador' / pegar el comando / presionar ENTER
-                (Ver)
+                    ⦿   PS C:\..\react_native> npm install -g react-native-cli
 
-            04. Verificar con 'expo --version'
+            02. Verificar la versión de expo CLI en la terminal de 'Visual Studio Code':                    
+                    
+                    ⦿   PS C:\..\react_native> npx react-native run-android
 
-            05. Si hay problemas con versiones desactualizadas, ejecutar:
 
-                 npm uninstall -g expo-cli
-                 npm install –save-dev expo-cli
+
+
+
+
+
+            06. Si hay problemas con versiones desactualizadas, desinstale expo CLI:
+                 
+                    ⦿   PS C:\..\react_native> npm uninstall -g expo-cli
+
+            05. Si hay problemas con la ejecución de expo CLI, revise el siguiente enlace:
+                (Ver: https://blog.expo.dev/the-new-expo-cli-f4250d8e3421)
+
 
             06. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
                     "scripts":{ "start": "expo start"} por "scripts":{ "start": "npx expo start"}
@@ -172,18 +191,57 @@
             07. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar
                 los puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
 
-                Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un puerto
-                específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
+                Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un 
+                puerto específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
+
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||---------------------------------------------------------------- 02. CREAR UNA APP -----------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.07. Instalar Postman: ---------------------------------------------------------------------------------------------------------------------------|
+|-- 02.01. Crear la aplicación en REACT NATIVE|: ---------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar Postman para realizar peticiones HTTP: https://www.postman.com/downloads/
+            01. En la terminal de 'Visual Studio Code', crear el proyecto:
+                    
+                    ⦿   PS C:\..\react_native> npx create-expo-app --template           
 
+                         Need to install the following packages:
+                         create-expo-app@3.2.0
+                         Ok to proceed? (y) y
 
-
-¡ AQUÍ VOY !
+                         √ Choose a template: » Blank (TypeScript)
+                         √ What is your app named? ... my-app
+                         √ Downloaded and extracted project files.
+                         > npm install
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.02. Comandos TypeScript a ejecutar: --------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
+
+            02. En la terminal de 'Visual Studio Code', ejecutar los siguientes comandos:
+
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.02. Ejecuatar 'my-app' en el emulador de Android: ------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En la terminal de 'Visual Studio Code', ejecutar los siguientes comandos:
+
+                    ⦿   PS C:\..\react_native> cd my-app
+                    ⦿   PS C:\..\react_native> npx expo start
+                    ⦿   PS C:\..\react_native> npm run android
+
+
+
+
+
+
