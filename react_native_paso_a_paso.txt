@@ -7,8 +7,10 @@
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
 ||| -- 02.                                                                                                                                             |||
 |||                                                                                                                                                    |||
-||| -- AUTOR:           Adaptación hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller corregido por el Instructor MAURICIO LARA. SENA, 2024 |||
-||| -- BIBLIOGRAFÍA:    https://github.com/ProfeAlbeiro/react_native/blob/main/sources/docs/taller_react_native.docx                                   |||
+||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
+|||                     del ORIGINAL elaborado por el Instructor MARCO LEÓN MORA. SENA, 2023.                                                          |||
+||| -- BIBLIOGRAFÍA:    CORREGIDO:  https://github.com/ProfeAlbeiro/react_native/blob/main/sources/docs/taller_react_native.docx                       |||
+|||                     ORIGINAL:   https://github.com/ProfeAlbeiro/react_native/blob/main/sources/docs/info_back/taller%20React%20Native_1.docx       |||
 |||                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -81,7 +83,8 @@
 
             02. Instalar Android Studio.
 
-                    ⦿   Dejar habilitado:   ☑ 'Android Virtual Device'. 
+                    ⦿   Dejar habilitado:   ☑ 'Android Virtual Device'.
+                    ⦿   Seleccionar la opción 'Don't save'.
 
             NOTA:   ⦿   Si la instalación no sale como se espera porque hay una versión de Android Studio instalada, revise el siguiente enlace para
                          desinstalarla totalmente y repita los pasos 01 y 02:
