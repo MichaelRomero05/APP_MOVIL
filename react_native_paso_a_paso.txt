@@ -132,20 +132,15 @@
                 (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img04.png)
 
             05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
-                (Ver )
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img05.png)
 
-            06. Dar clic a 'Finish' / 'Next' / 'Finish' (Dejar las opciones por defecto).
-                (Ver )
+            06. Dejar las opciones por defecto y dar clic a 'Finish' / 'Next' / 'Finish'.
 
             07. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
-                (Ver )
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img06.png)
 
-            08. En la parte superior del emulador, deslizar para visualizar las notificaciones, esperar hasta que termine la configuración.
-                (Ver )
-                y dar clic en el área azul, lleva a la siguiente pantalla
-                (Ver )
-
-            09. Mas adelante, ingresar en el emulador, su correo 'Gmail'.
+            08. Se ha instalado el emulador.
+                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img07.png)                
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
