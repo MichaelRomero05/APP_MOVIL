@@ -1,6 +1,6 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||---------------------------------------------------- REACT NATIVE PASO A PASO ----------------------------------------------------------------------|||
+|||------------------------------------------------------------- REACT NATIVE PASO A PASO -------------------------------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                    |||
@@ -24,7 +24,7 @@
 |-- 01.01. Crear la carpeta para los proyectos REACT NATIVE: --------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear una carpeta denominada 'react_native' en el 'Escritorio'. Esta va a servir como raíz de los proyectos de REACT NATIVE.
+            01. Crear una carpeta denominada 'react_native' en el 'Escritorio'. Esta carpeta será la raíz de los proyectos de REACT NATIVE.            
             
                   
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -76,12 +76,23 @@
 
             01. Descargar 'Android Studio': https://developer.android.com/studio?hl=es-419. 
             
-            02. Instalar Android Studio: https://developer.android.com/studio?hl=es-419. 
-                
-                    ⦿   Instalar la versión más reciente.
+                    ⦿   Descargar la versión más reciente.
                          (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/img01.png).
 
+            02. Instalar Android Studio.
+
                     ⦿   Dejar habilitado:   ☑ 'Android Virtual Device'. 
+
+            NOTA:   ⦿   Si la instalación no sale como se espera porque hay una versión de Android Studio instalada, revise el siguiente enlace para
+                         desinstalarla totalmente y repita los pasos 01 y 02:
+
+                            https://blog.buhoos.com/como-desinstalar-completamente-android-studio-de-windows-10/
+                    
+                    ⦿   En caso que los archivos y/o carpetas no se dejen eliminar, descargue el siguiente programa y siga las instrucciones para 
+                         eliminarl@s:
+
+                            https://www.iobit.com/es/recommend/imffree.php?name=iobit_unlocker
+                    
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
