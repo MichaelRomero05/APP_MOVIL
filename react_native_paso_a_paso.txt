@@ -92,7 +92,7 @@
                             https://blog.buhoos.com/como-desinstalar-completamente-android-studio-de-windows-10/
                     
                     ⦿   En caso que los archivos y/o carpetas no se dejen eliminar, descargue el siguiente programa y siga las instrucciones para 
-                         eliminarl@s:
+                         eliminar las carpetas o archivos. Repita los pasos 01 y 02::
 
                             https://www.iobit.com/es/recommend/imffree.php?name=iobit_unlocker
                     
