@@ -41,11 +41,9 @@
 
                     ⦿   En el asistente de instalación dejar marcado:   ☑ “Agregar PATH…”.
             
-            03. Abrir Visual Studio Code y asociar con la carpeta 'Escritorio/react_native' del punto '01.01.'.
-            
-            04. Asociar Visual Studio Code con la carpeta 'Escritorio/react_native' del punto '01.01.01.'.
+            03. Abrir Visual Studio Code y asociar la carpeta 'Escritorio/react_native' del punto '01.01.01.'.
 
-            05. Instalar las siguientes extensiones en Visual Studio Code:
+            04. Instalar las siguientes extensiones en Visual Studio Code:
 
                     ⦿   ES7 React/Redux/React-Native snippets
                     ⦿   Simple React Snippets
