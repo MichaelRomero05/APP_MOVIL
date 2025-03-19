@@ -205,13 +205,6 @@
             01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
 
             02. En la terminal de 'Visual Studio Code', crear el proyecto:
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.01. Crear la aplicación en REACT NATIVE: ---------------------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
-
-            02. En la terminal de 'Visual Studio Code', crear el proyecto:
                     
                     ⦿   PS C:\..\react_native> npx create-expo-app --template
 
@@ -238,11 +231,12 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. En el dispositivo, ir a tienda, para Android es Play Store, buscar “expo go” e instalarla.
+
             02. En la terminal de 'Visual Studio Code', ejecutar:
                 
                     ⦿   PS C:\..\react_native\my-app> expo start
         
-            03. Si le solicita dependencias adicionales, pulsar “Y” para instalarlas. Se generará un código QR.
+            03. Si le solicita dependencias adicionales, pulsar 'Y' para instalarlas. Se generará un código QR.
         
             04. Abrir la aplicación 'Expo Go' en el dispositivo.
             
@@ -253,15 +247,45 @@
 |-- 02.04. Crear una ventana de inicio: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            El módulo principal, que se ejecuta al lanzar la aplicación es 'App.tsx', donde se encuentran las 'views' que son las diferentes 
-            pantallas donde se realiza la navegación. Dentro de los 'views' hay componentes. Los 'views' se relacionan con 'styles', que son los 
+            El módulo principal, que se ejecuta al lanzar la aplicación es 'App.tsx', donde se encuentran las 'View' que son las diferentes 
+            pantallas donde se realiza la navegación. Dentro de los 'View' hay componentes. Los 'View' se relacionan con 'styles', que son los 
             estilos aplicados a cada vista.
-
 
             01. Consultar los componentes para construir el código: https://reactnative.dev/docs/components-and-apis.
 
-            02. Copie los siguientes archivos de imágenes: 
-            
+            02. Descargar las siguientes imágenes: https://github.com/ProfeAlbeiro/react_native/tree/main/sources/img/assets en la carpeta 'assets' de
+                'my-app'.            
+
+            03. Modifique el código del archivo 'App.tsx':
+
+                    01  import { StatusBar } from 'expo-status-bar';
+                    02  import { StyleSheet, Text, View, Image } from 'react-native';
+                    03
+                    04  export default function App() {
+                    05    return (
+                    06      <View style={styles.container}>
+                    07        <Image
+                    08        source={ require('./assets/chef.jpg')}
+                    09        style={styles.imageBackground}
+                    10        />
+                    11      </View>
+                    12    );
+                    13  }
+                    14
+                    15  const styles = StyleSheet.create({
+                    16    container: {
+                    17      flex: 1,
+                    18      backgroundColor: '#fff',
+                    19    },
+                    20    imageBackground: {
+                    21        width: '100%',
+                    22        height: '100%',
+                    23    },
+                    24  });
 
 
-            02. Copie los siguientes archivos de imágenes:
+                        
+
+
+
+
