@@ -28,6 +28,8 @@
 
             01. Crear una carpeta denominada 'react_native' en el 'Escritorio'. Esta carpeta será la raíz de los proyectos de REACT NATIVE.            
             
+                    ⦿   'Escritorio/react_native'.
+
                   
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 01.02. Instalar Visual Studio Code: -----------------------------------------------------------------------------------------------------------------|
@@ -76,7 +78,7 @@
 |-- 01.04. Instalar Postman: ----------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Descargar 'Postman' para realizar peticiones HTTP: https://www.postman.com/downloads/
+            01. Descargar 'Postman': https://www.postman.com/downloads/. Este programa nos sirve para realizar probar las peticiones HTTP.
 
             02. Instalar 'Postman'.
 
@@ -95,14 +97,13 @@
                     ⦿   Dejar habilitado:   ☑ 'Android Virtual Device'.
                     ⦿   Dar clic a 'Don't send' / 'Next' / 'Next' / '☑ Acepto' / 'Finalizar'.
 
-
             NOTA:   ⦿   Si la instalación no sale como se espera porque hay una versión de Android Studio instalada, revise el siguiente enlace para
                          desinstalarla totalmente y repita los pasos 01 y 02:
 
                             https://blog.buhoos.com/como-desinstalar-completamente-android-studio-de-windows-10/
                     
                     ⦿   En caso que los archivos y/o carpetas no se dejen eliminar, descargue el siguiente programa y siga las instrucciones para 
-                         eliminar las carpetas o archivos. Repita los pasos 01 y 02::
+                         eliminar las carpetas o archivos. Repita los pasos 01 y 02:
 
                             https://www.iobit.com/es/recommend/imffree.php?name=iobit_unlocker
                     
@@ -115,7 +116,7 @@
 
              02. Dar clic en 'Variables de entorno…'
 
-             03. En las 'Variables de usuario' dar clic en 'Nueva...'
+             03. En las 'Variables del sistema' dar clic en 'Nueva...'
 
                     ⦿   Nombre de la variable:  JAVA_HOME
                     ⦿   Valor de la variable:   'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
@@ -125,7 +126,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.04. Crear el Emulador en Android Studio: ---------------------------------------------------------------------------------------------------------|
+|-- 01.07. Crear el Emulador en Android Studio: ---------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Abrir Android Studio
@@ -159,36 +160,30 @@
             Expo CLI es una interfaz de línea de comandos que permite montar un servidor para correr el proyecto localmente, construir proyectos
             sencillos y publicarlos. Para más información: 
 
+                    ⦿   https://docs.expo.dev/more/expo-cli/
                     ⦿   https://gist.github.com/mrcodedev/37b463ae63c0c1d762e6efaf4c26af4f
                     ⦿   https://blog.expo.dev/the-new-expo-cli-f4250d8e3421
 
             01. En la terminal de 'Visual Studio Code', instalar Expo CLI:
 
+                    ⦿   PS C:\..\react_native> npm install -g expo-cli exp
+                         ó
                     ⦿   PS C:\..\react_native> npm install -g react-native-cli
 
             02. Verificar la versión de expo CLI en la terminal de 'Visual Studio Code':                    
                     
-                    ⦿   PS C:\..\react_native> npx react-native run-android
+                    ⦿   PS C:\..\react_native> expo  --version
 
+            03. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
 
+                    ⦿   "scripts":{ "start": "expo start"}, por
+                    ⦿   "scripts":{ "start": "npx expo start"}
 
-
-
-
-
-            06. Si hay problemas con versiones desactualizadas, desinstale expo CLI:
+            04. Para desinstalar expo CLI en caso de existir problemas en la terminal de 'Visual Studio Code':
                  
                     ⦿   PS C:\..\react_native> npm uninstall -g expo-cli
 
-            05. Si hay problemas con la ejecución de expo CLI, revise el siguiente enlace:
-                (Ver: https://blog.expo.dev/the-new-expo-cli-f4250d8e3421)
-
-
-            06. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
-                    "scripts":{ "start": "expo start"} por "scripts":{ "start": "npx expo start"}
-
-
-            07. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar
+            05. Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App, puede listar
                 los puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
 
                 Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados para un 
@@ -204,12 +199,21 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.01. Crear la aplicación en REACT NATIVE|: ---------------------------------------------------------------------------------------------------------------------------|
+|-- 02.01. Crear la aplicación en REACT NATIVE: ---------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En la terminal de 'Visual Studio Code', crear el proyecto:
+            01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
+
+            02. En la terminal de 'Visual Studio Code', crear el proyecto:
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.01. Crear la aplicación en REACT NATIVE: ---------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
+
+            02. En la terminal de 'Visual Studio Code', crear el proyecto:
                     
-                    ⦿   PS C:\..\react_native> npx create-expo-app --template           
+                    ⦿   PS C:\..\react_native> npx create-expo-app --template
 
                          Need to install the following packages:
                          create-expo-app@3.2.0
@@ -221,27 +225,43 @@
                          > npm install
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.02. Comandos TypeScript a ejecutar: --------------------------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Obtener los comandos TypeScript a ejecutar: https://reactnative.dev/docs/typescript.
-
-            02. En la terminal de 'Visual Studio Code', ejecutar los siguientes comandos:
-
-
-
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 02.02. Ejecuatar 'my-app' en el emulador de Android: ------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. En la terminal de 'Visual Studio Code', ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..\react_native> cd my-app
-                    ⦿   PS C:\..\react_native> npx expo start
-                    ⦿   PS C:\..\react_native> npm run android
+                    ⦿   PS C:\..\react_native\my-app> npm run android
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.03. Ejecuatar 'my-app' en un dispositivo físico Android: -----------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En el dispositivo, ir a tienda, para Android es Play Store, buscar “expo go” e instalarla.
+            02. En la terminal de 'Visual Studio Code', ejecutar:
+                
+                    ⦿   PS C:\..\react_native\my-app> expo start
+        
+            03. Si le solicita dependencias adicionales, pulsar “Y” para instalarlas. Se generará un código QR.
+        
+            04. Abrir la aplicación 'Expo Go' en el dispositivo.
+            
+            05. Escanear el 'código QR' con el dispositivo. Los dos equipos deben estar en la misma red WiFi.
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.04. Crear una ventana de inicio: -----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            El módulo principal, que se ejecuta al lanzar la aplicación es 'App.tsx', donde se encuentran las 'views' que son las diferentes 
+            pantallas donde se realiza la navegación. Dentro de los 'views' hay componentes. Los 'views' se relacionan con 'styles', que son los 
+            estilos aplicados a cada vista.
 
 
+            01. Consultar los componentes para construir el código: https://reactnative.dev/docs/components-and-apis.
+
+            02. Copie los siguientes archivos de imágenes: 
+            
 
 
+            02. Copie los siguientes archivos de imágenes:
