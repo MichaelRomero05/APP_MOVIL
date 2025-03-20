@@ -216,21 +216,23 @@
                          √ What is your app named? ... my-app
                          √ Downloaded and extracted project files.
                          > npm install
+            
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.02.  Ejecuatar 'my-app' en el emulador de Android: -----------------------------------------------------------------------------------------------|
+|-- 02.02.  Ejecutar 'my-app' en el emulador de Android: -----------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. En la terminal de 'Visual Studio Code', ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..\react_native> cd my-app
-                    ⦿   PS C:\..\react_native\my-app> npm run android
+                    ⦿   PS C:\..\react_native\my-app> npm run android           
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.03.  Ejecuatar 'my-app' en un dispositivo físico Android: ----------------------------------------------------------------------------------------|
+|-- 02.03.  Ejecutar 'my-app' en un dispositivo físico Android: ----------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En el dispositivo, ir a tienda, para Android es Play Store, buscar “expo go” e instalarla.
+            01. En el dispositivo, ir a tienda, para Android es Play Store, buscar 'Expo go' e instalarla.
 
             02. En la terminal de 'Visual Studio Code', ejecutar:
                 
@@ -243,6 +245,37 @@
             05. Escanear el 'código QR' con el dispositivo. Los dos equipos deben estar en la misma red WiFi.
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.04.  'my-app/App.tsx' y ¡Hola Mundo!: -------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            El módulo principal, que se ejecuta al lanzar la aplicación es 'App.tsx', donde se encuentran las 'View' que son las diferentes 
+            pantallas donde se realiza la navegación. Dentro de los 'View' hay componentes. Los 'View' se relacionan con 'styles', que son los 
+            estilos aplicados a cada vista.
+
+            01. Modificar el código del archivo 'App.tsx', para agregar el texto '¡Hola Mundo!':
+
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View } from 'react-native';
+                    03 
+                    04   export default function App() {
+                    05     return (
+                    06       <View style={styles.container}>
+                    07         <Text>¡Hola Mundo!</Text>
+                    08         <StatusBar style="auto" />
+                    09       </View>
+                    10     );
+                    11   }
+                    12 
+                    13   const styles = StyleSheet.create({
+                    14     container: {
+                    15       flex: 1,
+                    16       backgroundColor: '#fff',
+                    17       alignItems: 'center',
+                    18       justifyContent: 'center',
+                    19     },
+                    20   });
+
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
@@ -251,9 +284,6 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 
-            El módulo principal, que se ejecuta al lanzar la aplicación es 'App.tsx', donde se encuentran las 'View' que son las diferentes 
-            pantallas donde se realiza la navegación. Dentro de los 'View' hay componentes. Los 'View' se relacionan con 'styles', que son los 
-            estilos aplicados a cada vista.
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -272,30 +302,30 @@
 
             01. Modificar el código del archivo 'App.tsx', para agregar una imagen de fondo:
 
-                    01  import { StatusBar } from 'expo-status-bar';
-                    02  import { StyleSheet, Text, View, Image } from 'react-native';
-                    03
-                    04  export default function App() {
-                    05    return (
-                    06      <View style={styles.container}>
-                    07        <Image
-                    08          source={ require('./assets/chef.jpg')}
-                    09          style={styles.imageBackground}
-                    10        />
-                    11      </View>
-                    12    );
-                    13  }
-                    14
-                    15  const styles = StyleSheet.create({
-                    16    container: {
-                    17      flex: 1,
-                    18      backgroundColor: '#fff',
-                    19    },
-                    20    imageBackground: {
-                    21        width: '100%',
-                    22        height: '100%',
-                    23    },
-                    24  });
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View, Image } from 'react-native';
+                    03 
+                    04   export default function App() {
+                    05     return (
+                    06       <View style={styles.container}>
+                    07         <Image
+                    08           source={ require('./assets/chef.jpg')}
+                    09           style={styles.imageBackground}
+                    10         />
+                    11       </View>
+                    12     );
+                    13   }
+                    14 
+                    15   const styles = StyleSheet.create({
+                    16     container: {
+                    17       flex: 1,
+                    18       backgroundColor: '#fff',
+                    19     },
+                    20     imageBackground: {
+                    21         width: '100%',
+                    22         height: '100%',
+                    23     },
+                    24   });
                         
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 03.03.  Logo: ---------------------------------------------------------------------------------------------------------------------------------------|
@@ -303,53 +333,53 @@
             
             01. Modificar el código del archivo 'App.tsx', para agregar un logo:
 
-                    01  import { StatusBar } from 'expo-status-bar';
-                    02  import { StyleSheet, Text, View, Image } from 'react-native';
-                    03
-                    04  export default function App() {
-                    05    return (
-                    06      <View style={styles.container}>
-                    07        <Image
-                    08          source={ require('./assets/chef.jpg')}
-                    09          style={styles.imageBackground}
-                    10        />
-                    11        <View style={styles.logoContainer}>
-                    12          <Image
-                    13            source={require('./assets/logo.png')}
-                    14            style={styles.logoImage}
-                    15          />
-                    16          <Text style={styles.logoText}>FOOD APP</Text>
-                    17        </View>
-                    18      </View>
-                    19    );
-                    20  }
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View, Image } from 'react-native';
+                    03 
+                    04   export default function App() {
+                    05     return (
+                    06       <View style={styles.container}>
+                    07         <Image
+                    08           source={ require('./assets/chef.jpg')}
+                    09           style={styles.imageBackground}
+                    10         />
+                    11         <View style={styles.logoContainer}>
+                    12           <Image
+                    13             source={require('./assets/logo.png')}
+                    14             style={styles.logoImage}
+                    15           />
+                    16           <Text style={styles.logoText}>FOOD APP</Text>
+                    17         </View>
+                    18       </View>
+                    19     );
+                    20   }
                     21
-                    22  const styles = StyleSheet.create({
-                    23    container: {
-                    24      flex: 1,
-                    25      backgroundColor: '#fff',
-                    26    },
-                    27    imageBackground: {
-                    28        width: '100%',
-                    29        height: '100%',
-                    30    },
-                    31    logoContainer:{
-                    32      position: 'absolute',
-                    33      alignSelf: 'center',
-                    34      top: '15%',
-                    35    },
-                    36    logoImage: { 
-                    37      width: 100,
-                    38      height: 100,
-                    39    },
-                    40    logoText: { 
-                    41      color: 'white',
-                    42      textAlign: 'center',
-                    43      fontSize: 20,
-                    44      marginTop: 10,
-                    45      fontWeight: 'bold',
-                    46    },
-                    47  });
+                    22   const styles = StyleSheet.create({
+                    23     container: {
+                    24       flex: 1,
+                    25       backgroundColor: '#fff',
+                    26     },
+                    27     imageBackground: {
+                    28         width: '100%',
+                    29         height: '100%',
+                    30     },
+                    31     logoContainer:{
+                    32       position: 'absolute',
+                    33       alignSelf: 'center',
+                    34       top: '15%',
+                    35     },
+                    36     logoImage: { 
+                    37       width: 100,
+                    38       height: 100,
+                    39     },
+                    40     logoText: { 
+                    41       color: 'white',
+                    42       textAlign: 'center',
+                    43       fontSize: 20,
+                    44       marginTop: 10,
+                    45       fontWeight: 'bold',
+                    46     },
+                    47   });
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -358,65 +388,65 @@
             
             01. Modificar el código del archivo 'App.tsx', para agregar un Formulario de Ingreso:
 
-                    01  import { StatusBar } from 'expo-status-bar';
-                    02  import { StyleSheet, Text, View, Image } from 'react-native';
-                    03
-                    04  export default function App() {
-                    05    return (
-                    06      <View style={styles.container}>
-                    07        <Image
-                    08          source={ require('./assets/chef.jpg')}
-                    09          style={styles.imageBackground}
-                    10        />
-                    11        <View style={styles.logoContainer}>
-                    12          <Image
-                    13            source={require('./assets/logo.png')}
-                    14            style={styles.logoImage}
-                    15          />
-                    16          <Text style={styles.logoText}>FOOD APP</Text>
-                    17        </View>
-                    18        <View style={styles.form}>
-                    19        </View>  
-                    20      </View>
-                    21    );
-                    22  }
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View, Image } from 'react-native';
+                    03 
+                    04   export default function App() {
+                    05     return (
+                    06       <View style={styles.container}>
+                    07         <Image
+                    08           source={ require('./assets/chef.jpg')}
+                    09           style={styles.imageBackground}
+                    10         />
+                    11         <View style={styles.logoContainer}>
+                    12           <Image
+                    13             source={require('./assets/logo.png')}
+                    14             style={styles.logoImage}
+                    15           />
+                    16           <Text style={styles.logoText}>FOOD APP</Text>
+                    17         </View>
+                    18         <View style={styles.form}>
+                    19         </View>  
+                    20       </View>
+                    21     );
+                    22   }
                     23
-                    24  const styles = StyleSheet.create({
-                    25    container: {
-                    26      flex: 1,
-                    27      backgroundColor: '#fff',
-                    28    },
-                    29    imageBackground: {
-                    30        width: '100%',
-                    31        height: '100%',
-                    32    },
-                    33    logoContainer:{
-                    34      position: 'absolute',
-                    35      alignSelf: 'center',
-                    36      top: '15%',
-                    37    },
-                    38    logoImage: { 
-                    39      width: 100,
-                    40      height: 100,
-                    41    },
-                    42    logoText: { 
-                    43      color: 'white',
-                    44      textAlign: 'center',
-                    45      fontSize: 20,
-                    46      marginTop: 10,
-                    47      fontWeight: 'bold',
-                    48    },
-                    49    form: {
-                    50      width: '100%',
-                    51      height: '40%',
-                    52      backgroundColor: 'white',
-                    53      position: 'absolute',
-                    54      bottom: 0,
-                    55      borderTopLeftRadius: 40,
-                    56      borderTopRightRadius: 40,
-                    57      padding: 30,
-                    58    },
-                    59  });
+                    24   const styles = StyleSheet.create({
+                    25     container: {
+                    26       flex: 1,
+                    27       backgroundColor: '#fff',
+                    28     },
+                    29     imageBackground: {
+                    30         width: '100%',
+                    31         height: '100%',
+                    32     },
+                    33     logoContainer:{
+                    34       position: 'absolute',
+                    35       alignSelf: 'center',
+                    36       top: '15%',
+                    37     },
+                    38     logoImage: { 
+                    39       width: 100,
+                    40       height: 100,
+                    41     },
+                    42     logoText: { 
+                    43       color: 'white',
+                    44       textAlign: 'center',
+                    45       fontSize: 20,
+                    46       marginTop: 10,
+                    47       fontWeight: 'bold',
+                    48     },
+                    49     form: {
+                    50       width: '100%',
+                    51       height: '40%',
+                    52       backgroundColor: 'white',
+                    53       position: 'absolute',
+                    54       bottom: 0,
+                    55       borderTopLeftRadius: 40,
+                    56       borderTopRightRadius: 40,
+                    57       padding: 30,
+                    58     },
+                    59   });
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -425,133 +455,132 @@
 
             01. Modificar el código del archivo 'App.tsx', para agregar elementos al Formulario de Ingreso:
 
-                    01  import { StatusBar } from 'expo-status-bar';
-                    02  import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
-                    03
-                    04  export default function App() {
-                    05    return (
-                    06      <View style={styles.container}>
-                    07        <Image
-                    08          source={require('./assets/chef.jpg')}
-                    09          style={styles.imageBackground}
-                    10        />
-                    11        <View style={styles.logoContainer}>
-                    12          <Image
-                    13            source={require('./assets/logo.png')}
-                    14            style={styles.logoImage}
-                    15          />
-                    16          <Text style={styles.logoText}>FOOD APP</Text>
-                    17        </View>
-                    18        <View style={styles.form}>
-                    19          <Text style={styles.formText}>INGRESAR</Text>
-                    20          <View style={styles.formInput}>
-                    21            <Image style={styles.formIcon}
-                    22              source={require('./assets/email.png')}
-                    23            />
-                    24            <TextInput
-                    25              style={styles.formTextInput}
-                    26              placeholder='Correo electrónico'
-                    27              keyboardType='email-address'
-                    28            />
-                    29          </View>
-                    30          <View style={styles.formInput}>
-                    31            <Image style={styles.formIcon}
-                    32              source={require('./assets/password.png')}
-                    33            />
-                    34            <TextInput
-                    35              style={styles.formTextInput}
-                    36              placeholder='Contraseña'
-                    37              keyboardType='default'
-                    38              secureTextEntry={true}
-                    39            />
-                    40          </View>
-                    41          <View style={{ marginTop: 30 }}>
-                    42            <Button
-                    43              title='ENTRAR'
-                    44              onPress={() => ToastAndroid.show('CLICK', ToastAndroid.LONG)}
-                    45              color={'orange'}
-                    46            />
-                    47          </View>
-                    48          <View style={styles.formRegister}>
-                    49            <Text>¿No tienes cuenta?</Text>
-                    50            <Text style={styles.formRegisterText}>Regístrate</Text>
-                    51          </View>
-                    52        </View>
-                    53      </View>
-                    54    );
-                    55  }
-                    56
-                    57  const styles = StyleSheet.create({
-                    58    container: {
-                    59      flex: 1,
-                    60      backgroundColor: 'black',
-                    61    },
-                    62    imageBackground: {
-                    63      width: '100%',
-                    64      height: '100%',
-                    65      opacity: 0.7,
-                    66      bottom: '30%',
-                    67    },
-                    68    logoContainer: {
-                    69      position: 'absolute',
-                    70      alignSelf: 'center',
-                    71      top: '15%',
-                    72    },
-                    73    logoImage: {
-                    74      width: 100,
-                    75      height: 100,
-                    76    },
-                    77    logoText: {
-                    78      color: 'white',
-                    79      textAlign: 'center',
-                    80      fontSize: 20,
-                    81      marginTop: 10,
-                    82      fontWeight: 'bold',
-                    83    },
-                    84    form: {
-                    85      width: '100%',
-                    86      height: '40%',
-                    87      backgroundColor: 'white',
-                    88      position: 'absolute',
-                    89      bottom: 0,
-                    90      borderTopLeftRadius: 40,
-                    91      borderTopRightRadius: 40,
-                    92      padding: 30,
-                    93    },
-                    94    formText: {
-                    95      fontWeight: 'bold',
-                    96      fontSize: 16,
-                    97    },
-                    98    formIcon: {
-                    99      width: 25,
-                   100      height: 25,
-                   101      marginTop: 5,
-                   102
-                   103    },
-                   104    formInput: {
-                   105      flexDirection: 'row',
-                   106      marginTop: 30,
-                   107    },
-                   108    formTextInput: {
-                   109      flex: 1,
-                   110       borderBottomWidth: 1,
-                   111       borderBottomColor: '#AAAAAA',
-                   112       marginLeft: 15,
-                   113    },
-                   114    formRegister: {
-                   115      flexDirection: 'row',
-                   116      justifyContent: 'center',
-                   117      marginTop: 30,
-                   118    },
-                   119    formRegisterText: {
-                   120      fontStyle: 'italic',
-                   121      color: 'orange',
-                   122      borderBottomWidth: 1,
-                   123      borderBottomColor: 'orange',
-                   124      fontWeight: 'bold',
-                   125      marginLeft: 10,
-                   126    },  
-                   127  });
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03 
+                    04   export default function App() {
+                    05     return (
+                    06       <View style={styles.container}>
+                    07         <Image
+                    08           source={require('./assets/chef.jpg')}
+                    09           style={styles.imageBackground}
+                    10         />
+                    11         <View style={styles.logoContainer}>
+                    12           <Image
+                    13             source={require('./assets/logo.png')}
+                    14             style={styles.logoImage}
+                    15           />
+                    16           <Text style={styles.logoText}>FOOD APP</Text>
+                    17         </View>
+                    18         <View style={styles.form}>
+                    19           <Text style={styles.formText}>INGRESAR</Text>
+                    20           <View style={styles.formInput}>
+                    21             <Image style={styles.formIcon}
+                    22               source={require('./assets/email.png')}
+                    23             />
+                    24             <TextInput
+                    25               style={styles.formTextInput}
+                    26               placeholder='Correo electrónico'
+                    27               keyboardType='email-address'
+                    28             />
+                    29           </View>
+                    30           <View style={styles.formInput}>
+                    31             <Image style={styles.formIcon}
+                    32               source={require('./assets/password.png')}
+                    33             />
+                    34             <TextInput
+                    35               style={styles.formTextInput}
+                    36               placeholder='Contraseña'
+                    37               keyboardType='default'
+                    38               secureTextEntry={true}
+                    39             />
+                    40           </View>
+                    41           <View style={{ marginTop: 30 }}>
+                    42             <Button
+                    43               title='ENTRAR'
+                    44               onPress={() => ToastAndroid.show('CLICK', ToastAndroid.LONG)}
+                    45               color={'orange'}
+                    46             />
+                    47           </View>
+                    48           <View style={styles.formRegister}>
+                    49             <Text>¿No tienes cuenta?</Text>
+                    50             <Text style={styles.formRegisterText}>Regístrate</Text>
+                    51           </View>
+                    52         </View>
+                    53       </View>
+                    54     );
+                    55   }
+                    56 
+                    57   const styles = StyleSheet.create({
+                    58     container: {
+                    59       flex: 1,
+                    60       backgroundColor: 'black',
+                    61     },
+                    62     imageBackground: {
+                    63       width: '100%',
+                    64       height: '100%',
+                    65       opacity: 0.7,
+                    66       bottom: '30%',
+                    67     },
+                    68     logoContainer: {
+                    69       position: 'absolute',
+                    70       alignSelf: 'center',
+                    71       top: '15%',
+                    72     },
+                    73     logoImage: {
+                    74       width: 100,
+                    75       height: 100,
+                    76     },
+                    77     logoText: {
+                    78       color: 'white',
+                    79       textAlign: 'center',
+                    80       fontSize: 20,
+                    81       marginTop: 10,
+                    82       fontWeight: 'bold',
+                    83     },
+                    84     form: {
+                    85       width: '100%',
+                    86       height: '40%',
+                    87       backgroundColor: 'white',
+                    88       position: 'absolute',
+                    89       bottom: 0,
+                    90       borderTopLeftRadius: 40,
+                    91       borderTopRightRadius: 40,
+                    92       padding: 30,
+                    93     },
+                    94     formText: {
+                    95       fontWeight: 'bold',
+                    96       fontSize: 16,
+                    97     },
+                    98     formIcon: {
+                    99       width: 25,
+                   100       height: 25,
+                   101       marginTop: 5,
+                   102     },
+                   103     formInput: {
+                   104       flexDirection: 'row',
+                   105       marginTop: 30,
+                   106     },
+                   107    formTextInput: {
+                   108      flex: 1,
+                   109       borderBottomWidth: 1,
+                   110       borderBottomColor: '#AAAAAA',
+                   111       marginLeft: 15,
+                   112    },
+                   113    formRegister: {
+                   114      flexDirection: 'row',
+                   115      justifyContent: 'center',
+                   116      marginTop: 30,
+                   117    },
+                   118    formRegisterText: {
+                   119      fontStyle: 'italic',
+                   120      color: 'orange',
+                   121      borderBottomWidth: 1,
+                   122      borderBottomColor: 'orange',
+                   123      fontWeight: 'bold',
+                   124      marginLeft: 10,
+                   125    },  
+                   126  });
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -566,43 +595,43 @@
 
             04. En el archivo 'RoundedButton.tsx' digitar 'rafc' y aceptar el snippet:                    
 
-                    01  import React from 'react'
-                    02
-                    03  export const RoundedButton = () => {
-                    04    return (
-                    05      <div>RoundedButton</div>
-                    06    )
-                    07  }
+                    01   import React from 'react'
+                    02 
+                    03   export const RoundedButton = () => {
+                    04     return (
+                    05       <div>RoundedButton</div>
+                    06     )
+                    07   }
 
             05. Modificar el archivo 'RoundedButton.tsx', para habilitar el evento 'onPress' y agregar estilos:
                     
-                    01  import React from 'react'
-                    02  import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+                    01   import React from 'react'
+                    02   import { TouchableOpacity, Text, StyleSheet } from 'react-native'
                     03
-                    04  export const RoundedButton = () => {
-                    05      return (
-                    06          <TouchableOpacity
-                    07              style={styles.RoundedButton}
-                    08              onPress={() => { }}
-                    09          >
-                    10              <Text style={styles.textButton} >ENTRAR</Text>
-                    11          </TouchableOpacity>
-                    12      )
-                    13  }
+                    04   export const RoundedButton = () => {
+                    05       return (
+                    06           <TouchableOpacity
+                    07               style={styles.RoundedButton}
+                    08               onPress={() => { }}
+                    09           >
+                    10               <Text style={styles.textButton} >ENTRAR</Text>
+                    11           </TouchableOpacity>
+                    12       )
+                    13   }
                     14
-                    15  const styles = StyleSheet.create({
-                    16      RoundedButton: {
-                    17          width: '100%',
-                    18          height: 50,
-                    19          backgroundColor: 'orange',
-                    20          alignItems: 'center',
-                    21          justifyContent: 'center',
-                    22          borderRadius: 15,
-                    23      },
-                    24      textButton: {
-                    25          color: 'white',
-                    26      }
-                    27  });
+                    15   const styles = StyleSheet.create({
+                    16       RoundedButton: {
+                    17           width: '100%',
+                    18           height: 50,
+                    19           backgroundColor: 'orange',
+                    20           alignItems: 'center',
+                    21           justifyContent: 'center',
+                    22           borderRadius: 15,
+                    23       },
+                    24       textButton: {
+                    25           color: 'white',
+                    26       }
+                    27   });
 
             06. En el archivo 'App.tsx', eliminar la etiqueta 'Button' y cambiar por el elemento personalizado::            
                     
@@ -661,14 +690,12 @@
                     53
                     54 > const styles = StyleSheet.create({                         
                    124   });
-            
-            
-            
 
 
 
 
 
+¡AQUÍ VOY!
 
 
 
