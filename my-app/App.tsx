@@ -5,10 +5,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./assets/chef.jpg')}
+        source={ require('./assets/chef.jpg')}
         style={styles.imageBackground}
       />
-      <View style={styles.form}>
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('./assets/logo.png')}
+          style={styles.logoImage}
+        />
+        <Text style={styles.logoText}>FOOD APP</Text>
       </View>
     </View>
   );
@@ -17,21 +22,26 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#fff',
   },
   imageBackground: {
-    width: '100%',
-    height: '100%',
-    opacity: 0.7,
-    bottom: '30%',
+      width: '100%',
+      height: '100%',
   },
-  form:{
-    width: '100%',
-    height: '40%',
-    backgroundColor: 'white',
+  logoContainer:{
     position: 'absolute',
-    bottom: 0,
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-  }
+    alignSelf: 'center',
+    top: '15%',
+  },
+  logoImage: { 
+    width: 100,
+    height: 100,
+  },
+  logoText: { 
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
 });
