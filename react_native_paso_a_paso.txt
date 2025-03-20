@@ -177,7 +177,7 @@
                     ⦿   "scripts":{ "start": "expo start"}, por
                     ⦿   "scripts":{ "start": "npx expo start"}
 
-            04. Para desinstalar expo CLI en caso de existir problemas en la terminal de 'Visual Studio Code':
+            04. En caso de existir problema, puede desinstalar expo CLI  en la terminal de 'Visual Studio Code':
                  
                     ⦿   PS C:\..\react_native> npm uninstall -g expo-cli
 
