@@ -40,7 +40,7 @@ export default function App() {
           />
         </View>
         <View style={{ marginTop: 30 }}>
-          <RoundedButton /> 
+          <RoundedButton text='ENTRAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
         </View>
         <View style={styles.formRegister}>
           <Text>¿No tienes cuenta?</Text>
@@ -119,5 +119,5 @@ const styles = StyleSheet.create({
     borderBottomColor: 'orange',
     fontWeight: 'bold',
     marginLeft: 10,
-  },  
+  },
 });
