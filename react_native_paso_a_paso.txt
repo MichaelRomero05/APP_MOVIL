@@ -7,7 +7,7 @@
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
 ||| -- 02.  CREAR UNA APP                                                                                                                              |||
 ||| -- 03.  COMPONENTES CENTRALES                                                                                                                      |||
-||| -- XX.  ARRANCAR UN PROYECTO                                                                                                                       |||
+||| -- XX.  DESPLEGAR UN PROYECTO                                                                                                                      |||
 |||                                                                                                                                                    |||
 ||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
 |||                     del ORIGINAL elaborado por el Instructor MARCO LEÓN MORA. SENA, 2023.                                                          |||
@@ -558,9 +558,112 @@
 |-- 03.05.  Elementos Personalizados: -------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Modificar el código del archivo 'App.tsx', para agregar elementos al Formulario de Ingreso:
+            01. Crear una carpeta 'src' dentro de la carpeta principal
 
+            02. Dentro de 'src' crear la carpetas 'components
 
+            03. Dentro de 'components' crear un archivo 'RoundedButton.tsx'
+
+            04. En el archivo 'RoundedButton.tsx' digitar 'rafc' y aceptar el snippet:                    
+
+                    01  import React from 'react'
+                    02
+                    03  export const RoundedButton = () => {
+                    04    return (
+                    05      <div>RoundedButton</div>
+                    06    )
+                    07  }
+
+            05. Modificar el archivo 'RoundedButton.tsx', para habilitar el evento 'onPress' y agregar estilos:
+                    
+                    01  import React from 'react'
+                    02  import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+                    03
+                    04  export const RoundedButton = () => {
+                    05      return (
+                    06          <TouchableOpacity
+                    07              style={styles.RoundedButton}
+                    08              onPress={() => { }}
+                    09          >
+                    10              <Text style={styles.textButton} >ENTRAR</Text>
+                    11          </TouchableOpacity>
+                    12      )
+                    13  }
+                    14
+                    15  const styles = StyleSheet.create({
+                    16      RoundedButton: {
+                    17          width: '100%',
+                    18          height: 50,
+                    19          backgroundColor: 'orange',
+                    20          alignItems: 'center',
+                    21          justifyContent: 'center',
+                    22          borderRadius: 15,
+                    23      },
+                    24      textButton: {
+                    25          color: 'white',
+                    26      }
+                    27  });
+
+            06. En el archivo 'App.tsx', eliminar la etiqueta 'Button' y cambiar por el elemento personalizado::            
+                    
+                    01   import { StatusBar } from 'expo-status-bar';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from './src/componentes/RoundedButton';
+                    04
+                    05   export default function App() {
+                    06     return (
+                    07       <View style={styles.container}>
+                    08         <Image
+                    09           source={require('./assets/chef.jpg')}
+                    10           style={styles.imageBackground}
+                    11         />
+                    12         <View style={styles.logoContainer}>
+                    13           <Image
+                    14             source={require('./assets/logo.png')}
+                    15             style={styles.logoImage}
+                    16           />
+                    17           <Text style={styles.logoText}>FOOD APP</Text>
+                    18         </View>
+                    19         <View style={styles.form}>
+                    20           <Text style={styles.formText}>INGRESAR</Text>
+                    21           <View style={styles.formInput}>
+                    22             <Image style={styles.formIcon}
+                    23               source={require('./assets/email.png')}
+                    24             />
+                    25             <TextInput
+                    26               style={styles.formTextInput}
+                    27               placeholder='Correo electrónico'
+                    28               keyboardType='email-address'
+                    29             />
+                    30           </View>
+                    31           <View style={styles.formInput}>
+                    32             <Image style={styles.formIcon}
+                    33               source={require('./assets/password.png')}
+                    34             />
+                    35             <TextInput
+                    36               style={styles.formTextInput}
+                    37               placeholder='Contraseña'
+                    38               keyboardType='default'
+                    39               secureTextEntry={true}
+                    40             />
+                    41           </View>
+                    42           <View style={{ marginTop: 30 }}>
+                    43             <RoundedButton /> 
+                    44           </View>
+                    45           <View style={styles.formRegister}>
+                    46             <Text>¿No tienes cuenta?</Text>
+                    47             <Text style={styles.formRegisterText}>Regístrate</Text>
+                    48           </View>
+                    49         </View>
+                    50       </View>
+                    51     );
+                    52   }
+                    53
+                    54 > const styles = StyleSheet.create({                         
+                   124   });
+            
+            
+            
 
 
 
@@ -571,7 +674,7 @@
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||------------------------------------------------------------- XX. ARRANCAR UN PROYECTO -------------------------------------------------------------|||
+|||------------------------------------------------------------ XX. DESPLEGAR EL PROYECTO -------------------------------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
