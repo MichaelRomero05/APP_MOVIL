@@ -122,7 +122,7 @@
                     ⦿   Valor de la variable:   'Examinar Directorio': C:\Program Files\Android\Android Studio\jbr\bin
 
                     ⦿   Nombre de la variable:  ANDROID_HOME
-                    ⦿   Valor de la variable:   'Examinar Directorio': C:\Users\ADMIN\AppData\Local\Android\Sdk
+                    ⦿   Valor de la variable:   'Examinar Directorio': C:\Users\{usuario_del_sistema}\AppData\Local\Android\Sdk
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -359,6 +359,73 @@
             01. Modificar el código del archivo 'App.tsx', para agregar un Formulario de Ingreso:
 
                     01  import { StatusBar } from 'expo-status-bar';
+                    02  import { StyleSheet, Text, View, Image } from 'react-native';
+                    03
+                    04  export default function App() {
+                    05    return (
+                    06      <View style={styles.container}>
+                    07        <Image
+                    08          source={ require('./assets/chef.jpg')}
+                    09          style={styles.imageBackground}
+                    10        />
+                    11        <View style={styles.logoContainer}>
+                    12          <Image
+                    13            source={require('./assets/logo.png')}
+                    14            style={styles.logoImage}
+                    15          />
+                    16          <Text style={styles.logoText}>FOOD APP</Text>
+                    17        </View>
+                    18        <View style={styles.form}>
+                    19        </View>  
+                    20      </View>
+                    21    );
+                    22  }
+                    23
+                    24  const styles = StyleSheet.create({
+                    25    container: {
+                    26      flex: 1,
+                    27      backgroundColor: '#fff',
+                    28    },
+                    29    imageBackground: {
+                    30        width: '100%',
+                    31        height: '100%',
+                    32    },
+                    33    logoContainer:{
+                    34      position: 'absolute',
+                    35      alignSelf: 'center',
+                    36      top: '15%',
+                    37    },
+                    38    logoImage: { 
+                    39      width: 100,
+                    40      height: 100,
+                    41    },
+                    42    logoText: { 
+                    43      color: 'white',
+                    44      textAlign: 'center',
+                    45      fontSize: 20,
+                    46      marginTop: 10,
+                    47      fontWeight: 'bold',
+                    48    },
+                    49    form: {
+                    50      width: '100%',
+                    51      height: '40%',
+                    52      backgroundColor: 'white',
+                    53      position: 'absolute',
+                    54      bottom: 0,
+                    55      borderTopLeftRadius: 40,
+                    56      borderTopRightRadius: 40,
+                    57      padding: 30,
+                    58    },
+                    59  });
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.05.  Elementos del Formulario: -------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Modificar el código del archivo 'App.tsx', para agregar elementos al Formulario de Ingreso:
+
+                    01  import { StatusBar } from 'expo-status-bar';
                     02  import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
                     03
                     04  export default function App() {
@@ -486,11 +553,12 @@
                    126    },  
                    127  });
 
-            07. Agregar los elementos del formulario en el archivo 'App.tsx':
 
-                    01  
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.05.  Elementos Personalizados: -------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-
+            01. Modificar el código del archivo 'App.tsx', para agregar elementos al Formulario de Ingreso:
 
 
 
