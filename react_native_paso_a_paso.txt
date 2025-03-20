@@ -6,6 +6,7 @@
 |||                                                                                                                                                    |||
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
 ||| -- 02.  CREAR UNA APP                                                                                                                              |||
+||| -- XX.  ARRANCAR UN PROYECTO                                                                                                                       |||
 |||                                                                                                                                                    |||
 ||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
 |||                     del ORIGINAL elaborado por el Instructor MARCO LEÓN MORA. SENA, 2023.                                                          |||
@@ -174,8 +175,8 @@
 
             03. Si ya tiene un proyecto, reemplace en el archivo “package.json”:
 
-                    ⦿   "scripts":{ "start": "expo start"}, por
-                    ⦿   "scripts":{ "start": "npx expo start"}
+                    ⦿   "scripts":{ "start": "expo start"}, por "scripts":{ "start": "npx expo start"}
+                    ⦿   "scripts":{ "start": "expo start"}, por "scripts":{ "start": "npx expo start"}
 
             04. En caso de existir problema, puede desinstalar expo CLI  en la terminal de 'Visual Studio Code':
                  
@@ -281,9 +282,31 @@
                     23    },
                     24  });
 
-
                         
 
 
 
 
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------- XX. ARRANCAR UN PROYECTO -------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- XX.01. Cuando NO está preparado el Entorno de Desarrollo: -------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Seguir los pasos del apartado '01.  PREPARAR EL ENTORNO DE DESARROLLO, de este mismo documento.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- XX.01. Cuando YA está preparado el Entorno de Desarrollo: -------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Abrir el proyecto con 'Visual Studio Code'. Ejemplo: 'my-app'.
+            02. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+                    
+                    ⦿   PS C:\..\my-app> npm install
+                    ⦿   PS C:\..\my-app> npm run android
