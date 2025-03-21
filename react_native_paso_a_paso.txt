@@ -132,7 +132,7 @@
 
             01. Abrir Android Studio
 
-            02. Seleccionar 'More Actions / Virtual Device Manager'                
+            02. Seleccionar 'More Actions / Virtual Device Manager'
 
             03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las
                 aplicaciones sin restricciones
@@ -830,13 +830,13 @@
                     06     )
                     07   }
 
-            03. En el archivo 'App.tsx', seleccionar y cortar el código desde el 'return' hasta antes del cierre de la función 'App()' y pegar en 
+            03. En el archivo 'App.tsx', seleccionar y cortar el código desde el 'return' hasta antes del cierre de la función 'App()' y pegar en
                 'home.tsx', cambie las rutas de las imágenes, al final quedará así:
-                    
+
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
                     03   import { RoundedButton } from '../../componentes/RoundedButton';
-                    04   
+                    04
                     05   export const HomeScreen = () => {
                     06     return (
                     07         <View style={styles.container}>
@@ -921,7 +921,7 @@
                     86       bottom: 0,
                     87       borderTopLeftRadius: 40,
                     88       borderTopRightRadius: 40,
-                    89       padding: 30,    
+                    89       padding: 30,
                     90     },
                     91     formText: {
                     92       fontWeight: 'bold',
@@ -957,42 +957,42 @@
                    122     },
                    123   });
 
-            04. Ir a la página https://reactnative.dev/docs/navigation, copiar el código del apartado 'Usage', pegarlo en el archivo 'App.tsx' en lugar 
+            04. Ir a la página https://reactnative.dev/docs/navigation, copiar el código del apartado 'Usage', pegarlo en el archivo 'App.tsx' en lugar
                 del código original y reemplazar algunos nombres, quedando así:
 
                     01   import * as React from 'react';
                     02   import { NavigationContainer } from '@react-navigation/native';
                     03   import { createNativeStackNavigator } from '@react-navigation/native-stack';
                     04   import { HomeScreen } from './src/views/home/home';
-                    05   
+                    05
                     06   const Stack = createNativeStackNavigator();
-                    07   
+                    07
                     08   const App = () => {
                     09     return (
                     10       <NavigationContainer>
                     11         <Stack.Navigator screenOptions={{headerShown: false}}>
                     12           <Stack.Screen
                     13             name="Home"
-                    14             component={HomeScreen}          
+                    14             component={HomeScreen}
                     15           />
                     16           {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
                     17         </Stack.Navigator>
                     18        </NavigationContainer>
                     19     );
                     20   };
-                    21   
+                    21
                     22   export default App;
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 04.03.  Crear pantalla de Registro: -----------------------------------------------------------------------------------------------------------------|
+|-- 04.03.  Pantalla de Registro: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
+
             01. En la carpeta 'views' crear una carpeta 'register' y en ella un archivo 'Register.tsx' con el siguiente código:
 
                     01   import React from 'react'
                     02   import { View, Text } from 'react-native'
-                    03   
+                    03
                     04   export const RegisterScreen = () => {
                     05     return (
                     06       <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
@@ -1009,21 +1009,21 @@
                     03   import { createNativeStackNavigator } from '@react-navigation/native-stack';
                     04   import { HomeScreen } from './src/views/home/home';
                     05   import { RegisterScreen } from './src/views/register/Register';
-                    06   
+                    06
                     07   export type RootStackParamList = {
                     08     HomeScreen: undefined;
                     09     RegisterScreen: undefined;
                     10   }
-                    11   
+                    11
                     12   const Stack = createNativeStackNavigator <RootStackParamList> ();
-                    13   
+                    13
                     14   const App = () => {
                     15     return (
                     16       <NavigationContainer>
                     17         <Stack.Navigator screenOptions={{headerShown: false}}>
                     18           <Stack.Screen
                     19             name="HomeScreen"
-                    20             component={HomeScreen}          
+                    20             component={HomeScreen}
                     21           />
                     22           <Stack.Screen
                     23             name="RegisterScreen"
@@ -1032,20 +1032,20 @@
                     26               headerShown: true,
                     27               title: "Registro",
                     28             }}
-                    29           />        
+                    29           />
                     30         </Stack.Navigator>
                     31       </NavigationContainer>
                     32     );
                     33   };
-                    34   
+                    34
                     35   export default App;
 
-            
-            02. En la Terminal de 'Visual Studio Code' instalar el siguiente complemento para navegar entre pantallas:
+
+            03. En la Terminal de 'Visual Studio Code' instalar el siguiente complemento para navegar entre pantallas:
 
                     ⦿   PS C:\..\react_native> npm i @react-navigation/stack
 
-            03. En el archivo 'home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
+            04. En el archivo 'home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
 
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
@@ -1053,18 +1053,23 @@
                     04   import { StackNavigationProp } from '@react-navigation/stack';
                     05   import { RootStackParamList } from '../../../App';
                     06   import { useNavigation } from '@react-navigation/native';
-                    07   
+                    07
                     08   export const HomeScreen = () => {
-                    09     
+                    09
                     10     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
-                    11   
+                    11
                     12 >   return (
                     57     );
                     58   }
                     59
-                    60 > const styles = StyleSheet.create({                    
+                    60 > const styles = StyleSheet.create({
                    129   });
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04.04.  Componentes en la Pantalla de Registro: -----------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En la carpeta 'views' crear una carpeta 'register' y en ella un archivo 'Register.tsx' con el siguiente código:
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||

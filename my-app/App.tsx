@@ -17,7 +17,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="HomeScreen"
-          component={HomeScreen}          
+          component={HomeScreen}
         />
         <Stack.Screen
           name="RegisterScreen"
@@ -26,7 +26,7 @@ const App = () => {
             headerShown: true,
             title: "Registro",
           }}
-        />        
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
