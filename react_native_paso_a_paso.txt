@@ -7,6 +7,7 @@
 ||| -- 01.  PREPARAR EL ENTORNO DE DESARROLLO                                                                                                          |||
 ||| -- 02.  CREAR UNA APP                                                                                                                              |||
 ||| -- 03.  COMPONENTES CENTRALES                                                                                                                      |||
+||| -- 04.  NAVEGACIÓN ENTRE PANTALLAS                                                                                                                 |||
 ||| -- XX.  DESPLEGAR UN PROYECTO                                                                                                                      |||
 |||                                                                                                                                                    |||
 ||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
@@ -282,8 +283,6 @@
 |||------------------------------------------------------------ 03. COMPONENTES CENTRALES -------------------------------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-
-
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -742,12 +741,77 @@
 |-- 03.07.  Crear estilos globales: ---------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Modificar el archivo 'RoundedButton.tsx', para insertar una interface (Por convención se llama 'Props') y usarla en 'RoundedButton':
+            01. Dentro de la carpeta 'src' crear una carpeta 'theme' y dentro de esta el archivo 'AppTheme.tsx':
 
-                    01   import React from 'react'
+            02. Modificar el archivo 'AppTheme.tsx', con el siguiente código:
+
+                    01   import { StyleSheet } from "react-native";
+                    02
+                    03   export const MyColors = {
+                    04       background: '#EEEEEE',
+                    05       primary: '#F4991A',
+                    06       secondary: '# E14D2A',
+                    07   }
+
+            03. Modificar el archivo 'RoundedButton.tsx', para cambiar el color de fondo (línea 3 y 24):
+
+                    03   import { MyColors } from '../theme/AppTheme';
+
+                    21     RoundedButton: {
+                    22         width: '100%',
+                    23         height: 50,
+                    24         backgroundColor: MyColors.primary,
+                    25         alignItems: 'center',
+                    26         justifyContent: 'center',
+                    27         borderRadius: 15,
+                    28     },
 
 
-¡AQUÍ VOY!
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||---------------------------------------------------------- 04. NAVEGACIÓN ENTRE PANTALLA -----------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04.01.  Navegación entre pantallas: -----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Consultar la documentación para navegar entre pantalla: https://reactnative.dev/docs/navigation.
+
+            02. Abrir una nueva 'Terminal' en Visual Studio Code:
+
+                    ⦿   'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+
+            03. En la Terminal de 'Visual Studio Code' ejecutar los siguientes comandos:
+
+                    ⦿   PS C:\..\react_native> cd my-app
+                    ⦿   PS C:\..\react_native\my-app> npm install @react-navigation/native @react-navigation/native-stack
+                    ⦿   PS C:\..\react_native\my-app> npm install -g expo-cli exp
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04.02.  Separando las pantallas: --------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo “home.tsx”
+
+            02. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo “home.tsx”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
