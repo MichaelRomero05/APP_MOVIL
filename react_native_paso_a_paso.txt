@@ -778,7 +778,6 @@
 |-- 04.01.  Navegación entre pantallas: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Consultar la documentación para navegar entre pantalla: https://reactnative.dev/docs/navigation.
 
             02. Abrir una nueva 'Terminal' en Visual Studio Code:
 
@@ -807,7 +806,8 @@
                     06     )
                     07   }
 
-            03. En el archivo 'App.tsx', seleccionar y cortar el código del 'return' y pegar en 'home.tsx', el cual quedará así:
+            03. En el archivo 'App.tsx', seleccionar y cortar el código desde el 'return' hasta antes del cierre de la función 'App()' y pegar en 
+                'home.tsx', cambie las rutas de las imágenes, al final quedará así:
                     
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
@@ -817,12 +817,12 @@
                     06     return (
                     07         <View style={styles.container}>
                     08           <Image
-                    09             source={require('./assets/chef.jpg')}
+                    09             source={require('../../../assets/chef.jpg')}
                     10             style={styles.imageBackground}
                     11           />
                     12           <View style={styles.logoContainer}>
                     13             <Image
-                    14               source={require('./assets/logo.png')}
+                    14               source={require('../../../assets/logo.png')}
                     15               style={styles.logoImage}
                     16             />
                     17             <Text style={styles.logoText}>FOOD APP</Text>
@@ -831,7 +831,7 @@
                     20             <Text style={styles.formText}>INGRESAR</Text>
                     21             <View style={styles.formInput}>
                     22               <Image style={styles.formIcon}
-                    23                 source={require('./assets/email.png')}
+                    23                 source={require('../../../assets/email.png')}
                     24               />
                     25               <TextInput
                     26                 style={styles.formTextInput}
@@ -841,7 +841,7 @@
                     30             </View>
                     31             <View style={styles.formInput}>
                     32               <Image style={styles.formIcon}
-                    33                 source={require('./assets/password.png')}
+                    33                 source={require('../../../assets/password.png')}
                     34               />
                     35               <TextInput
                     36                 style={styles.formTextInput}
@@ -933,6 +933,34 @@
                    122     },
                    123   });
 
+            04. Ir a la página https://reactnative.dev/docs/navigation, copiar el código del apartado 'Usage', pegarlo en el archivo 'App.tsx' en lugar 
+                del código original y reemplazar algunos nombres, quedando así:
+
+                    01   import * as React from 'react';
+                    02   import {NavigationContainer} from '@react-navigation/native';
+                    03   import {createNativeStackNavigator} from '@react-navigation/native-stack';
+                    04   import { HomeScreen } from './src/views/home/home';
+                    05   
+                    06   const Stack = createNativeStackNavigator();
+                    07   
+                    08   const App = () => {
+                    09     return (
+                    10       <NavigationContainer>
+                    11         <Stack.Navigator screenOptions={{headerShown: false}}>
+                    12           <Stack.Screen
+                    13             name="Home"
+                    14             component={HomeScreen}          
+                    15           />
+                    16           {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
+                    17         </Stack.Navigator>
+                    18        </NavigationContainer>
+                    19     );
+                    20   };
+                    21   
+                    22   export default App;
+
+
+            
 
 
 
