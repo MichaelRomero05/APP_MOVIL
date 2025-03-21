@@ -54,7 +54,7 @@ export const HomeScreen = () => {
           </View>
         </View>
       </View>
-    );
+  );
 }
 
 const styles = StyleSheet.create({

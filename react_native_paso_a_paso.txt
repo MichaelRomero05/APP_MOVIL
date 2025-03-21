@@ -1047,12 +1047,23 @@
 
             03. En el archivo 'home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
 
-
-
-
-
-
-
+                    01   import React from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { StackNavigationProp } from '@react-navigation/stack';
+                    05   import { RootStackParamList } from '../../../App';
+                    06   import { useNavigation } from '@react-navigation/native';
+                    07   
+                    08   export const HomeScreen = () => {
+                    09     
+                    10     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+                    11   
+                    12 >   return (
+                    57     );
+                    58   }
+                    59
+                    60 > const styles = StyleSheet.create({                    
+                   129   });
 
 
 
