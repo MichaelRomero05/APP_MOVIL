@@ -794,7 +794,7 @@
 |-- 04.02.  Separando las pantallas: --------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo “home.tsx”
+            01. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo 'home.tsx'
 
             02. En el archivo 'home.tsx' digitar 'rafc' y aceptar el snippet:
 
@@ -937,8 +937,8 @@
                 del código original y reemplazar algunos nombres, quedando así:
 
                     01   import * as React from 'react';
-                    02   import {NavigationContainer} from '@react-navigation/native';
-                    03   import {createNativeStackNavigator} from '@react-navigation/native-stack';
+                    02   import { NavigationContainer } from '@react-navigation/native';
+                    03   import { createNativeStackNavigator } from '@react-navigation/native-stack';
                     04   import { HomeScreen } from './src/views/home/home';
                     05   
                     06   const Stack = createNativeStackNavigator();
@@ -960,10 +960,60 @@
                     22   export default App;
 
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04.03.  Crear pantalla de Registro: -----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
+            01. En la carpeta 'views' crear una carpeta 'register' y en ella un archivo 'Register.tsx' con el siguiente código:
 
+                    01   import React from 'react'
+                    02   import { View, Text } from 'react-native'
+                    03   
+                    04   export const RegisterScreen = () => {
+                    05     return (
+                    06       <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                    07         <Text>RegisterScreen</Text>
+                    08       </View>
+                    09     )
+                    10   }
 
+            02. En el archivo 'App.tsx' agregar el código para incluir la otra pantalla:
 
+                    01   import * as React from 'react';
+                    02   import { NavigationContainer } from '@react-navigation/native';
+                    03   import { createNativeStackNavigator } from '@react-navigation/native-stack';
+                    04   import { HomeScreen } from './src/views/home/home';
+                    05   import { RegisterScreen } from './src/views/register/Register';
+                    06   
+                    07   export type RootStackParamList = {
+                    08     HomeScreen: undefined;
+                    09     RegisterScreen: undefined;
+                    10   }
+                    11   
+                    12   const Stack = createNativeStackNavigator <RootStackParamList> ();
+                    13   
+                    14   const App = () => {
+                    15     return (
+                    16       <NavigationContainer>
+                    17         <Stack.Navigator screenOptions={{headerShown: false}}>
+                    18           <Stack.Screen
+                    19             name="HomeScreen"
+                    20             component={HomeScreen}          
+                    21           />
+                    22           <Stack.Screen
+                    23             name="RegisterScreen"
+                    24             component={RegisterScreen}
+                    25             options={{
+                    26               headerShown: true,
+                    27               title: "Registro",
+                    28             }}
+                    29           />        
+                    30         </Stack.Navigator>
+                    31       </NavigationContainer>
+                    32     );
+                    33   };
+                    34   
+                    35   export default App;
 
 
 
