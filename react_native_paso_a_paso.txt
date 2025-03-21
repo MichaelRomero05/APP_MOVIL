@@ -132,26 +132,20 @@
 
             01. Abrir Android Studio
 
-            02. Seleccionar 'More Actions / Virtual Device Manager':
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img02.png)
+            02. Seleccionar 'More Actions / Virtual Device Manager'                
 
             03. Seleccionar la opción '(+) Create Virtual Device' y buscar un emulador que tenga los servicios de Google Service para probar las
-                aplicaciones sin restricciones:
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img03.png)
+                aplicaciones sin restricciones
 
             04. Seleccionar, por ejemplo, 'Pixel 4' con el icono de Play Store
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img04.png)
 
             05. Dar clic a 'Next' / descargar una versión, por ejemplo, 'Tiramisu'. Dar clic en el botón de descarga para obtener la API
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img05.png)
 
             06. Dejar las opciones por defecto y dar clic a 'Finish' / 'Next' / 'Finish'.
 
             07. Ejecutar el Emulador dando clic en la punta de flecha (columna 'Actions', la primera vez demorará más tiempo)
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img06.png)
 
-            08. Se ha instalado el emulador.
-                (Ver https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img07.png)
+            08. Se ha instalado el emulador
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -228,6 +222,37 @@
                     ⦿   PS C:\..\react_native> cd my-app
                     ⦿   PS C:\..\react_native\my-app> npm run android
 
+            NOTA:   ⦿   Tener en cuenta los siguientes comandos de 'Expo Go'. En la Terminal de 'Visual Studio Code' puede ejecutar:
+
+                              › Using Expo Go
+                              › Press s │ switch to development build
+
+                              › Press a │ open Android
+                              › Press w │ open web
+
+                              › Press j │ open debugger
+                              › Press r │ reload app
+                              › Press m │ toggle menu
+                              › shift+m │ more tools
+                              › Press o │ open project code in your editor
+
+                              › Press ? │ show all commands
+
+                              Logs for your project will appear below. Press Ctrl+C to exit.
+
+                              › Using Expo Go
+                              › Press s │ switch to development build
+
+                              › Press a │ open Android
+                              › shift+a │ select an Android device or emulator
+                              › Press w │ open web
+
+                              › Press r │ reload app
+                              › Press j │ open debugger
+                              › Press m │ toggle menu
+                              › shift+m │ more tools
+                              › Press o │ open project code in your editor
+                              › Press c │ show project QR
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 02.03.  Ejecutar 'my-app' en un dispositivo físico Android: -----------------------------------------------------------------------------------------|
@@ -778,12 +803,11 @@
 |-- 04.01.  Navegación entre pantallas: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-
-            02. Abrir una nueva 'Terminal' en Visual Studio Code:
+            01. Abrir una nueva 'Terminal' en Visual Studio Code:
 
                     ⦿   'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 
-            03. En la Terminal de 'Visual Studio Code' ejecutar los siguientes comandos:
+            02. En la Terminal de 'Visual Studio Code' ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..\react_native> cd my-app
                     ⦿   PS C:\..\react_native\my-app> npm install @react-navigation/native @react-navigation/native-stack
@@ -977,6 +1001,7 @@
                     09     )
                     10   }
 
+
             02. En el archivo 'App.tsx' agregar el código para incluir la otra pantalla:
 
                     01   import * as React from 'react';
@@ -1015,7 +1040,12 @@
                     34   
                     35   export default App;
 
+            
+            02. En la Terminal de 'Visual Studio Code' instalar el siguiente complemento para navegar entre pantallas:
 
+                    ⦿   PS C:\..\react_native> npm i @react-navigation/stack
+
+            03. En el archivo 'home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
 
 
 
