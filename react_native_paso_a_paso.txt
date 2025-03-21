@@ -569,7 +569,7 @@
                    113    formRegister: {
                    114      flexDirection: 'row',
                    115      justifyContent: 'center',
-                   116      marginTop: 30,
+                   116      marginTop: 10,
                    117    },
                    118    formRegisterText: {
                    119      fontStyle: 'italic',
@@ -807,6 +807,131 @@
                     06     )
                     07   }
 
+            03. En el archivo 'App.tsx', seleccionar y cortar el código del 'return' y pegar en 'home.tsx', el cual quedará así:
+                    
+                    01   import React from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   
+                    05   export const HomeScreen = () => {
+                    06     return (
+                    07         <View style={styles.container}>
+                    08           <Image
+                    09             source={require('./assets/chef.jpg')}
+                    10             style={styles.imageBackground}
+                    11           />
+                    12           <View style={styles.logoContainer}>
+                    13             <Image
+                    14               source={require('./assets/logo.png')}
+                    15               style={styles.logoImage}
+                    16             />
+                    17             <Text style={styles.logoText}>FOOD APP</Text>
+                    18           </View>
+                    19           <View style={styles.form}>
+                    20             <Text style={styles.formText}>INGRESAR</Text>
+                    21             <View style={styles.formInput}>
+                    22               <Image style={styles.formIcon}
+                    23                 source={require('./assets/email.png')}
+                    24               />
+                    25               <TextInput
+                    26                 style={styles.formTextInput}
+                    27                 placeholder='Correo electrónico'
+                    28                 keyboardType='email-address'
+                    29               />
+                    30             </View>
+                    31             <View style={styles.formInput}>
+                    32               <Image style={styles.formIcon}
+                    33                 source={require('./assets/password.png')}
+                    34               />
+                    35               <TextInput
+                    36                 style={styles.formTextInput}
+                    37                 placeholder='Contraseña'
+                    38                 keyboardType='default'
+                    39                 secureTextEntry={true}
+                    40               />
+                    41             </View>
+                    42             <View style={{ marginTop: 30 }}>
+                    43               <RoundedButton text='ENTRAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+                    44             </View>
+                    45             <View style={styles.formRegister}>
+                    46               <Text>¿No tienes cuenta?</Text>
+                    47               <Text style={styles.formRegisterText}>Regístrate</Text>
+                    48             </View>
+                    49           </View>
+                    50         </View>
+                    51       );
+                    52   }
+                    53
+                    54   const styles = StyleSheet.create({
+                    55     container: {
+                    56       flex: 1,
+                    57       backgroundColor: 'black',
+                    58     },
+                    59     imageBackground: {
+                    60       width: '100%',
+                    61       height: '100%',
+                    62       opacity: 0.7,
+                    63       bottom: '30%',
+                    64     },
+                    65     logoContainer: {
+                    66       position: 'absolute',
+                    67       alignSelf: 'center',
+                    68       top: '15%',
+                    69     },
+                    70     logoImage: {
+                    71       width: 100,
+                    72       height: 100,
+                    73     },
+                    74     logoText: {
+                    75       color: 'white',
+                    76       textAlign: 'center',
+                    77       fontSize: 20,
+                    78       marginTop: 10,
+                    79       fontWeight: 'bold',
+                    80     },
+                    81     form: {
+                    82       width: '100%',
+                    83       height: '40%',
+                    84       backgroundColor: 'white',
+                    85       position: 'absolute',
+                    86       bottom: 0,
+                    87       borderTopLeftRadius: 40,
+                    88       borderTopRightRadius: 40,
+                    89       padding: 30,    
+                    90     },
+                    91     formText: {
+                    92       fontWeight: 'bold',
+                    93       fontSize: 16,
+                    94     },
+                    95     formIcon: {
+                    96       width: 25,
+                    97       height: 25,
+                    98       marginTop: 5,
+                    99     },
+                   100     formInput: {
+                   101       flexDirection: 'row',
+                   102       marginTop: 30,
+                   103     },
+                   104     formTextInput: {
+                   105       flex: 1,
+                   106         borderBottomWidth: 1,
+                   107         borderBottomColor: '#AAAAAA',
+                   108         marginLeft: 15,
+                   109     },
+                   110     formRegister: {
+                   111       flexDirection: 'row',
+                   112       justifyContent: 'center',
+                   113       marginTop: 10,
+                   114     },
+                   115     formRegisterText: {
+                   116       fontStyle: 'italic',
+                   117       color: 'orange',
+                   118       borderBottomWidth: 1,
+                   119       borderBottomColor: 'orange',
+                   120       fontWeight: 'bold',
+                   121       marginLeft: 10,
+                   122     },
+                   123   });
 
 
 
