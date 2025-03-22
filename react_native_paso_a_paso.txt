@@ -819,9 +819,9 @@
 |-- 04.02.  Separando las pantallas: --------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo 'home.tsx'
+            01. Crear en la carpeta 'src' la carpeta 'views' y dentro, otra carpeta 'home' con el archivo 'Home.tsx'
 
-            02. En el archivo 'home.tsx' digitar 'rafc' y aceptar el snippet:
+            02. En el archivo 'Home.tsx' digitar 'rafc' y aceptar el snippet:
 
                     01   import React from 'react'
                     02
@@ -832,7 +832,7 @@
                     07   }
 
             03. En el archivo 'App.tsx', seleccionar y cortar el código desde el 'return' hasta antes del cierre de la función 'App()' y pegar en
-                'home.tsx', cambie las rutas de las imágenes, al final quedará así:
+                'Home.tsx', cambie las rutas de las imágenes, al final quedará así:
 
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
@@ -1046,7 +1046,7 @@
 
                     ⦿   PS C:\..\react_native> npm i @react-navigation/stack
 
-            04. En el archivo 'home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
+            04. En el archivo 'Home.tsx' agregar el 'import' de 'StackNavigationProp' y 'RootStackParamList'; además agregar la constante 'navigation':
 
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
@@ -1070,7 +1070,7 @@
 |-- 04.04.  Componentes en la Pantalla de Registro: -----------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Reutilizar el código de la pantalla de 'home.tsx' en 'Register.tsx' haciendo los cambios necesarios en los componentes y los estilos:
+            01. Reutilizar el código de la pantalla de 'Home.tsx' en 'Register.tsx' haciendo los cambios necesarios en los componentes y los estilos:
 
                     01   import React from 'react';
                     02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
@@ -1248,14 +1248,14 @@
             NOTA:   ⦿   Si NO aprecia los cambios, en la Terminal de 'Visual Studio Code' donde se está ejecutando el servidor, presione la tecla 'r',
                          esto le permitirá recargar el proyecto.
 
-                    ⦿   Descomente el código de 'App.tsx' cuando haya realizado la prueba para volver a la vista 'home.tsx'.
+                    ⦿   Descomente el código de 'App.tsx' cuando haya realizado la prueba para volver a la vista 'Home.tsx'.
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 04.05.  Captura de valores de los inputs: -----------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En el archivo 'home.tsx' importar 'useState', importar constantes para cada campo del formulario, relacionar las constantes con los
+            01. En el archivo 'Home.tsx' importar 'useState', importar constantes para cada campo del formulario, relacionar las constantes con los
                 inputs del formulario y controlar los eventos:
 
                     01   import React, { useState } from 'react';
@@ -1412,6 +1412,20 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Capa de Presentación. Crear una carpeta:
+
+
+
+            02. Capa de Dominio. Crear una carpeta:
+
+
+
+            03. Capa de Datos. Crear una carpeta:
+
+
+
+
+
+
 
 
 
