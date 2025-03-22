@@ -1237,6 +1237,22 @@
                    164     },
                    165   });
 
+            02. En el archivo 'App.tsx' comentar temporalmente las siguientes líneas de código para ver los resultados de 'Register.tsx':
+
+                    18         {/* <Stack.Screen
+                    19           name="HomeScreen"
+                    20           component={HomeScreen}
+                    21         /> */}
+
+            NOTA:   ⦿   Si NO aprecia los cambios, en la Terminal de 'Visual Studio Code' donde se está ejecutando el servidor, presione la tecla 'r',
+                         esto le permitirá recargar el proyecto.
+
+                    ⦿   Descomente el código de 'App.tsx' cuando haya realizado la prueba para volver a la vista 'home.tsx'.
+
+
+
+
+
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
