@@ -8,6 +8,7 @@
 ||| -- 02.  CREAR UNA APP                                                                                                                              |||
 ||| -- 03.  COMPONENTES CENTRALES                                                                                                                      |||
 ||| -- 04.  NAVEGACIÓN ENTRE PANTALLAS                                                                                                                 |||
+||| -- 05.  PATRÓN DE DISEÑO MVVM                                                                                                                      |||
 ||| -- XX.  DESPLEGAR UN PROYECTO                                                                                                                      |||
 |||                                                                                                                                                    |||
 ||| -- AUTOR:           ADAPTACIÓN hecha por el Instructor ALBEIRO RAMOS. SENA, 2025; del Taller CORREGIDO por el Instructor MAURICIO LARA. SENA, 2024;|||
@@ -521,7 +522,7 @@
                     40           </View>
                     41           <View style={{ marginTop: 30 }}>
                     42             <Button
-                    43               title='ENTRAR'
+                    43               title='ENVIAR'
                     44               onPress={() => ToastAndroid.show('CLICK', ToastAndroid.LONG)}
                     45               color={'orange'}
                     46             />
@@ -638,7 +639,7 @@
                     07               style={styles.RoundedButton}
                     08               onPress={() => { }}
                     09           >
-                    10               <Text style={styles.textButton} >ENTRAR</Text>
+                    10               <Text style={styles.textButton} >ENVIAR</Text>
                     11           </TouchableOpacity>
                     12       )
                     13   }
@@ -758,7 +759,7 @@
             02. Modificar archivo 'App.tsx', para pasar los parámetros en la etiqueta '<RoundedButton />':
 
                     42   <View style={{ marginTop: 30 }}>
-                    43     <RoundedButton text='ENTRAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+                    43     <RoundedButton text='ENVIAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
                     44   </View>
 
 
@@ -875,7 +876,7 @@
                     40               />
                     41             </View>
                     42             <View style={{ marginTop: 30 }}>
-                    43               <RoundedButton text='ENTRAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+                    43               <RoundedButton text='ENVIAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
                     44             </View>
                     45             <View style={styles.formRegister}>
                     46               <Text>¿No tienes cuenta?</Text>
@@ -1248,6 +1249,175 @@
                          esto le permitirá recargar el proyecto.
 
                     ⦿   Descomente el código de 'App.tsx' cuando haya realizado la prueba para volver a la vista 'home.tsx'.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04.05.  Captura de valores de los inputs: -----------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En el archivo 'home.tsx' importar 'useState', importar constantes para cada campo del formulario, relacionar las constantes con los
+                inputs del formulario y controlar los eventos:
+
+                    01   import React, { useState } from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { StackNavigationProp } from '@react-navigation/stack';
+                    05   import { RootStackParamList } from '../../../App';
+                    06   import { useNavigation } from '@react-navigation/native';
+                    07
+                    08   export const HomeScreen = () => {
+                    09
+                    10     const [email, setEmail] = useState('');
+                    11     const [password, setPassword] = useState('');
+                    12     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+                    13
+                    14     return (
+                    15         <View style={styles.container}>
+                    16           <Image
+                    17             source={require('../../../assets/chef.jpg')}
+                    18             style={styles.imageBackground}
+                    19           />
+                    20           <View style={styles.logoContainer}>
+                    21             <Image
+                    22               source={require('../../../assets/logo.png')}
+                    23               style={styles.logoImage}
+                    24             />
+                    25             <Text style={styles.logoText}>FOOD APP</Text>
+                    26           </View>
+                    27           <View style={styles.form}>
+                    28             <Text style={styles.formText}>INGRESAR</Text>
+                    29             <View style={styles.formInput}>
+                    30               <Image style={styles.formIcon}
+                    31                 source={require('../../../assets/email.png')}
+                    32               />
+                    33               <TextInput
+                    34                 style={styles.formTextInput}
+                    35                 placeholder='Correo electrónico'
+                    36                 keyboardType='email-address'
+                    37                 value={email}
+                    38                 onChangeText={ text => setEmail(text)}
+                    39               />
+                    40             </View>
+                    41             <View style={styles.formInput}>
+                    42               <Image style={styles.formIcon}
+                    43                 source={require('../../../assets/password.png')}
+                    44               />
+                    45               <TextInput
+                    46                 style={styles.formTextInput}
+                    47                 placeholder='Contraseña'
+                    48                 keyboardType='default'
+                    49                 secureTextEntry={true}
+                    50                 value={password}
+                    51                 onChangeText={ text => setPassword(text)}
+                    52               />
+                    53             </View>
+                    54             <View style={{ marginTop: 30 }}>
+                    55               <RoundedButton text='ENVIAR' onPress={() => {
+                    56                 console.log('Email: ' + email);
+                    57                 console.log('Password: ' + password);
+                    58               }}/>
+                    59             </View>
+                    60             <View style={styles.formRegister}>
+                    61               <Text>¿No tienes cuenta?</Text>
+                    62               <Text style={styles.formRegisterText}>Regístrate</Text>
+                    63             </View>
+                    64           </View>
+                    65         </View>
+                    66     );
+                    67   }
+                    68
+                    69   const styles = StyleSheet.create({
+                    70     container: {
+                    71       flex: 1,
+                    72       backgroundColor: 'black',
+                    73     },
+                    74     imageBackground: {
+                    75       width: '100%',
+                    76       height: '100%',
+                    77       opacity: 0.7,
+                    78       bottom: '30%',
+                    79     },
+                    80     logoContainer: {
+                    81       position: 'absolute',
+                    82       alignSelf: 'center',
+                    83       top: '15%',
+                    84     },
+                    85     logoImage: {
+                    86       width: 100,
+                    87       height: 100,
+                    88     },
+                    89     logoText: {
+                    90       color: 'white',
+                    91       textAlign: 'center',
+                    92       fontSize: 20,
+                    93       marginTop: 10,
+                    94       fontWeight: 'bold',
+                    95     },
+                    96     form: {
+                    97       width: '100%',
+                    98       height: '40%',
+                    99       backgroundColor: 'white',
+                   100       position: 'absolute',
+                   101       bottom: 0,
+                   102       borderTopLeftRadius: 40,
+                   103       borderTopRightRadius: 40,
+                   104       padding: 30,
+                   105     },
+                   106     formText: {
+                   107       fontWeight: 'bold',
+                   108       fontSize: 16,
+                   109     },
+                   110     formIcon: {
+                   111       width: 25,
+                   112       height: 25,
+                   113       marginTop: 5,
+                   114     },
+                   115     formInput: {
+                   116       flexDirection: 'row',
+                   117       marginTop: 30,
+                   118     },
+                   119     formTextInput: {
+                   120       flex: 1,
+                   121         borderBottomWidth: 1,
+                   122         borderBottomColor: '#AAAAAA',
+                   123         marginLeft: 15,
+                   124     },
+                   125     formRegister: {
+                   126       flexDirection: 'row',
+                   127       justifyContent: 'center',
+                   128       marginTop: 20,
+                   129     },
+                   130     formRegisterText: {
+                   131       fontStyle: 'italic',
+                   132       color: 'orange',
+                   133       borderBottomWidth: 1,
+                   134       borderBottomColor: 'orange',
+                   135       fontWeight: 'bold',
+                   136       marginLeft: 10,
+                   137     },
+                   138   });
+
+            NOTA:   ⦿   Si todo va bien, en la terminal de 'Visual Studio Code' se mostrarán los valores digitados, al dar clic en el botón 'ENVIAR'.
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------ 05. PATRÓN DE DISEÑO MVVM -------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 05.01.  Carpetas según las convenciones de Google: --------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Capa de Presentación. Crear una carpeta:
+
+
+
+
+
+
 
 
 

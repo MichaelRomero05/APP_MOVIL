@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
 import { RoundedButton } from '../../componentes/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 
 export const HomeScreen = () => {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
 
   return (
@@ -32,6 +34,8 @@ export const HomeScreen = () => {
               style={styles.formTextInput}
               placeholder='Correo electrónico'
               keyboardType='email-address'
+              value={email}
+              onChangeText={ text => setEmail(text)}
             />
           </View>
           <View style={styles.formInput}>
@@ -43,10 +47,15 @@ export const HomeScreen = () => {
               placeholder='Contraseña'
               keyboardType='default'
               secureTextEntry={true}
+              value={password}
+              onChangeText={ text => setPassword(text)}
             />
           </View>
           <View style={{ marginTop: 30 }}>
-            <RoundedButton text='ENTRAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+            <RoundedButton text='ENVIAR' onPress={() => {
+              console.log('Email: ' + email);
+              console.log('Password: ' + password);
+            }}/>
           </View>
           <View style={styles.formRegister}>
             <Text>¿No tienes cuenta?</Text>
