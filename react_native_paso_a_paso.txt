@@ -75,16 +75,19 @@
 
             02. Instalar node.js.
 
-            03. En la terminal de 'Visual Studio Code' para ver las directivas de ejecución de cada ámbito en orden de prioridad:
+            03. En la terminal de 'Visual Studio Code' digitar el siguiente comando para ver las directivas de ejecución de cada ámbito en orden de 
+                prioridad:
 
                     ⦿   PS C:\..\react_native> Get-ExecutionPolicy
                     ⦿   Restricted
                         
-            NOTA:   ⦿   Si la instalación no sale como se espera porque hay una versión de Android Studio instalada, revise el siguiente enlace para
+            NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma
             
-            04. En la terminal de 'Visual Studio Code' para ver las directivas de ejecución de cada ámbito en orden de prioridad:
-            
-            
+                    ⦿   PS C:\..\react_native> Set-ExecutionPolicy -Scope CurrentUser
+                         
+                         cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
+                         Proporcione valores para los parámetros siguientes:
+                         ExecutionPolicy: Unrestricted
             
             04. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
 
