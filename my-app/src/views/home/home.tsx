@@ -6,7 +6,7 @@ import { RootStackParamList } from '../../../App';
 import { useNavigation } from '@react-navigation/native';
 
 export const HomeScreen = () => {
-  
+
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
 
   return (
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    padding: 30,    
+    padding: 30,
   },
   formText: {
     fontWeight: 'bold',
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   formRegister: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: 20,
   },
   formRegisterText: {
     fontStyle: 'italic',

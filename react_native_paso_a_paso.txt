@@ -594,7 +594,7 @@
                    113    formRegister: {
                    114      flexDirection: 'row',
                    115      justifyContent: 'center',
-                   116      marginTop: 10,
+                   116      marginTop: 20,
                    117    },
                    118    formRegisterText: {
                    119      fontStyle: 'italic',
@@ -646,11 +646,11 @@
                     15   const styles = StyleSheet.create({
                     16       RoundedButton: {
                     17           width: '100%',
-                    18           height: 50,
+                    18           height: 40,
                     19           backgroundColor: 'orange',
                     20           alignItems: 'center',
                     21           justifyContent: 'center',
-                    22           borderRadius: 15,
+                    22           borderRadius: 10,
                     23       },
                     24       textButton: {
                     25           color: 'white',
@@ -744,11 +744,11 @@
                     20   const styles = StyleSheet.create({
                     21       RoundedButton: {
                     22           width: '100%',
-                    23           height: 50,
+                    23           height: 40,
                     24           backgroundColor: 'orange',
                     25           alignItems: 'center',
                     26           justifyContent: 'center',
-                    27           borderRadius: 15,
+                    27           borderRadius: 10,
                     28       },
                     29       textButton: {
                     30           color: 'white',
@@ -784,11 +784,11 @@
 
                     21     RoundedButton: {
                     22         width: '100%',
-                    23         height: 50,
+                    23         height: 40,
                     24         backgroundColor: MyColors.primary,
                     25         alignItems: 'center',
                     26         justifyContent: 'center',
-                    27         borderRadius: 15,
+                    27         borderRadius: 10,
                     28     },
 
 
@@ -945,7 +945,7 @@
                    110     formRegister: {
                    111       flexDirection: 'row',
                    112       justifyContent: 'center',
-                   113       marginTop: 10,
+                   113       marginTop: 20,
                    114     },
                    115     formRegisterText: {
                    116       fontStyle: 'italic',
@@ -1069,7 +1069,173 @@
 |-- 04.04.  Componentes en la Pantalla de Registro: -----------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En la carpeta 'views' crear una carpeta 'register' y en ella un archivo 'Register.tsx' con el siguiente código:
+            01. Reutilizar el código de la pantalla de 'home.tsx' en 'Register.tsx' haciendo los cambios necesarios en los componentes y los estilos:
+
+                    01   import React from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { StackNavigationProp } from '@react-navigation/stack';
+                    05   import { RootStackParamList } from '../../../App';
+                    06   import { useNavigation } from '@react-navigation/native';
+                    07
+                    08   export const RegisterScreen = () => {
+                    09
+                    10     return (
+                    11         <View style={styles.container}>
+                    12           <Image
+                    13             source={require('../../../assets/chef.jpg')}
+                    14             style={styles.imageBackground}
+                    15           />
+                    16           <View style={styles.logoContainer}>
+                    17             <Image
+                    18               source={require('../../../assets/logo.png')}
+                    19               style={styles.logoImage}
+                    20             />
+                    21             <Text style={styles.logoText}>SELECCIONA UNA IMÁGEN</Text>
+                    22           </View>
+                    23           <View style={styles.form}>
+                    24             <Text style={styles.formText}>REGISTRARSE</Text>
+                    25             <View style={styles.formInput}>
+                    26               <Image style={styles.formIcon}
+                    27                 source={require('../../../assets/user.png')}
+                    28               />
+                    29               <TextInput
+                    30                 style={styles.formTextInput}
+                    31                 placeholder='Nombres'
+                    32                 keyboardType='default'
+                    33               />
+                    34             </View>
+                    35             <View style={styles.formInput}>
+                    36               <Image style={styles.formIcon}
+                    37                 source={require('../../../assets/my_user.png')}
+                    38               />
+                    39               <TextInput
+                    40                 style={styles.formTextInput}
+                    41                 placeholder='Apellidos'
+                    42                 keyboardType='default'
+                    43               />
+                    44             </View>
+                    45             <View style={styles.formInput}>
+                    46               <Image style={styles.formIcon}
+                    47                 source={require('../../../assets/email.png')}
+                    48               />
+                    49               <TextInput
+                    50                 style={styles.formTextInput}
+                    51                 placeholder='Correo electrónico'
+                    52                 keyboardType='email-address'
+                    53               />
+                    54             </View>
+                    55             <View style={styles.formInput}>
+                    56               <Image style={styles.formIcon}
+                    57                 source={require('../../../assets/phone.png')}
+                    58               />
+                    59               <TextInput
+                    60                 style={styles.formTextInput}
+                    61                 placeholder='Teléfono'
+                    62                 keyboardType='numeric'
+                    63               />
+                    64             </View>
+                    65             <View style={styles.formInput}>
+                    66               <Image style={styles.formIcon}
+                    67                 source={require('../../../assets/password.png')}
+                    68               />
+                    69               <TextInput
+                    70                 style={styles.formTextInput}
+                    71                 placeholder='Contraseña'
+                    72                 keyboardType='default'
+                    73                 secureTextEntry={true}
+                    74               />
+                    75             </View>
+                    76             <View style={styles.formInput}>
+                    77               <Image style={styles.formIcon}
+                    78                 source={require('../../../assets/confirm_password.png')}
+                    79               />
+                    80               <TextInput
+                    81                 style={styles.formTextInput}
+                    82                 placeholder='Confirmar Contraseña'
+                    83                 keyboardType='default'
+                    84                 secureTextEntry={true}
+                    85               />
+                    86             </View>
+                    87             <View style={{ marginTop: 10 }}>
+                    88               <RoundedButton text='CONFIRMAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+                    89             </View>
+                    90           </View>
+                    91         </View>
+                    92     );
+                    93   }
+                    94
+                    95   const styles = StyleSheet.create({
+                    96     container: {
+                    97       flex: 1,
+                    98       backgroundColor: 'black',
+                    99     },
+                   100     imageBackground: {
+                   101       width: '100%',
+                   102       height: '100%',
+                   103       opacity: 0.7,
+                   104       bottom: '30%',
+                   105     },
+                   106     logoContainer: {
+                   107       position: 'absolute',
+                   108       alignSelf: 'center',
+                   109       top: '5%',
+                   110       alignItems: 'center',
+                   111     },
+                   112     logoImage: {
+                   113       width: 100,
+                   114       height: 100,
+                   115     },
+                   116     logoText: {
+                   117       color: 'white',
+                   118       textAlign: 'center',
+                   119       fontSize: 20,
+                   120       marginTop: 10,
+                   121       fontWeight: 'bold',
+                   122     },
+                   123     form: {
+                   124       width: '100%',
+                   125       height: '70%',
+                   126       backgroundColor: 'white',
+                   127       position: 'absolute',
+                   128       bottom: 0,
+                   129       borderTopLeftRadius: 40,
+                   130       borderTopRightRadius: 40,
+                   131       padding: 30,
+                   132     },
+                   133     formText: {
+                   134       fontWeight: 'bold',
+                   135       fontSize: 16,
+                   136     },
+                   137     formIcon: {
+                   138       width: 25,
+                   139       height: 25,
+                   140       marginTop: 5,
+                   141     },
+                   142     formInput: {
+                   143       flexDirection: 'row',
+                   144       marginTop: 25,
+                   145     },
+                   146     formTextInput: {
+                   147       flex: 1,
+                   148         borderBottomWidth: 1,
+                   149         borderBottomColor: '#AAAAAA',
+                   150         marginLeft: 15,
+                   150     },
+                   152     formRegister: {
+                   153       flexDirection: 'row',
+                   154       justifyContent: 'center',
+                   155       marginTop: 10,
+                   156     },
+                   157     formRegisterText: {
+                   158       fontStyle: 'italic',
+                   159       color: 'orange',
+                   160       borderBottomWidth: 1,
+                   161       borderBottomColor: 'orange',
+                   162       fontWeight: 'bold',
+                   163       marginLeft: 10,
+                   164     },
+                   165   });
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
