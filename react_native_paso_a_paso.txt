@@ -75,7 +75,18 @@
 
             02. Instalar node.js.
 
-            03. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
+            03. En la terminal de 'Visual Studio Code' para ver las directivas de ejecución de cada ámbito en orden de prioridad:
+
+                    ⦿   PS C:\..\react_native> Get-ExecutionPolicy
+                    ⦿   Restricted
+                        
+            NOTA:   ⦿   Si la instalación no sale como se espera porque hay una versión de Android Studio instalada, revise el siguiente enlace para
+            
+            04. En la terminal de 'Visual Studio Code' para ver las directivas de ejecución de cada ámbito en orden de prioridad:
+            
+            
+            
+            04. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
 
                     ⦿   PS C:\..\react_native> node --version
                     ⦿   PS C:\..\react_native> npm --version
