@@ -1426,7 +1426,19 @@
 |-- 05.01.  Carpetas según las convenciones de Google: --------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Capa de Presentación. Crear una carpeta:
+            01. Crear la carpeta 'src/Presentation' (Capa de Presentación)
+            
+            02. Arrastrar a la carpeta 'Presentation' las carpetas 'components', 'theme' y 'views'. Detener la aplicación y cerrar 'Visual Studio Code' 
+                para que permita el cambio manual.
+
+            03. En 'App.tsx', cambiar las rutas de los recursos, agregando la carpeta 'Presentation':
+                    
+                    04   import { HomeScreen } from './src/Presentation/views/home/home';
+                    05   import { RegisterScreen } from './src/Presentation/views/register/Register';                    
+
+            03. En 'Home.tsx' y en 'Register.tsx', cambiar la línea 5:
+
+                    04
 
 
 
