@@ -111,7 +111,6 @@
             01. Descargar 'Android Studio': https://developer.android.com/studio?hl=es-419.
 
                     ⦿   Descargar la versión más reciente.
-                         (Ver: https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/01/img01.png).
 
             02. Instalar Android Studio.
 
@@ -182,7 +181,7 @@
             01. En la terminal de 'Visual Studio Code', instalar Expo CLI:
 
                     ⦿   PS C:\..\react_native> npm install -g expo-cli exp
-                         ó
+                                            ó
                     ⦿   PS C:\..\react_native> npm install -g react-native-cli
 
             02. Verificar la versión de expo CLI en la terminal de 'Visual Studio Code':
@@ -194,15 +193,12 @@
                             ⦿   "scripts":{ "start": "expo start"}, por "scripts":{ "start": "npx expo start"}
                             ⦿   "scripts":{ "start": "expo start"}, por "scripts":{ "start": "npx expo start"}
 
-                    ⦿   En caso de existir problema, puede desinstalar expo CLI  en la terminal de 'Visual Studio Code':
+                    ⦿   En caso de existir problema, puede desinstalar expo CLI en la terminal de 'Visual Studio Code':
 
                             ⦿   PS C:\..\react_native> npm uninstall -g expo-cli
 
-                    ⦿   Con el objeto de verificar posibles conflictos de puertos, que se puedan presentr más adelante en el desarrollo de la App,
+                    ⦿   Con el objeto de verificar posibles conflictos de puertos, que se puedan presentar más adelante en el desarrollo de la App,
                          puede listar los puertos utilizados en Windows desde la consola, con el comando 'netstat -ano'.
-
-                    ⦿   Este comando mostrará una lista de puertos junto con los procesos que los están utilizando. Si deseas filtrar los resultados
-                         para un puerto específico, puedes combinarlo con otros comandos o herramientas según tus necesidades
 
 
 
@@ -1005,7 +1001,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 04.03.  Pantalla de Registro: -----------------------------------------------------------------------------------------------------------------|
+|-- 04.03.  Pantalla de Registro: -----------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. En la carpeta 'views' crear una carpeta 'register' y en ella un archivo 'Register.tsx' con el siguiente código:
