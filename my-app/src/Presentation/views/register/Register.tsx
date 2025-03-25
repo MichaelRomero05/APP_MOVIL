@@ -6,16 +6,16 @@ import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 
 export const RegisterScreen = () => {
-
+  
   return (
-      <View style={styles.container}>
+    <View style={styles.container}>
         <Image
-          source={require('../../../assets/chef.jpg')}
+          source={require('../../../../assets/chef.jpg')}
           style={styles.imageBackground}
-        />
+          />
         <View style={styles.logoContainer}>
           <Image
-            source={require('../../../assets/logo.png')}
+            source={require('../../../../assets/logo.png')}
             style={styles.logoImage}
           />
           <Text style={styles.logoText}>SELECCIONA UNA IMÁGEN</Text>
@@ -24,7 +24,7 @@ export const RegisterScreen = () => {
           <Text style={styles.formText}>REGISTRARSE</Text>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/user.png')}
+              source={require('../../../../assets/user.png')}
             />
             <TextInput
               style={styles.formTextInput}
@@ -34,7 +34,7 @@ export const RegisterScreen = () => {
           </View>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/my_user.png')}
+              source={require('../../../../assets/my_user.png')}
             />
             <TextInput
               style={styles.formTextInput}
@@ -44,7 +44,7 @@ export const RegisterScreen = () => {
           </View>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/email.png')}
+              source={require('../../../../assets/email.png')}
             />
             <TextInput
               style={styles.formTextInput}
@@ -54,7 +54,7 @@ export const RegisterScreen = () => {
           </View>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/phone.png')}
+              source={require('../../../../assets/phone.png')}
             />
             <TextInput
               style={styles.formTextInput}
@@ -64,7 +64,7 @@ export const RegisterScreen = () => {
           </View>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/password.png')}
+              source={require('../../../../assets/password.png')}
             />
             <TextInput
               style={styles.formTextInput}
@@ -75,7 +75,7 @@ export const RegisterScreen = () => {
           </View>
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
-              source={require('../../../assets/confirm_password.png')}
+              source={require('../../../../assets/confirm_password.png')}
             />
             <TextInput
               style={styles.formTextInput}

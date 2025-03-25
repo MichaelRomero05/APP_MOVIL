@@ -1426,27 +1426,46 @@
 |-- 05.01.  Carpetas según las convenciones de Google: --------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear la carpeta 'src/Presentation' (Capa de Presentación)
-            
-            02. Arrastrar a la carpeta 'Presentation' las carpetas 'components', 'theme' y 'views'. Detener la aplicación y cerrar 'Visual Studio Code' 
-                para que permita el cambio manual.
+            01. Detener el servidor ubicándose en la terminal de 'Visual Studio Code' y presionando 'CTRL + C':
 
-            03. En 'App.tsx', cambiar las rutas de los recursos, agregando la carpeta 'Presentation':
+            02. Capa de Presentación: Crear la carpeta 'Presentation' en la carpeta 'src'.
+            
+            03. Arrastrar las carpetas 'components', 'theme' y 'views'; a la carpeta 'Presentation'.
+
+            05. En 'App.tsx', actualizar las rutas de importación, agregando la carpeta 'Presentation':
                     
                     04   import { HomeScreen } from './src/Presentation/views/home/home';
                     05   import { RegisterScreen } from './src/Presentation/views/register/Register';                    
 
-            03. En 'Home.tsx' y en 'Register.tsx', cambiar la línea 5:
+            05. En 'Home.tsx', cambiar la ruta de importación en la línea 5 y las rutas a los recursos agregando '../':
 
-                    04
+                    05   import { RootStackParamList } from '../../../../App';
 
+                    17             source={require('../../../../assets/chef.jpg')}
+                    22               source={require('../../../../assets/logo.png')}
+                    31                 source={require('../../../../assets/email.png')}
+                    43                 source={require('../../../../assets/password.png')}
 
+            05. En 'Register.tsx', cambiar la línea 5 y las rutas a los recursos agregando '../':
+                    
+                    05   import { RootStackParamList } from '../../../../App';
 
-            02. Capa de Dominio. Crear una carpeta:
+                    13             source={require('../../../../assets/chef.jpg')}
+                    18               source={require('../../../../assets/logo.png')}
+                    27                 source={require('../../../../assets/user.png')}
+                    37                 source={require('../../../../assets/my_user.png')}
+                    47                 source={require('../../../../assets/email.png')}
+                    57                 source={require('../../../../assets/phone.png')}
+                    67                 source={require('../../../../assets/password.png')}
+                    78                 source={require('../../../../assets/confirm_password.png')}
 
+            06. En la terminal de 'Visual Studio Code' ejecute nuevamente el serivdor:
 
+                    ⦿   PS C:\..\my-app> npm run android
 
-            03. Capa de Datos. Crear una carpeta:
+            07. Capa de Dominio. Crear una carpeta:
+
+            08. Capa de Datos. Crear una carpeta:
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
