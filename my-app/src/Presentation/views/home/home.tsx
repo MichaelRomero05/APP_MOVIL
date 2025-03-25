@@ -4,12 +4,12 @@ import { RoundedButton } from '../../componentes/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
+import useViewModel from './viewModel';
 
 export const HomeScreen = () => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+  const {email, password, onChange} = useViewModel();  
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
       <View style={styles.container}>
@@ -35,7 +35,7 @@ export const HomeScreen = () => {
               placeholder='Correo electrónico'
               keyboardType='email-address'
               value={email}
-              onChangeText={ text => setEmail(text)}
+              onChangeText={ text => onChange('email', text)}
             />
           </View>
           <View style={styles.formInput}>
@@ -48,7 +48,7 @@ export const HomeScreen = () => {
               keyboardType='default'
               secureTextEntry={true}
               value={password}
-              onChangeText={ text => setPassword(text)}
+              onChangeText={text => onChange('password', text)}
             />
           </View>
           <View style={{ marginTop: 30 }}>

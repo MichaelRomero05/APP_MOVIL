@@ -1072,7 +1072,7 @@
                     07
                     08   export const HomeScreen = () => {
                     09
-                    10     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+                    10     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
                     11
                     12 >   return (
                     57     );
@@ -1284,7 +1284,7 @@
                     09
                     10     const [email, setEmail] = useState('');
                     11     const [password, setPassword] = useState('');
-                    12     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+                    12     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
                     13
                     14     return (
                     15         <View style={styles.container}>
@@ -1472,7 +1472,7 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.02.  Capa de Datos: ----------------------------------------------------------------------------------------------------------------------------|
+|-- 05.03.  Capa de Datos: ----------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear en la carpeta 'src' la carpeta 'Data' y en su interior un archivo denominado 'delete.txt' (Después se elimina).
@@ -1500,10 +1500,24 @@
                     18   
                     19   export default HomeViewModel;
             
-            11. En 'Home.tsx', modificar el código para importar la 'useViewModel' de 'viewModel' y modificar las siguientes líneas :
+            11. En 'Home.tsx', modificar el código para importar la 'useViewModel' de 'viewModel' y modificar los <TextInput>:
+
+                    07   import useViewModel from './viewModel';
+
+                    11   const {email, password, onChange} = useViewModel();  
+                    12   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+                    
+                    38               onChangeText={text => onChange('email', text)}
+                    51               onChangeText={text => onChange('password', text)}                    
+
+
+
+
+
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.02.  Crear un componente personalizado para los inputs: ------------------------------------------------------------------------------------------|
+|-- 05.04.  Crear un componente personalizado para los inputs: ------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
