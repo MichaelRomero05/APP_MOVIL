@@ -8,7 +8,7 @@
 ||| -- 02.  CREAR UNA APP                                                                                                                              |||
 ||| -- 03.  COMPONENTES CENTRALES                                                                                                                      |||
 ||| -- 04.  NAVEGACIÓN ENTRE PANTALLAS                                                                                                                 |||
-||| -- 05.  PATRÓN DE DISEÑO MVVM                                                                                                                      |||
+||| -- 05.  PATRÓN DE DISEÑO MVVM. CONVESIONES DE GOOGLE                                                                                               |||
 ||| -- 06.  MONTANDO UN SERVIDOR NODE JS                                                                                                               |||
 ||| -- 07.  CONECTANDO A LA BASE DE DATOS (MYSQL)                                                                                                      |||
 ||| -- 08.  AJUSTANDO EL PROYECTO A MVVM                                                                                                               |||
@@ -1417,22 +1417,22 @@
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||------------------------------------------------------------ 05. PATRÓN DE DISEÑO MVVM -------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------ 05. PATRÓN DE DISEÑO MVVM. ------------------------------------------------------------|||
+|||-------------------------------------------------------------- CONVESIONES DE GOOGLE ---------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.01.  Carpetas según las convenciones de Google: --------------------------------------------------------------------------------------------------|
+|-- 05.01.  Capa de Presentación: -----------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Detener el servidor ubicándose en la terminal de 'Visual Studio Code' y presionando 'CTRL + C':
+            01. Crear  en la carpeta 'src' la carpeta 'Presentation'.
 
-            02. Capa de Presentación: Crear la carpeta 'Presentation' en la carpeta 'src'.
+            02. Detener el servidor ubicándose en la terminal de 'Visual Studio Code' y presionando 'CTRL + C':
             
             03. Arrastrar las carpetas 'components', 'theme' y 'views'; a la carpeta 'Presentation'.
 
-            04. En 'App.tsx', actualizar las rutas de importación, agregando la carpeta 'Presentation':
+            04. En 'App.tsx', actualizar las rutas de importación agregando la ruta 'Presentation':
                     
                     04   import { HomeScreen } from './src/Presentation/views/home/home';
                     05   import { RegisterScreen } from './src/Presentation/views/register/Register';                    
@@ -1463,9 +1463,44 @@
 
                     ⦿   PS C:\..\my-app> npm run android
             
-            08. Capa de Datos. Crear la carpeta 'Data' en la carpeta 'src'.
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 05.02.  Capa de Dominio: ----------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear en la carpeta 'src' la carpeta 'Domain' y en su interior un archivo denominado 'delete.txt' (Después se elimina).
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 05.02.  Capa de Datos: ----------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear en la carpeta 'src' la carpeta 'Data' y en su interior un archivo denominado 'delete.txt' (Después se elimina).
             
-            XX. Capa de Dominio. Crear la carpeta 'Domain' en la carpeta 'src'.
+            02. En la carpeta 'src/Presentation/views/home', crear el archivo 'ViewModel.tsx' para pasar los 'userState' de la vista 'home.tsx'. El
+                archivo 'ViewModel' quedará así:
+
+                    01   import React, { useState } from 'react';
+                    02   
+                    03   const HomeViewModel = () => {
+                    04       const [values, setValues] = useState({
+                    05           email: '',
+                    06           password: '',
+                    07       });
+                    08       const onChange = (property: string, value: any) => {
+                    09           setValues({
+                    10               ...values, [property]: value
+                    11           });
+                    12       }
+                    13       return {
+                    14           ...values,
+                    15           onChange
+                    16       }
+                    17   }
+                    18   
+                    19   export default HomeViewModel;
+            
+            11. En 'Home.tsx', modificar el código para importar la 'useViewModel' de 'viewModel' y modificar las siguientes líneas :
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 05.02.  Crear un componente personalizado para los inputs: ------------------------------------------------------------------------------------------|
