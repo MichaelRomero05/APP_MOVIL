@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Backend de la app de prueba 'my-app' de React Native",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ReactNative",
+    "NodeJs"
+  ],
+  "author": "Instructor Albeiro Ramos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "http": "^0.0.1-security"
+  }
+}

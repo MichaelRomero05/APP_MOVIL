@@ -1926,7 +1926,7 @@
                     75   export default RegisterStyles;
 
 
-            03. En 'Register.tsx', importar los estilos en la línea 07:
+            06. En 'Register.tsx', importar los estilos en la línea 07:
 
                     07  import styles from './Styles';
 
@@ -1940,9 +1940,67 @@
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 06.01.  Prueba de Rutas del Servidor: ---------------------------------------------------------------------------------------------------------------|
+|-- 06.01.  Crear el Servidor: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Crear la carpeta 'node_js' fuera del proyecto 'my-app'.
 
+            02. Abrir otra Terminal en 'Visual Studio Code' y digitar los siguientes comandos:
+
+                    ⦿   PS C:\..\> cd node_js
+                    ⦿   PS C:\..\node_js> npm init
+                         This utility will walk you through creating a package.json file.
+                         It only covers the most common items, and tries to guess sensible defaults.
+
+                         See `npm help init` for definitive documentation on these fields
+                         and exactly what they do.
+
+                         Use `npm install <pkg>` afterwards to install a package and
+                         save it as a dependency in the package.json file.
+
+                         Press ^C at any time to quit.
+                         package name: (node_js) nodejs
+                         version: (1.0.0)
+                         description: Backend de la app de prueba 'my-app' de React Native
+                         entry point: (index.js) server.js
+                         test command:
+                         git repository:
+                         keywords: ReactNative NodeJs
+                         author: Instructor Albeiro Ramos
+                         license: (ISC) MIT
+                         About to write to C:\Users\Instructor\Documents\_albe_\react_native\node_js\package.json:
+
+                         {
+                           "name": "nodejs",
+                           "version": "1.0.0",
+                           "description": "Backend de la app de prueba 'my-app' de React Native",
+                           "main": "server.js",
+                           "scripts": {
+                             "test": "echo \"Error: no test specified\" && exit 1"
+                           },
+                           "keywords": [
+                             "ReactNative",
+                             "NodeJs"
+                           ],
+                           "author": "Instructor Albeiro Ramos",
+                           "license": "MIT"
+                         }
+
+
+                         Is this OK? (yes) yes                    
+                    
+                    ⦿   PS C:\..\node_js> npm i express
+                    
+                    ⦿   PS C:\..\node_js> npm i http
+
+            
+            03. En la carpeta 'node_js' crear un archivo denominado 'server.js' y escribir el siguiente código:
+
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 06.02.  Prueba de Rutas del Servidor: ---------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -2089,7 +2147,7 @@
 |-- 11.01. Cuando NO está preparado el Entorno de Desarrollo: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Seguir los pasos del apartado '01.  PREPARAR EL ENTORNO DE DESARROLLO, de este mismo documento.
+            
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -2097,6 +2155,7 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Abrir el proyecto con 'Visual Studio Code'. Ejemplo: 'my-app'.
+
             02. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..\my-app> npm install
