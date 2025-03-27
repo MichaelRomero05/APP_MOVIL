@@ -4,7 +4,7 @@ import { RoundedButton } from '../../componentes/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
-import useViewModel from './viewModel';
+import  useViewModel  from './ViewModel'
 
 export const HomeScreen = () => {
 
