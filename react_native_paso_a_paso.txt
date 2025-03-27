@@ -1517,8 +1517,58 @@
             
             01. En la carpeta 'components' crear un archivo 'CustomTextInput.tsx', generar código con 'rafc' y modificar así::
 
-
-
+                    01   import React from 'react';
+                    02   import { StyleSheet, View, Image, TextInput, KeyboardType } from 'react-native';
+                    03   
+                    04   interface Props {
+                    05       image: any;
+                    06       placeholder: string;
+                    07       value: string;
+                    08       keyboardType: KeyboardType;
+                    09       secureTextEntry?: boolean;
+                    10       property: string, onChangeText: (property: string, value:any) => void,
+                    11   }
+                    12
+                    13   export const CustomTextInput = ({
+                    14       image,
+                    15       placeholder,
+                    16       value,
+                    17       keyboardType,
+                    18       secureTextEntry = false,
+                    19       property,
+                    20       onChangeText
+                    21   }: Props) => {
+                    22     return (
+                    23       <View style = { styles.formInput }>
+                    24           <Image style = { styles.formIcon } source = { image } />            
+                    25           <TextInput style = { styles.formTextInput }
+                    26               placeholder = { placeholder }
+                    27               keyboardType = { keyboardType }
+                    28               value = { value }
+                    29               onChangeText = { text => onChangeText(property, text) }
+                    30               secureTextEntry = { secureTextEntry }
+                    31           />
+                    32       </View>
+                    33     )
+                    34   }
+                    35   
+                    36   const styles = StyleSheet.create({
+                    37       formIcon: {
+                    38           width: 25,
+                    39           height: 25,
+                    40           marginTop: 5,
+                    41       },
+                    42       formInput: {
+                    43           flexDirection: 'row',
+                    44           marginTop: 30,
+                    45       },
+                    46       formTextInput: {
+                    47           flex: 1,
+                    48           borderBottomWidth: 1,
+                    49           borderBottomColor: #AAAAAA,
+                    50           marginLeft: 15,
+                    51       }
+                    52   })
 
 
 
