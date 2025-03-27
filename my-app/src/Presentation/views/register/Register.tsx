@@ -13,7 +13,7 @@ export const RegisterScreen = () => {
         <Image
           source={require('../../../../assets/chef.jpg')}
           style={styles.imageBackground}
-          />
+        />
         <View style={styles.logoContainer}>
           <Image
             source={require('../../../../assets/logo.png')}
@@ -47,43 +47,34 @@ export const RegisterScreen = () => {
             onChangeText = { onChange }
             value = { email }
           />
-
-
-          
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/phone.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Teléfono'
-              keyboardType='numeric'
-            />
-          </View>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/password.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Contraseña'
-              keyboardType='default'
-              secureTextEntry={true}
-            />
-          </View>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/confirm_password.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Confirmar Contraseña'
-              keyboardType='default'
-              secureTextEntry={true}
-            />
-          </View>
+          <CustomTextInput 
+            image = {require('../../../../assets/phone.png')}
+            placeholder = 'Teléfono'
+            keyboardType = 'numeric'
+            property = 'phone'
+            onChangeText = { onChange }
+            value = { phone }
+          />
+          <CustomTextInput 
+            image = {require('../../../../assets/password.png')}
+            placeholder = 'Contraseña'
+            keyboardType = 'default'
+            property = 'password'
+            onChangeText = { onChange }
+            value = { password }
+            secureTextEntry = { true }
+          />          
+          <CustomTextInput 
+            image = {require('../../../../assets/confirm_password.png')}
+            placeholder = 'Confirmar Contraseña'
+            keyboardType = 'default'
+            property = 'confirmPassword'
+            onChangeText = { onChange }
+            value = { confirmPassword }
+            secureTextEntry = { true }
+          />
           <View style={{ marginTop: 10 }}>
-            <RoundedButton text='CONFIRMAR' onPress={() => ToastAndroid.show('¡HOLA!', ToastAndroid.SHORT)}/>
+            <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
           </View>
         </View>
       </View>

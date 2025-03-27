@@ -1670,7 +1670,91 @@
             
             04. Modificar el archivo 'Register.tsx', quedando así:
 
-
+                    01   import React from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { CustomTextInput } from '../../componentes/CustomTextInput';
+                    05   import useViewModel from './ViewModel';
+                    06
+                    07   export const RegisterScreen = () => {
+                    08
+                    09     const {name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
+                    10     
+                    11     return (
+                    12       <View style={styles.container}>
+                    13           <Image
+                    14             source={require('../../../../assets/chef.jpg')}
+                    15             style={styles.imageBackground}
+                    16           />
+                    17           <View style={styles.logoContainer}>
+                    18             <Image
+                    19               source={require('../../../../assets/logo.png')}
+                    20               style={styles.logoImage}
+                    21             />
+                    22             <Text style={styles.logoText}>FOOD APP</Text>
+                    23           </View>
+                    24           <View style={styles.form}>
+                    25             <Text style={styles.formText}>REGÍSTRATE</Text>
+                    26             <CustomTextInput 
+                    27               image = {require('../../../../assets/user.png')}
+                    28               placeholder = 'Nombres'
+                    29               keyboardType = 'default'
+                    30               property = 'name'
+                    31               onChangeText = { onChange }
+                    32               value = { name }
+                    33             />
+                    34             <CustomTextInput 
+                    35               image = {require('../../../../assets/my_user.png')}
+                    36               placeholder = 'Apellidos'
+                    37               keyboardType = 'default'
+                    38               property = 'lastname'
+                    39               onChangeText = { onChange }
+                    40               value = { lastname }
+                    41             />
+                    42             <CustomTextInput 
+                    43               image = {require('../../../../assets/email.png')}
+                    44               placeholder = 'Correo Electrónico'
+                    45               keyboardType = 'email-address'
+                    46               property = 'email'
+                    47               onChangeText = { onChange }
+                    48               value = { email }
+                    49             />
+                    50             <CustomTextInput 
+                    51               image = {require('../../../../assets/phone.png')}
+                    52               placeholder = 'Teléfono'
+                    53               keyboardType = 'numeric'
+                    54               property = 'phone'
+                    55               onChangeText = { onChange }
+                    56               value = { phone }
+                    57             />
+                    58             <CustomTextInput 
+                    59               image = {require('../../../../assets/password.png')}
+                    60               placeholder = 'Contraseña'
+                    61               keyboardType = 'default'
+                    62               property = 'password'
+                    63               onChangeText = { onChange }
+                    64               value = { password }
+                    65               secureTextEntry = { true }
+                    66             />          
+                    67             <CustomTextInput 
+                    68               image = {require('../../../../assets/confirm_password.png')}
+                    69               placeholder = 'Confirmar Contraseña'
+                    70               keyboardType = 'default'
+                    71               property = 'confirmPassword'
+                    72               onChangeText = { onChange }
+                    73               value = { confirmPassword }
+                    74               secureTextEntry = { true }
+                    75             />
+                    76             <View style={{ marginTop: 10 }}>
+                    77               <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
+                    78             </View>
+                    79           </View>
+                    80         </View>
+                    81     );
+                    82   }
+                    83 
+                    84 > const styles = StyleSheet.create({
+                   154   });
 
 
 
