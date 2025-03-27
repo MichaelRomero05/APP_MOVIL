@@ -1572,22 +1572,81 @@
 
             02. En 'Home.tsx', modificar el código para importar 'CustomTextInput' e implementarlo, quedando el código así:
 
+                    01   import React, { useState } from 'react';
+                    02   import { StyleSheet, Text, View, Image, TextInput, ToastAndroid, TouchableOpacity } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { StackNavigationProp } from '@react-navigation/stack';
+                    05   import { RootStackParamList } from '../../../../App';
+                    06   import { useNavigation } from '@react-navigation/native';
+                    07   import { CustomTextInput } from '../../componentes/CustomTextInput';
+                    08   import  useViewModel  from './ViewModel';
+                    09   
+                    10   export const HomeScreen = () => {
+                    11   
+                    12     const {email, password, onChange} = useViewModel();  
+                    13     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+                    14   
+                    15     return (
+                    16         <View style={styles.container}>
+                    17           <Image
+                    18             source={require('../../../../assets/chef.jpg')}
+                    19             style={styles.imageBackground}
+                    20           />
+                    21           <View style={styles.logoContainer}>
+                    22             <Image
+                    23               source={require('../../../../assets/logo.png')}
+                    24               style={styles.logoImage}
+                    25             />
+                    26             <Text style={styles.logoText}>FOOD APP</Text>
+                    27           </View>
+                    28           <View style={styles.form}>
+                    29             <Text style={styles.formText}>INGRESAR</Text>
+                    30             <CustomTextInput
+                    31               image = {require('../../../../assets/email.png')}
+                    32               placeholder = 'Correo Electrónico'
+                    33               keyboardType = 'email-address'
+                    34               property = 'email'
+                    35               onChangeText = { onChange }
+                    36               value = {email}
+                    37             />
+                    38             <CustomTextInput 
+                    39               image = {require('../../../../assets/password.png')}
+                    40               placeholder = 'Contraseña'
+                    41               keyboardType = 'default'
+                    42               property = 'password'
+                    43               onChangeText = { onChange }
+                    44               value = {password}
+                    45               secureTextEntry = { true }
+                    46             />
+                    47             <View style={{ marginTop: 30 }}>
+                    48               <RoundedButton text='ENVIAR' onPress={() => {
+                    49                 console.log('Email: ' + email);
+                    50                 console.log('Password: ' + password);
+                    51               }}/>
+                    52             </View>
+                    53             <View style={styles.formRegister}>
+                    54               <Text>¿No tienes cuenta?</Text>
+                    55               <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
+                    56                 <Text style={styles.formRegisterText}>Regístrate</Text>
+                    57               </TouchableOpacity>
+                    58             </View>
+                    59           </View>
+                    60         </View>
+                    61     );
+                    62   }
+                    63
+                    64 > const styles = StyleSheet.create({  
+                   133   });
+
+            
+            03. Crear un archivo 'ViewModel.tsx' en la carpeta 'register' y agregar el siguiente código:
 
 
 
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.04.  Crear un componente personalizado para los inputs: ------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-
-
-
-
-
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05.03.  Separar las hojas de estilos: ---------------------------------------------------------------------------------------------------------------|
+|-- 05.05.  Separar las hojas de estilos: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
