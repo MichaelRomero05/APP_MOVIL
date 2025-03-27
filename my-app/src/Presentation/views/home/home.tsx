@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, ToastAndroid, TouchableOpacity } from 'react-native';
 import { RoundedButton } from '../../componentes/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
-import  useViewModel  from './ViewModel'
+import { CustomTextInput } from '../../componentes/CustomTextInput';
+import  useViewModel  from './ViewModel';
 
 export const HomeScreen = () => {
 
@@ -26,31 +27,23 @@ export const HomeScreen = () => {
         </View>
         <View style={styles.form}>
           <Text style={styles.formText}>INGRESAR</Text>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/email.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Correo electrónico'
-              keyboardType='email-address'
-              value={email}
-              onChangeText={ text => onChange('email', text)}
-            />
-          </View>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/password.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Contraseña'
-              keyboardType='default'
-              secureTextEntry={true}
-              value={password}
-              onChangeText={text => onChange('password', text)}
-            />
-          </View>
+          <CustomTextInput
+            image = {require('../../../../assets/email.png')}
+            placeholder = 'Correo Electrónico'
+            keyboardType = 'email-address'
+            property = 'email'
+            onChangeText = { onChange }
+            value = {email}
+          />
+          <CustomTextInput 
+            image = {require('../../../../assets/password.png')}
+            placeholder = 'Contraseña'
+            keyboardType = 'default'
+            property = 'password'
+            onChangeText = { onChange }
+            value = {password}
+            secureTextEntry = { true }
+          />
           <View style={{ marginTop: 30 }}>
             <RoundedButton text='ENVIAR' onPress={() => {
               console.log('Email: ' + email);
@@ -59,7 +52,9 @@ export const HomeScreen = () => {
           </View>
           <View style={styles.formRegister}>
             <Text>¿No tienes cuenta?</Text>
-            <Text style={styles.formRegisterText}>Regístrate</Text>
+            <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
+              <Text style={styles.formRegisterText}>Regístrate</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

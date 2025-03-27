@@ -1565,10 +1565,13 @@
                     46       formTextInput: {
                     47           flex: 1,
                     48           borderBottomWidth: 1,
-                    49           borderBottomColor: #AAAAAA,
+                    49           borderBottomColor: '#AAAAAA',
                     50           marginLeft: 15,
                     51       }
                     52   })
+
+            02. En 'Home.tsx', modificar el código para importar 'CustomTextInput' e implementarlo, quedando el código así:
+
 
 
 
