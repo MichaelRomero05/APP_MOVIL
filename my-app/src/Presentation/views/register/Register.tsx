@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, ToastAndroid } from 'react-native';
 import { RoundedButton } from '../../componentes/RoundedButton';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../../App';
-import { useNavigation } from '@react-navigation/native';
+import { CustomTextInput } from '../../componentes/CustomTextInput';
+import useViewModel from './ViewModel';
 
 export const RegisterScreen = () => {
+
+  const {name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
   
   return (
     <View style={styles.container}>
@@ -18,40 +19,37 @@ export const RegisterScreen = () => {
             source={require('../../../../assets/logo.png')}
             style={styles.logoImage}
           />
-          <Text style={styles.logoText}>SELECCIONA UNA IMÁGEN</Text>
+          <Text style={styles.logoText}>FOOD APP</Text>
         </View>
         <View style={styles.form}>
-          <Text style={styles.formText}>REGISTRARSE</Text>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/user.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Nombres'
-              keyboardType='default'
-            />
-          </View>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/my_user.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Apellidos'
-              keyboardType='default'
-            />
-          </View>
-          <View style={styles.formInput}>
-            <Image style={styles.formIcon}
-              source={require('../../../../assets/email.png')}
-            />
-            <TextInput
-              style={styles.formTextInput}
-              placeholder='Correo electrónico'
-              keyboardType='email-address'
-            />
-          </View>
+          <Text style={styles.formText}>REGÍSTRATE</Text>
+          <CustomTextInput 
+            image = {require('../../../../assets/user.png')}
+            placeholder = 'Nombres'
+            keyboardType = 'default'
+            property = 'name'
+            onChangeText = { onChange }
+            value = { name }
+          />
+          <CustomTextInput 
+            image = {require('../../../../assets/my_user.png')}
+            placeholder = 'Apellidos'
+            keyboardType = 'default'
+            property = 'lastname'
+            onChangeText = { onChange }
+            value = { lastname }
+          />
+          <CustomTextInput 
+            image = {require('../../../../assets/email.png')}
+            placeholder = 'Correo Electrónico'
+            keyboardType = 'email-address'
+            property = 'email'
+            onChangeText = { onChange }
+            value = { email }
+          />
+
+
+          
           <View style={styles.formInput}>
             <Image style={styles.formIcon}
               source={require('../../../../assets/phone.png')}
