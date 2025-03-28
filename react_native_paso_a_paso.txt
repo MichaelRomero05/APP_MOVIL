@@ -2121,9 +2121,9 @@
                     13  
                     14   module.exports = db;
 
-            02. Crear en la 'node_js' una carpeta 'models' y en su interior un archivo denominado 'user.js'. El código del archivo es el siguiente:
+            03. Crear en la 'node_js' una carpeta 'models' y en su interior un archivo denominado 'user.js'. El código del archivo es el siguiente:
 
-                    01   const db = require('../config/config.js');
+                    01   const db = require('../config/config');
                     02   const User = {
                     03     create: (user, result) => {
                     04       const sql = `INSERT INTO USERS(
@@ -2162,6 +2162,76 @@
                     37   };
                     38
                     39   module.exports = User;
+
+            04. Crear en la 'node_js' una carpeta 'controllers' y en su interior un archivo denominado 'userController.js'. El código del archivo es 
+                el siguiente:
+
+                    01   const User = require('../models/user');
+                    02 
+                    03   module.exports = {
+                    04     register(req, res) {
+                    05       const user = req.body;
+                    06       User.create(user, (err, data) => {
+                    07         if (err) {
+                    08           return res.status(501).json ({
+                    09             success: false,
+                    10             message: 'Error al crear al usuario',
+                    11             error: err
+                    12           });
+                    13         } else {
+                    14           return res.status(201).json({
+                    15             success: true,
+                    16             message: 'Creado el Usuario',
+                    17             data: data
+                    18           });
+                    19         }
+                    20       });
+                    21     }
+                    22   }
+
+            05. Crear en la 'node_js' una carpeta 'routes' y en su interior un archivo denominado 'userRoutes.js'. El código del archivo es 
+                el siguiente:
+
+                    01   const userController = require('../controllers/userController');
+                    02 
+                    03   module.exports = (app) => {
+                    04     app.post('/api/users/create', userController.register);
+                    05   }
+
+            05. En el archivo 'server.js', importar las rutas quedando el código así: 
+
+                    01   const express = require('express');
+                    02   const app = express();
+                    03   const http = require('http');
+                    04   const server = http.createServer(app);
+                    05   const logger = require('morgan');
+                    06   const cors = require('cors');
+                    07 
+                    08   const users = require('./routes/userRoutes');
+                    09 
+                    10   const port = process.env.PORT || 3000;
+                    11   app.use(logger('dev'));
+                    12   app.use(express.json());
+                    13   app.use(express.urlencoded({ extended: true }));
+                    14   app.use(cors());
+                    15   app.disable('x-powered-by');
+                    16 
+                    17   app.set('port', port);
+                    18 
+                    19   users(app);
+                    20
+                    21   server.listen(3000, '10.1.204.112' || 'localhost', function(){
+                    22     console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
+                    23   });
+                    24
+                    25   app.get('/', (req, res) => {
+                    26     res.send('Ruta raíz del Backend');
+                    27   });
+                    28
+                    29   app.use((err, req, resp, next) => {
+                    30     console.log(err);
+                    31     res.status(err.status || 500).send(err.stack);
+                    32   });
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|

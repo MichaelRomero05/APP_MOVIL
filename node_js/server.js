@@ -5,6 +5,8 @@ const server = http.createServer(app);
 const logger = require('morgan');
 const cors = require('cors');
 
+const users = require('./routes/userRoutes');
+
 const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(express.json());
@@ -13,6 +15,8 @@ app.use(cors());
 app.disable('x-powered-by');
 
 app.set('port', port);
+
+users(app);
 
 server.listen(3000, '10.1.204.112' || 'localhost', function(){
   console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
