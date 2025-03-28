@@ -75,20 +75,20 @@
 
             02. Instalar node.js.
 
-            03. En la terminal de 'Visual Studio Code' digitar el siguiente comando para ver las directivas de ejecución de cada ámbito en orden de 
+            03. En la terminal de 'Visual Studio Code' digitar el siguiente comando para ver las directivas de ejecución de cada ámbito en orden de
                 prioridad:
 
                     ⦿   PS C:\..\react_native> Get-ExecutionPolicy
                     ⦿   Restricted
-                        
+
             NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma
-            
+
                     ⦿   PS C:\..\react_native> Set-ExecutionPolicy -Scope CurrentUser
-                         
+
                          cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
                          Proporcione valores para los parámetros siguientes:
                          ExecutionPolicy: Unrestricted
-            
+
             04. Verificar la versión de 'node.js' y 'npm' en la terminal de 'Visual Studio Code':
 
                     ⦿   PS C:\..\react_native> node --version
@@ -1429,13 +1429,13 @@
             01. Crear  en la carpeta 'src' la carpeta 'Presentation'.
 
             02. Detener el servidor ubicándose en la terminal de 'Visual Studio Code' y presionando 'CTRL + C':
-            
+
             03. Arrastrar las carpetas 'components', 'theme' y 'views'; a la carpeta 'Presentation'.
 
             04. En 'App.tsx', actualizar las rutas de importación agregando la ruta 'Presentation':
-                    
+
                     04   import { HomeScreen } from './src/Presentation/views/home/home';
-                    05   import { RegisterScreen } from './src/Presentation/views/register/Register';                    
+                    05   import { RegisterScreen } from './src/Presentation/views/register/Register';
 
             05. En 'Home.tsx', cambiar la ruta de importación en la línea 5 y las rutas a los recursos agregando '../':
 
@@ -1447,7 +1447,7 @@
                     43                 source={require('../../../../assets/password.png')}
 
             06. En 'Register.tsx', cambiar la línea 5 y las rutas a los recursos agregando '../':
-                    
+
                     05   import { RootStackParamList } from '../../../../App';
 
                     13             source={require('../../../../assets/chef.jpg')}
@@ -1462,7 +1462,7 @@
             07. En la terminal de 'Visual Studio Code' ejecute nuevamente el serivdor:
 
                     ⦿   PS C:\..\my-app> npm run android
-            
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 05.02.  Capa de Dominio: ----------------------------------------------------------------------------------------------------------------------------|
@@ -1476,12 +1476,12 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear en la carpeta 'src' la carpeta 'Data' y en su interior un archivo denominado 'delete.txt' (Después se elimina).
-            
+
             02. En la carpeta 'src/Presentation/views/home', crear el archivo 'ViewModel.tsx' para pasar los 'userState' de la vista 'home.tsx'. El
                 archivo 'ViewModel' quedará así:
 
                     01   import React, { useState } from 'react';
-                    02   
+                    02
                     03   const HomeViewModel = () => {
                     04       const [values, setValues] = useState({
                     05           email: '',
@@ -1497,29 +1497,29 @@
                     15           onChange
                     16       }
                     17   }
-                    18   
+                    18
                     19   export default HomeViewModel;
-            
+
             03. En 'Home.tsx', modificar el código para importar la 'useViewModel' de 'ViewModel' y modificar los <TextInput>:
 
                     07   import useViewModel from './ViewModel';
 
-                    11   const {email, password, onChange} = useViewModel();  
+                    11   const {email, password, onChange} = useViewModel();
                     12   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-                    
+
                     38               onChangeText={text => onChange('email', text)}
-                    51               onChangeText={text => onChange('password', text)}                    
+                    51               onChangeText={text => onChange('password', text)}
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 05.04.  Componente personalizado para los inputs: ---------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
+
             01. En la carpeta 'components' crear un archivo 'CustomTextInput.tsx', generar código con 'rafc' y modificar así::
 
                     01   import React from 'react';
                     02   import { StyleSheet, View, Image, TextInput, KeyboardType } from 'react-native';
-                    03   
+                    03
                     04   interface Props {
                     05       image: any;
                     06       placeholder: string;
@@ -1540,7 +1540,7 @@
                     21   }: Props) => {
                     22     return (
                     23       <View style = { styles.formInput }>
-                    24           <Image style = { styles.formIcon } source = { image } />            
+                    24           <Image style = { styles.formIcon } source = { image } />
                     25           <TextInput style = { styles.formTextInput }
                     26               placeholder = { placeholder }
                     27               keyboardType = { keyboardType }
@@ -1551,7 +1551,7 @@
                     32       </View>
                     33     )
                     34   }
-                    35   
+                    35
                     36   const styles = StyleSheet.create({
                     37       formIcon: {
                     38           width: 25,
@@ -1580,12 +1580,12 @@
                     06   import { useNavigation } from '@react-navigation/native';
                     07   import { CustomTextInput } from '../../componentes/CustomTextInput';
                     08   import  useViewModel  from './ViewModel';
-                    09   
+                    09
                     10   export const HomeScreen = () => {
-                    11   
-                    12     const {email, password, onChange} = useViewModel();  
+                    11
+                    12     const {email, password, onChange} = useViewModel();
                     13     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-                    14   
+                    14
                     15     return (
                     16         <View style={styles.container}>
                     17           <Image
@@ -1609,7 +1609,7 @@
                     35               onChangeText = { onChange }
                     36               value = {email}
                     37             />
-                    38             <CustomTextInput 
+                    38             <CustomTextInput
                     39               image = {require('../../../../assets/password.png')}
                     40               placeholder = 'Contraseña'
                     41               keyboardType = 'default'
@@ -1635,14 +1635,14 @@
                     61     );
                     62   }
                     63
-                    64 > const styles = StyleSheet.create({  
+                    64 > const styles = StyleSheet.create({
                    133   });
 
-            
+
             03. Crear un archivo 'ViewModel.tsx' en la carpeta 'register' y agregar el siguiente código:
-            
+
                     01   import React, { useState } from 'react';
-                    02 
+                    02
                     03   const RegisterViewModel = () => {
                     04       const [values, setValues] = useState({
                     05           name: '',
@@ -1662,12 +1662,12 @@
                     19         ...values,
                     20         onChange,
                     21         register
-                    22       }; 
+                    22       };
                     23   }
-                    24   
-                    25   export default RegisterViewModel;            
-            
-            
+                    24
+                    25   export default RegisterViewModel;
+
+
             04. Modificar el archivo 'Register.tsx', quedando así:
 
                     01   import React from 'react';
@@ -1679,7 +1679,7 @@
                     07   export const RegisterScreen = () => {
                     08
                     09     const {name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
-                    10     
+                    10
                     11     return (
                     12       <View style={styles.container}>
                     13           <Image
@@ -1695,7 +1695,7 @@
                     23           </View>
                     24           <View style={styles.form}>
                     25             <Text style={styles.formText}>REGÍSTRATE</Text>
-                    26             <CustomTextInput 
+                    26             <CustomTextInput
                     27               image = {require('../../../../assets/user.png')}
                     28               placeholder = 'Nombres'
                     29               keyboardType = 'default'
@@ -1703,7 +1703,7 @@
                     31               onChangeText = { onChange }
                     32               value = { name }
                     33             />
-                    34             <CustomTextInput 
+                    34             <CustomTextInput
                     35               image = {require('../../../../assets/my_user.png')}
                     36               placeholder = 'Apellidos'
                     37               keyboardType = 'default'
@@ -1711,7 +1711,7 @@
                     39               onChangeText = { onChange }
                     40               value = { lastname }
                     41             />
-                    42             <CustomTextInput 
+                    42             <CustomTextInput
                     43               image = {require('../../../../assets/email.png')}
                     44               placeholder = 'Correo Electrónico'
                     45               keyboardType = 'email-address'
@@ -1719,7 +1719,7 @@
                     47               onChangeText = { onChange }
                     48               value = { email }
                     49             />
-                    50             <CustomTextInput 
+                    50             <CustomTextInput
                     51               image = {require('../../../../assets/phone.png')}
                     52               placeholder = 'Teléfono'
                     53               keyboardType = 'numeric'
@@ -1727,7 +1727,7 @@
                     55               onChangeText = { onChange }
                     56               value = { phone }
                     57             />
-                    58             <CustomTextInput 
+                    58             <CustomTextInput
                     59               image = {require('../../../../assets/password.png')}
                     60               placeholder = 'Contraseña'
                     61               keyboardType = 'default'
@@ -1735,8 +1735,8 @@
                     63               onChangeText = { onChange }
                     64               value = { password }
                     65               secureTextEntry = { true }
-                    66             />          
-                    67             <CustomTextInput 
+                    66             />
+                    67             <CustomTextInput
                     68               image = {require('../../../../assets/confirm_password.png')}
                     69               placeholder = 'Confirmar Contraseña'
                     70               keyboardType = 'default'
@@ -1752,7 +1752,7 @@
                     80         </View>
                     81     );
                     82   }
-                    83 
+                    83
                     84 > const styles = StyleSheet.create({
                    154   });
 
@@ -1767,7 +1767,7 @@
             02. Del el archivo 'Home.tsx' cortar los estilos y pegarlos en 'Styles.tsx', quedando así:
 
                     01   import { StyleSheet } from "react-native";
-                    02   
+                    02
                     03   const HomeStyles = StyleSheet.create({
                     04     container: {
                     05       flex: 1,
@@ -1843,7 +1843,7 @@
 
             03. En 'Home.tsx', importar los estilos en la línea 09:
 
-                    09  import styles from './Styles';
+                    09   import styles from './Styles';
 
             04. En la carpeta 'register' crear un archivo 'Styles.tsx'.
 
@@ -1928,7 +1928,7 @@
 
             06. En 'Register.tsx', importar los estilos en la línea 07:
 
-                    07  import styles from './Styles';
+                    07   import styles from './Styles';
 
 
 
@@ -1942,7 +1942,7 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 06.01.  Crear el Servidor: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
+
             01. Crear la carpeta 'node_js' fuera del proyecto 'my-app'.
 
             02. Abrir otra Terminal en 'Visual Studio Code' y digitar los siguientes comandos:
@@ -1987,20 +1987,36 @@
                          }
 
 
-                         Is this OK? (yes) yes                    
-                    
+                         Is this OK? (yes) yes
+
                     ⦿   PS C:\..\node_js> npm i express
-                    
                     ⦿   PS C:\..\node_js> npm i http
 
-            
             03. En la carpeta 'node_js' crear un archivo denominado 'server.js' y escribir el siguiente código:
 
+                    01   const express = require('express');
+                    02   const app = express();
+                    03   const http = require('http');
+                    04   const server = http.createServer(app);
+                    05
+                    06   const port = process.env.PORT || 3000;
+                    07
+                    08   app.set('port', port);
+                    09   server.listen(3000, '192.168.137.1' || 'localhost', function(){
+                    10       console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
+                    11   });
 
+            04. En Terminal en 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
+
+                    ⦿   PS C:\..\node_js> node server.js
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 06.02.  Prueba de Rutas del Servidor: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En Terminal en 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
+
+
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -2147,7 +2163,7 @@
 |-- 11.01. Cuando NO está preparado el Entorno de Desarrollo: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            
+
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
