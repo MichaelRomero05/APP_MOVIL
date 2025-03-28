@@ -2006,7 +2006,7 @@
                     10       console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
                     11   });
 
-            04. En Terminal en 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
+            04. En la Terminal de 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
 
                     ⦿   PS C:\..\node_js> node server.js
 
@@ -2014,7 +2014,14 @@
 |-- 06.02.  Prueba de Rutas del Servidor: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En Terminal en 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
+            01. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor.
+
+            02. En la Terminal de 'Visual Studio Code' digitar los siguientes comandos para ejecutar 'cors' y 'morgan' en el servidor:
+
+                    ⦿   PS C:\..\node_js> npm i cors
+                    ⦿   PS C:\..\node_js> npm i morgan
+
+            03. Modificar el archivo 'server.js' de la siguiente forma:
 
 
 
@@ -2174,5 +2181,11 @@
 
             02. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
+                    ⦿   PS C:\..> cd my-app
                     ⦿   PS C:\..\my-app> npm install
                     ⦿   PS C:\..\my-app> npm run android
+
+            03. Abrir otra terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+
+                    ⦿   PS C:\..> cd node_js
+                    ⦿   PS C:\..\node_js> npm install
