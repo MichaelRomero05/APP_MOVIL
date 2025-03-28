@@ -2059,7 +2059,7 @@
             04. Abrir 'Postman', escribir la dirección ip y el puerto, por ejemplo:
 
                     ⦿   192.168.137.1:3000
-                    ⦿   la Respuesta de 'Postman' será: 'Ruta raíz del Backend'
+                    ⦿   La Respuesta de 'Postman' será: 'Ruta raíz del Backend'
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -2105,6 +2105,22 @@
 
             02. Crear en la 'node_js' una carpeta 'config' y en su interior un archivo denominado 'config.js'. El código del archivo es el siguiente:
 
+                    01   const mysql = require('mysql');
+                    02   const db = mysql.createConnection({
+                    03     host: 'localhost',
+                    04     user: 'root',
+                    05     password: '',
+                    06     database: 'nodejs_base1'
+                    07   });
+                    08
+                    09   db.connect(function(err) {
+                    10     if (err) throw err;
+                    11     console.log('Base de datos conectada')
+                    12   });
+
+                      module.exports = db;
+
+            02. Crear en la 'node_js' una carpeta 'models' y en su interior un archivo denominado 'user.js'. El código del archivo es el siguiente:
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
