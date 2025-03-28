@@ -2073,7 +2073,7 @@
 |-- 07.01.  Creando la base de datos 'MySql': -----------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear en la 'node_js' una carpeta 'db' y en su interior un archivo denominado 'nodejs_base1'. El código del archivo es el siguiente:
+            01. Crear en la 'node_js' una carpeta 'db' y en su interior un archivo denominado 'nodejs_base1.sql'. El código del archivo es el siguiente:
 
                     01   CREATE SCHEMA nodejs_base1 DEFAULT CHARACTER SET utf8 ;
                     02   USE nodejs_base1;
@@ -2097,6 +2097,13 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 07.02.  Realizando la conexión desde Node.js: -------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor y digitar el siguiente comando para instalar la
+                dependencia a la DB:
+
+                    ⦿   PS C:\..\node_js> npm i mysql
+
+            02. Crear en la 'node_js' una carpeta 'config' y en su interior un archivo denominado 'config.js'. El código del archivo es el siguiente:
 
 
 
