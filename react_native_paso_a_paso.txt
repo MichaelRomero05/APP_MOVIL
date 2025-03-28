@@ -2112,14 +2112,15 @@
                     04     user: 'root',
                     05     password: '',
                     06     database: 'nodejs_base1'
-                    07   });
-                    08
-                    09   db.connect(function(err) {
-                    10     if (err) throw err;
-                    11     console.log('Base de datos conectada')
-                    12   });
-                    13  
-                    14   module.exports = db;
+                    07     port: 3307
+                    08   });
+                    09
+                    10   db.connect(function(err) {
+                    11     if (err) throw err;
+                    12     console.log('Base de datos conectada')
+                    13   });
+                    14  
+                    15   module.exports = db;
 
             03. Crear en la 'node_js' una carpeta 'models' y en su interior un archivo denominado 'user.js'. El código del archivo es el siguiente:
 
@@ -2198,7 +2199,7 @@
                     04     app.post('/api/users/create', userController.register);
                     05   }
 
-            05. En el archivo 'server.js', importar las rutas quedando el código así: 
+            06. En el archivo 'server.js', importar las rutas quedando el código así: 
 
                     01   const express = require('express');
                     02   const app = express();
@@ -2232,6 +2233,19 @@
                     30     console.log(err);
                     31     res.status(err.status || 500).send(err.stack);
                     32   });
+
+            07. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor y volver a ejecutarlo:
+
+                    ⦿   PS C:\..\node_js> npm install morgan
+                    ⦿   PS C:\..\node_js> node server.js
+                         Aplicación de node.js 16284 inicio en el puerto 3000
+                         Base de datos conectada
+
+            NOTA:   ⦿   Si aparece el siguiente error: "sqlMessage: 'Client does not support authentication protocol requested by server; consider 
+                         upgrading MySQL client',"; en MySQL Workbench (o phpMyAdmin), seleccione la DB y ejecute los comandos:
+
+                         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+                         FLUSH PRIVILEGES;
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
