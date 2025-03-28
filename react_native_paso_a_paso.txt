@@ -2243,8 +2243,9 @@
 
             NOTA:   ⦿   Si aparece el siguiente error: "sqlMessage: 'Client does not support authentication protocol requested by server; consider 
                          upgrading MySQL client',"; en MySQL Workbench (o phpMyAdmin), seleccione la DB y ejecute los comandos:
-
-                         ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+                         
+                         -- reemplazar 'username' y 'password' por el nombre de usuario y contraseña de la DB
+                         ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
                          FLUSH PRIVILEGES;
 
 
@@ -2252,6 +2253,36 @@
 |-- 07.03.  Creando un Usuario: -------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Abrir 'Postman', realizar una petición 'POST' para crear un registro de usuario de la siguiente forma:
+
+                    ⦿   Cambiar al método 'POST'
+
+                    ⦿   Escribir el siguiente 'EndPoint': 10.1.204.112:3000/api/users/create. 
+                     
+            NOTA:   ⦿   Recuerde modificar la dirección IP para su aplicación
+
+                    ⦿   Seleccionar: 'Body / raw / JSON' y escribir el siguiente código en formato JSON:
+
+                          01   {
+                          02       "email": "micorreo@gmail.com",
+                          03       "name": "Pedro Nel",
+                          04       "lastname": "Dominguez",
+                          05       "phone": "741852",
+                          06       "image": "yyyy",
+                          07       "password": "9876546"
+                          08   }
+
+                    ⦿   Clic a 'Send'
+                    
+                    ⦿   La respuesta debe ser la siguiente:
+
+                          01   {
+                          02       "success": true,
+                          03       "message": "Creado el Usuario",
+                          04       "data": 1
+                          05   }
+                    
+                    ⦿   Verificar en la DB que se haya creado el usuario.
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
