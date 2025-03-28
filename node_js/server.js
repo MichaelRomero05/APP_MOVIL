@@ -14,7 +14,7 @@ app.disable('x-powered-by');
 
 app.set('port', port);
 
-server.listen(3000, '192.168.137.1' || 'localhost', function(){
+server.listen(3000, '10.1.204.112' || 'localhost', function(){
   console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
 });
 

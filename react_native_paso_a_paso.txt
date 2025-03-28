@@ -2073,7 +2073,8 @@
 |-- 07.01.  Creando la base de datos 'MySql': -----------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear en la 'node_js' una carpeta 'db' y en su interior un archivo denominado 'nodejs_base1.sql'. El código del archivo es el siguiente:
+            01. Crear en la carpeta 'node_js' una con el nombre 'db' y en su interior un archivo denominado 'nodejs_base1.sql'. El código del archivo 
+                es el siguiente:
 
                     01   CREATE SCHEMA nodejs_base1 DEFAULT CHARACTER SET utf8 ;
                     02   USE nodejs_base1;
@@ -2103,7 +2104,7 @@
 
                     ⦿   PS C:\..\node_js> npm i mysql
 
-            02. Crear en la 'node_js' una carpeta 'config' y en su interior un archivo denominado 'config.js'. El código del archivo es el siguiente:
+            02. Crear en la carpeta 'node_js' una 'config' y en su interior un archivo denominado 'config.js'. El código del archivo es el siguiente:
 
                     01   const mysql = require('mysql');
                     02   const db = mysql.createConnection({
@@ -2117,10 +2118,50 @@
                     10     if (err) throw err;
                     11     console.log('Base de datos conectada')
                     12   });
-
-                      module.exports = db;
+                    13  
+                    14   module.exports = db;
 
             02. Crear en la 'node_js' una carpeta 'models' y en su interior un archivo denominado 'user.js'. El código del archivo es el siguiente:
+
+                    01   const db = require('../config/config.js');
+                    02   const User = {
+                    03     create: (user, result) => {
+                    04       const sql = `INSERT INTO USERS(
+                    05                     email, 
+                    06                     name, 
+                    07                     lastname,
+                    08                     phone,
+                    09                     image,
+                    10                     password,
+                    11                     created_at,
+                    12                     updated_at
+                    13                   ) VALUES (?,?,?,?,?,?,?,?)`;
+                    14       db.query(
+                    15         sql,
+                    16         [
+                    17           user.email,
+                    18           user.name,
+                    19           user.lastname,
+                    20           user.phone,
+                    21           user.image,
+                    22           user.password,
+                    23           new Date(),
+                    24           new Date()
+                    25         ],
+                    26         (err, res) => {
+                    27           if (err) {
+                    28             console.log('error: ', err);
+                    29             result(err, null);
+                    30           } else {
+                    31             console.log('Id del nuevo usuario: ', res.insertId);
+                    32             result(err, res.insertId);
+                    33           }
+                    34         }
+                    35       )
+                    36     }
+                    37   };
+                    38
+                    39   module.exports = User;
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
