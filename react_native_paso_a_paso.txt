@@ -2002,9 +2002,10 @@
                     06   const port = process.env.PORT || 3000;
                     07
                     08   app.set('port', port);
-                    09   server.listen(3000, '192.168.137.1' || 'localhost', function(){
-                    10       console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
-                    11   });
+                    09
+                    10   server.listen(3000, '192.168.137.1' || 'localhost', function(){
+                    11       console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
+                    12   });
 
             04. En la Terminal de 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
 
@@ -2014,16 +2015,51 @@
 |-- 06.02.  Prueba de Rutas del Servidor: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor.
-
-            02. En la Terminal de 'Visual Studio Code' digitar los siguientes comandos para ejecutar 'cors' y 'morgan' en el servidor:
+            01. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor y digitar los siguientes comandos para ejecutar
+                'cors' y 'morgan' en el servidor:
 
                     ⦿   PS C:\..\node_js> npm i cors
                     ⦿   PS C:\..\node_js> npm i morgan
 
-            03. Modificar el archivo 'server.js' de la siguiente forma:
+            02. Modificar el archivo 'server.js' de la siguiente forma:
 
+                    01   const express = require('express');
+                    02   const app = express();
+                    03   const http = require('http');
+                    04   const server = http.createServer(app);
+                    05   const logger = require('morgan');
+                    06   const cors = require('cors');
+                    07
+                    08   const port = process.env.PORT || 3000;
+                    09   app.use(logger('dev'));
+                    10   app.use(express.json());
+                    11   app.use(express.urlencoded({ extended: true }));
+                    12   app.use(cors());
+                    13   app.disable('x-powered-by');
+                    14
+                    15   app.set('port', port);
+                    16
+                    17   server.listen(3000, '192.168.137.1' || 'localhost', function(){
+                    18     console.log('Aplicación de node.js ' + process.pid + ' inicio en el puerto ' + port);
+                    19   });
+                    20
+                    21   app.get('/', (req, res) => {
+                    22     res.send('Ruta raíz del Backend');
+                    23   });
+                    24
+                    25   app.use((err, req, resp, next) => {
+                    26     console.log(err);
+                    27     res.status(err.status || 500).send(err.stack);
+                    28   });
 
+            03. En la Terminal de 'Visual Studio Code' digitar el siguiente comando para ejecutar el servidor:
+
+                    ⦿   PS C:\..\node_js> node server.js
+
+            04. Abrir 'Postman', escribir la dirección ip y el puerto, por ejemplo:
+
+                    ⦿   192.168.137.1:3000
+                    ⦿   la Respuesta de 'Postman' será: 'Ruta raíz del Backend'
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
