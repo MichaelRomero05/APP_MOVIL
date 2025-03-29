@@ -2377,9 +2377,68 @@
                         └── Domain/
                             ├── entities/                        #   Nueva carpeta.
                             │   └── User.tsx                     #   Nuevo archivo.
+                            ├── repositories/                    #   Nueva carpeta.
+                            │   └── AuthRepository.tsx           #   Nuevo archivo.
                             └── useCases/                        #   Nueva carpeta.
                                 └── auth/                        #   Nueva carpeta.
                                     └── RegisterAuth.tsx         #   Nuevo archivo.
+
+            NOTA:   ⦿   No olvide eliminar el archivo 'delete.txt'
+
+            02. En el archivo 'User.tsx' escribir el siguiente código:
+
+                    01   export interface User {
+                    02       id?: string;
+                    03       name: string;
+                    04       lastname: string;
+                    05       phone: string;
+                    06       email: string;
+                    07       password: string;
+                    08       confirmPassword: string;
+                    09   }
+
+            03. En el archivo 'AuthRepository.tsx' escribir el siguiente código:
+
+                    01   import { User } from "../entities/User";
+                    02
+                    03   export interface AuthRepository {
+                    04       register(user: User): Promise<any>;
+                    05   }
+
+            03. En el archivo 'RegisterAuth.tsx' escribir el siguiente código:
+
+
+
+
+            05. En la carpeta 'my-app/src/Data' crear las siguientes carpetas y archivos:
+
+                    my-app/
+                    └── src/
+                        └── Data/
+                            ├── repositories/                             #   Nueva carpeta.
+                            │   ├── AuthRepository.tsx                    #   Nuevo archivo.
+                            │   └── UserLocalRepository.tsx               #   Nuevo archivo.
+                            └── sources/                                  #   Nueva carpeta.
+                                ├── local/                                #   Nueva carpeta.
+                                │   └── LocalStorage.tsx                  #   Nuevo archivo.
+                                └── remote/                               #   Nueva carpeta.
+                                    ├── api/                              #   Nueva carpeta.
+                                    │   └── ApiDelivery.tsx               #   Nuevo archivo.
+                                    └── models/                           #   Nueva carpeta.
+                                        └── ResponseApiDelivery.tsx       #   Nuevo archivo.
+
+
+            04. En la carpeta 'my-app/src/Data/sources/remote' crear una carpeta 'models' y ella una archivo denominado 'ResponseApiDelivery.tsx' con
+                el siguiente código:
+
+                    01   export interface ResponseApiDelivery {
+                    02       success: boolean;
+                    03       message: string:
+                    04       data: any:
+                    05   }
+
+
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.02.  Ajustes a la pantallas para mejorar la presentación: ----------------------------------------------------------------------------------------|
