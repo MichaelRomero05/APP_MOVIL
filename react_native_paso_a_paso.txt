@@ -2353,12 +2353,8 @@
                     30
                     31   export default RegisterViewModel;
 
-            05. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' en los servidores ('my-app' y 'node_js') para detenerlos, volverlos a
-                ejecutar y crear un nuevo usuario desde la 'app'.
-
-
-
-
+            05. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' en cada uno de los servidores ('my-app' y 'node_js') para detenerlos,
+                volverlos a ejecutar y crear un nuevo usuario desde la 'app'.
 
 
 
