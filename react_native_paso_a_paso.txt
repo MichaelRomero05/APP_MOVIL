@@ -2375,13 +2375,13 @@
                     my-app/
                     └── src/
                         └── Domain/
-                            ├── entities/                        #   Nueva carpeta.
-                            │   └── User.tsx                     #   Nuevo archivo.
-                            ├── repositories/                    #   Nueva carpeta.
-                            │   └── AuthRepository.tsx           #   Nuevo archivo.
-                            └── useCases/                        #   Nueva carpeta.
-                                └── auth/                        #   Nueva carpeta.
-                                    └── RegisterAuth.tsx         #   Nuevo archivo.
+                            ├── entities/                                 #   Nueva carpeta.
+                            │   └── User.tsx                              #   Nuevo archivo.
+                            ├── repositories/                             #   Nueva carpeta.
+                            │   └── AuthRepository.tsx                    #   Nuevo archivo.
+                            └── useCases/                                 #   Nueva carpeta.
+                                └── auth/                                 #   Nueva carpeta.
+                                    └── RegisterAuth.tsx                  #   Nuevo archivo.
 
             NOTA:   ⦿   No olvide eliminar el archivo 'delete.txt'
 
