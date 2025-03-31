@@ -2669,14 +2669,27 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.04.  Estructura de carpetas del proyecto: --------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Arquitectura limpia y patrón MVVM:
 
+                La arquitectura limpia (Clean Architecture) y el patrón de diseño Model-View-ViewModel (MVVM) son dos conceptos que se pueden usar 
+                juntos para estructurar una aplicación de manera eficiente y mantenible. En la figura siguiente se muestra la estructura general de 
+                cómo podrían organizarse los archivos en un proyecto que utiliza Clean Architecture y el patrón MVVM
 
+                https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/08/08_04_clean_architecture_y_patr%C3%B3n_MVVM.png
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.05.  Organización de los módulos de código: ------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            02. Organización por módulos:
+
+                Presenta la relación entre los diferentes objetos, no es estrictamente un diagrama de clases, sino que pretende dar información 
+                necesaria para comprender la funcionalidad de cada módulo, el archivo en el que se codifica y la capa a la que pertenece
+
+
+            03. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
 
 
 
