@@ -1841,7 +1841,7 @@
                     73
                     74   export default HomeStyles;
 
-            03. En 'Home.tsx', importar los estilos en la línea 09:
+            03. En 'Home.tsx', importar los estilos en la línea 09 y eliminar las líneas desde la 64 a la 133: 
 
                     09   import styles from './Styles';
 
@@ -1926,7 +1926,7 @@
                     75   export default RegisterStyles;
 
 
-            06. En 'Register.tsx', importar los estilos en la línea 07:
+            06. En 'Register.tsx', importar los estilos en la línea 07 eliminar las líneas desde la 83 a la 154:
 
                     07   import styles from './Styles';
 
@@ -2450,7 +2450,6 @@
                     16       }
                     17   }
 
-
             07. En el archivo 'my-app/src/Domain/useCases/auth/RegisterAuth.tsx' escribir el siguiente código:
 
                     01   import { AuthRepositoryImpl } from "../../../Data/repositories/AuthRepository";
@@ -2462,7 +2461,7 @@
                     07       return await register(user);
                     08   }
 
-            08. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx' escribir el siguiente código:
+            08. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx' como sigue:
 
                     01   import React, { useState } from 'react';
                     02   import { ApiDelivery } from '../../../Data/sources/remote/api/apiDelivery';
@@ -2494,17 +2493,102 @@
                     28 
                     29   export default RegisterViewModel;
 
-                    
-
-
-
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.02.  Ajustes a la pantallas para mejorar la presentación: ----------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx' para insertar el 'ScrollView':
 
+                    01   import React from 'react';
+                    02   import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { CustomTextInput } from '../../componentes/CustomTextInput';
+                    05   import useViewModel from './ViewModel';
+                    06   import styles from './Styles';
+                    07 
+                    08   export const RegisterScreen = () => {
+                    09     
+                    10     const {name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
+                    11     
+                    12     return (
+                    13       <View style={styles.container}>
+                    14           <Image
+                    15             source={require('../../../../assets/chef.jpg')}
+                    16             style={styles.imageBackground}
+                    17           />
+                    18           <View style={styles.logoContainer}>
+                    19             <Image
+                    20               source={require('../../../../assets/logo.png')}
+                    21               style={styles.logoImage}
+                    22             />
+                    23             <Text style={styles.logoText}>FOOD APP</Text>
+                    24           </View>
+                    25           <View style={styles.form}>
+                    26             <ScrollView>
+                    27               <Text style={styles.formText}>REGÍSTRATE</Text>
+                    28               <CustomTextInput 
+                    29                 image = {require('../../../../assets/user.png')}
+                    30                 placeholder = 'Nombres'
+                    31                 keyboardType = 'default'
+                    32                 property = 'name'
+                    33                 onChangeText = { onChange }
+                    34                 value = { name }
+                    35               />
+                    36               <CustomTextInput 
+                    37                image = {require('../../../../assets/my_user.png')}
+                    38                 placeholder = 'Apellidos'
+                    39                 keyboardType = 'default'
+                    40                 property = 'lastname'
+                    41                 onChangeText = { onChange }
+                    42                 value = { lastname }
+                    43               />
+                    44               <CustomTextInput 
+                    45                 image = {require('../../../../assets/email.png')}
+                    46                 placeholder = 'Correo Electrónico'
+                    47                 keyboardType = 'email-address'
+                    48                 property = 'email'
+                    49                 onChangeText = { onChange }
+                    50                 value = { email }
+                    51               />
+                    52               <CustomTextInput 
+                    53                 image = {require('../../../../assets/phone.png')}
+                    54                 placeholder = 'Teléfono'
+                    55                 keyboardType = 'numeric'
+                    56                 property = 'phone'
+                    57                 onChangeText = { onChange }
+                    58                 value = { phone }
+                    59               />
+                    60               <CustomTextInput 
+                    61                 image = {require('../../../../assets/password.png')}
+                    62                 placeholder = 'Contraseña'
+                    63                 keyboardType = 'default'
+                    64                 property = 'password'
+                    65                 onChangeText = { onChange }
+                    66                 value = { password }
+                    67                 secureTextEntry = { true }
+                    68               />          
+                    69               <CustomTextInput 
+                    70                 image = {require('../../../../assets/confirm_password.png')}
+                    71                 placeholder = 'Confirmar Contraseña'
+                    72                 keyboardType = 'default'
+                    73                 property = 'confirmPassword'
+                    74                 onChangeText = { onChange }
+                    75                 value = { confirmPassword }
+                    76                 secureTextEntry = { true }
+                    77               />
+                    78               <View style={{ marginTop: 10 }}>
+                    79                 <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
+                    80               </View>
+                    81             </ScrollView>
+                    82           </View>
+                    83         </View>
+                    84     );
+                    85   }
 
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/Styles.tsx' modificar la altura del formunlario en la siguiente línea:
+
+                    33  height: '73%', // 73% a 75%
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.03.  Ajustar la Interface: -----------------------------------------------------------------------------------------------------------------------|
