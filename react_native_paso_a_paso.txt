@@ -2586,7 +2586,7 @@
                     84     );
                     85   }
 
-            01. Modificar el archivo 'my-app/src/Presentation/views/register/Styles.tsx' modificar la altura del formunlario en la siguiente línea:
+            02. Modificar el archivo 'my-app/src/Presentation/views/register/Styles.tsx' en la altura del formulario en la siguiente línea:
 
                     33  height: '73%', // 73% a 75%
 
@@ -2594,7 +2594,76 @@
 |-- 08.03.  Ajustar la Interface: -----------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Modificar el archivo 'my-app/src/Data/sources/remote/models/ResponseApiDelivery.tsx', quedando así:
 
+                    01   export interface ResponseApiDelivery {
+                    02       success: boolean;
+                    03       message: string;
+                    04       data?: any;
+                    05       error?: any;
+                    06   }
+
+            02. Modificar el archivo 'my-app/src/Domain/repositories/AuthRepository.tsx', quedando así:
+
+                    01   import { User } from "../entities/User";
+                    02   import { ResponseApiDelivery } from "../../Data/sources/remote/models/ResponseApiDelivery";
+                    03 
+                    04   export interface AuthRepository {
+                    05       register(user: User): Promise<ResponseApiDelivery>;
+                    06   }
+
+            03. Modificar el archivo 'my-app/src/Data/repositories/AuthRepository.tsx', quedando así:
+
+                    01   import { Axios, AxiosError } from "axios";
+                    02   import { User } from "../../Domain/entities/User";
+                    03   import { AuthRepository } from "../../Domain/repositories/AuthRepository";
+                    04   import { ApiDelivery } from "../sources/remote/api/apiDelivery";
+                    05   import { ResponseApiDelivery } from "../sources/remote/models/ResponseApiDelivery";
+                    06 
+                    07   export class AuthRepositoryImpl implements AuthRepository {
+                    08       async register(user: User): Promise<ResponseApiDelivery> {
+                    09           try {
+                    10               const response = await ApiDelivery.post<ResponseApiDelivery>('./users/create', user);
+                    11               return Promise.resolve(response.data);
+                    12           } catch (error) {
+                    13               let e = (error as AxiosError);
+                    14               console.log('Error: ' + JSON.stringify(e.response?.data));
+                    15               const apiError: ResponseApiDelivery = JSON.parse(JSON.stringify(e.response?.data));
+                    16               return Promise.resolve(apiError);
+                    17           }
+                    18       }
+                    19   }
+
+            04. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
+
+                    01   import React, { useState } from 'react';
+                    02   import { ApiDelivery } from '../../../Data/sources/remote/api/apiDelivery';
+                    03   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
+                    04 
+                    05   const RegisterViewModel = () => {
+                    06       const [values, setValues] = useState({
+                    07         name: '',
+                    08         lastname: '',
+                    09         phone: '',
+                    10         email: '',
+                    11         password: '',
+                    12         confirmPassword: '',
+                    13       });
+                    14       const onChange = (property: string, value: any) => {
+                    15         setValues({ ...values, [property]: value });
+                    16       };
+                    17       const register = async () => {      
+                    18           const response = await RegisterAuthUseCase(values);
+                    19           console.log('Result: ' + JSON.stringify(response));        
+                    20       }
+                    21       return {
+                    22         ...values,
+                    23         onChange,
+                    24         register
+                    25       };
+                    26   }
+                    27 
+                    28   export default RegisterViewModel;
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
