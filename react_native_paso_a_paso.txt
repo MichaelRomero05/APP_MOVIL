@@ -2430,15 +2430,69 @@
                     04       register(user: User): Promise<any>;
                     05   }
 
-            06. En el archivo 'my-app/src/Domain/repositories/AuthRepository.tsx' escribir el siguiente código:
+            06. En el archivo 'my-app/src/Data/repositories/AuthRepository.tsx' escribir el siguiente código:
             
+                    01   import { User } from "../../Domain/entities/User";
+                    02   import { AuthRepository } from "../../Domain/repositories/AuthRepository";
+                    03   import { ApiDelivery } from "../sources/remote/api/apiDelivery";
+                    04   import { ResponseApiDelivery } from "../sources/remote/models/ResponseApiDelivery";
+                    05 
+                    06   export class AuthRepositoryImpl implements AuthRepository {
+                    07       async register(user: User) {
+                    08           try {
+                    09               const response = await ApiDelivery.post<ResponseApiDelivery>('./users/create', user);
+                    10               return Promise.resolve({ error: undefined, result: response.data });
+                    11           } catch (error) {
+                    12               let e = (error as Error).message;
+                    13               console.log('Error: ' + e);
+                    14               return Promise.resolve({ success: false, error: e, result: undefined });
+                    15           }
+                    16       }
+                    17   }
 
 
+            07. En el archivo 'my-app/src/Domain/useCases/auth/RegisterAuth.tsx' escribir el siguiente código:
 
+                    01   import { AuthRepositoryImpl } from "../../../Data/repositories/AuthRepository";
+                    02   import { User } from "../../entities/User";
+                    03 
+                    04   const { register } = new AuthRepositoryImpl();
+                    05 
+                    06   export const RegisterAuthUseCase = async (user: User) => {
+                    07       return await register(user);
+                    08   }
 
+            08. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx' escribir el siguiente código:
 
-
-            04. En el archivo 'ResponseApiDelivery.tsx' escribir el siguiente código:
+                    01   import React, { useState } from 'react';
+                    02   import { ApiDelivery } from '../../../Data/sources/remote/api/apiDelivery';
+                    03   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
+                    04 
+                    05   const RegisterViewModel = () => {
+                    06       const [values, setValues] = useState({
+                    07         name: '',
+                    08         lastname: '',
+                    09         phone: '',
+                    10         email: '',
+                    11         password: '',
+                    12         confirmPassword: '',
+                    13       });
+                    14       const onChange = (property: string, value: any) => {
+                    15         setValues({ ...values, [property]: value });
+                    16       };
+                    17       const register = async () => {      
+                    18           const { result, error} = await RegisterAuthUseCase(values);
+                    19           console.log('result' + JSON.stringify(result));      
+                    20           console.log('error' + error);
+                    21       }
+                    22       return {
+                    23         ...values,
+                    24         onChange,
+                    25         register
+                    26       };
+                    27   }
+                    28 
+                    29   export default RegisterViewModel;
 
                     
 
