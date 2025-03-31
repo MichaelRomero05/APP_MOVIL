@@ -2695,7 +2695,9 @@
 |-- 08.06.  Validaciones en los formularios: ------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
-            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
+
+
 
 
 
