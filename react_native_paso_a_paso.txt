@@ -2402,7 +2402,7 @@
                                     └── models/                           #   Nueva carpeta.
                                         └── ResponseApiDelivery.tsx       #   Nuevo archivo.
 
-            02. En el archivo 'my-app/src/Domain/entities/User.tsx' escribir el siguiente código:
+            03. En el archivo 'my-app/src/Domain/entities/User.tsx' escribir el siguiente código:
 
                     01   export interface User {
                     02       id?: string;
@@ -2414,7 +2414,15 @@
                     08       confirmPassword: string;
                     09   }
 
-            03. En el archivo 'AuthRepository.tsx' escribir el siguiente código:
+            04. En el archivo 'my-app/src/Data/source/remote/models/ResponseApiDelivery.tsx' escribir el siguiente código:
+
+                    01   export interface ResponseApiDelivery {
+                    02       success: boolean;
+                    03       message: string;
+                    04       data: any;
+                    05   }
+
+            05. En el archivo 'my-app/src/Domain/repositories/AuthRepository.tsx' escribir el siguiente código:
 
                     01   import { User } from "../entities/User";
                     02
@@ -2422,7 +2430,8 @@
                     04       register(user: User): Promise<any>;
                     05   }
 
-            03. En el archivo 'RegisterAuth.tsx' escribir el siguiente código:
+            06. En el archivo 'my-app/src/Domain/repositories/AuthRepository.tsx' escribir el siguiente código:
+            
 
 
 
@@ -2431,11 +2440,7 @@
 
             04. En el archivo 'ResponseApiDelivery.tsx' escribir el siguiente código:
 
-                    01   export interface ResponseApiDelivery {
-                    02       success: boolean;
-                    03       message: string:
-                    04       data: any:
-                    05   }
+                    
 
 
 
