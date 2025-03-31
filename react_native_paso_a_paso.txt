@@ -2683,19 +2683,19 @@
 |-- 08.05.  Organización de los módulos de código: ------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            02. Organización por módulos:
+            01. Organización por módulos:
 
                 Presenta la relación entre los diferentes objetos, no es estrictamente un diagrama de clases, sino que pretende dar información 
                 necesaria para comprender la funcionalidad de cada módulo, el archivo en el que se codifica y la capa a la que pertenece
 
-
-            03. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
-
+                https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/08/08_05_organizaci%C3%B3n_x_m%C3%B3dulos.png
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.06.  Validaciones en los formularios: ------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
 
 
 
