@@ -2778,15 +2778,19 @@
 |-- 11.01. Cuando YA está preparado el Entorno de Desarrollo: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Abrir el proyecto con 'Visual Studio Code'. Ejemplo: 'my-app'.
+            01. Crear la Base de datos:
 
-            02. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+                
+
+            02. Abrir el proyecto con 'Visual Studio Code'. Ejemplo: 'my-app'.
+
+            03. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..> cd my-app
                     ⦿   PS C:\..\my-app> npm install
                     ⦿   PS C:\..\my-app> npm run android
 
-            03. Abrir otra terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+            04. Abrir otra terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..> cd node_js
                     ⦿   PS C:\..\node_js> npm install
