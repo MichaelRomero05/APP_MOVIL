@@ -2291,7 +2291,7 @@
 
             01. En la Terminal de 'Visual Studio Code' presionar 'CTRL + C' para detener el servidor de 'my-app' e instalar Axios:
 
-                    ⦿   PS C:\..\node_js> npm i axios
+                    ⦿   PS C:\..\my-app> npm i axios
 
             02. En la carpeta 'my-app/src/Data' crear las siguientes carpetas y archivos:
 
@@ -2696,8 +2696,98 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
             01. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
-
-
+                    
+                    01   import React, { useEffect } from 'react';
+                    02   import { Text, View, Image, ScrollView, ToastAndroid } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { CustomTextInput } from '../../componentes/CustomTextInput';
+                    05   import useViewModel from './ViewModel';
+                    06   import styles from './Styles';
+                    07 
+                    08   export const RegisterScreen = () => {
+                    09 
+                    10     const {name, lastname, phone, email, password, confirmPassword, errorMessage, onChange, register} = useViewModel();
+                    11
+                    12      useEffect(() => {
+                    13        if (errorMessage !== '')
+                    14          ToastAndroid.show(errorMessage, ToastAndroid.LONG
+                    15        )
+                    16      }, [errorMessage]);
+                    17  
+                    18      return (
+                    19        <View style={styles.container}>
+                    20           <Image
+                    21             source={require('../../../../assets/chef.jpg')}
+                    22             style={styles.imageBackground}
+                    23           />
+                    24           <View style={styles.logoContainer}>
+                    25             <Image
+                    26               source={require('../../../../assets/logo.png')}
+                    27               style={styles.logoImage}
+                    28             />
+                    29             <Text style={styles.logoText}>FOOD APP</Text>
+                    30           </View>
+                    31           <View style={styles.form}>
+                    32             <ScrollView>
+                    33               <Text style={styles.formText}>REGÍSTRATE</Text>
+                    34               <CustomTextInput 
+                    35                 image = {require('../../../../assets/user.png')}
+                    36                 placeholder = 'Nombres'
+                    37                 keyboardType = 'default'
+                    38                 property = 'name'
+                    39                 onChangeText = { onChange }
+                    40                 value = { name }
+                    41               />
+                    42               <CustomTextInput 
+                    43                 image = {require('../../../../assets/my_user.png')}
+                    44                 placeholder = 'Apellidos'
+                    45                 keyboardType = 'default'
+                    46                 property = 'lastname'
+                    47                 onChangeText = { onChange }
+                    48                 value = { lastname }
+                    49               />
+                    50               <CustomTextInput 
+                    51                 image = {require('../../../../assets/email.png')}
+                    52                 placeholder = 'Correo Electrónico'
+                    53                 keyboardType = 'email-address'
+                    54                 property = 'email'
+                    55                 onChangeText = { onChange }
+                    56                 value = { email }
+                    57               />
+                    58               <CustomTextInput 
+                    59                 image = {require('../../../../assets/phone.png')}
+                    60                 placeholder = 'Teléfono'
+                    61                 keyboardType = 'numeric'
+                    62                 property = 'phone'
+                    63                 onChangeText = { onChange }
+                    64                 value = { phone }
+                    65               />
+                    66               <CustomTextInput 
+                    67                 image = {require('../../../../assets/password.png')}
+                    68                 placeholder = 'Contraseña'
+                    69                 keyboardType = 'default'
+                    70                 property = 'password'
+                    71                 onChangeText = { onChange }
+                    72                 value = { password }
+                    73                 secureTextEntry = { true }
+                    74               />          
+                    75               <CustomTextInput 
+                    76                 image = {require('../../../../assets/confirm_password.png')}
+                    77                 placeholder = 'Confirmar Contraseña'
+                    78                 keyboardType = 'default'
+                    79                 property = 'confirmPassword'
+                    80                 onChangeText = { onChange }
+                    81                 value = { confirmPassword }
+                    82                 secureTextEntry = { true }
+                    83               />
+                    84               <View style={{ marginTop: 10 }}>
+                    85                 <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
+                    86               </View>
+                    87             </ScrollView>
+                    88           </View>
+                    89         </View>
+                    90     );
+                    91   }
 
 
 
@@ -2780,9 +2870,9 @@
 
             01. Crear la Base de datos:
 
-                
+                https://github.com/ProfeAlbeiro/react_native/blob/main/sources/db/nodejs_base1.sql
 
-            02. Abrir el proyecto con 'Visual Studio Code'. Ejemplo: 'my-app'.
+            02. Abrir la carpeta raíz del proyecto 'Visual Studio Code'. Ejemplo: 'my-app'.
 
             03. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
