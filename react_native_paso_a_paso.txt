@@ -2699,7 +2699,7 @@
 
                     01   import React, { useState } from 'react';
                     02   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
-                    03 
+                    03
                     04   const RegisterViewModel = () => {
                     05       const [errorMessage, setErrorMessage] = useState('');
                     06       const [values, setValues] = useState({
@@ -2708,8 +2708,8 @@
                     09         phone: '',
                     10         email: '',
                     11         password: '',
-                    12         confirmPassword: '',
-                    13       })
+                    12         confirmPassword: ''
+                    13       });
                     14       const onChange = (property: string, value: any) => {
                     15         setValues({ ...values, [property]: value });
                     16       }
@@ -2718,50 +2718,47 @@
                     19             const response = await RegisterAuthUseCase(values);
                     20             console.log('Result: ' + JSON.stringify(response));          
                     21           }
-                    22       }
+                    22      }
                     23       const isValidForm = (): boolean => {
                     24         if (values.name === '') {
                     25           setErrorMessage('El nombre es requerido');
-                    26           return false;
-                    27         }
-                    28         if (values.lastname === '') {
-                    29           setErrorMessage('El Apellido es requerido');
-                    30           return false;
-                    31         }
-                    32         if (values.email === '') {
-                    33           setErrorMessage('El Correo es requerido');
-                    34           return false;
-                    35         }
-                    36         if (values.phone === '') {
-                    37           setErrorMessage('El Teléfono es requerido');
-                    38           return false;
-                    39         }
-                    40         if (values.password === '') {
-                    41           setErrorMessage('La contraseña es requerida');
-                    42           return false;
-                    43         }
-                    44         if (values.confirmPassword === '') {
-                    45           setErrorMessage('La confirmación de contraseña es requerida');
-                    46           return false;
-                    47         }
-                    48         if (values.password === values.confirmPassword) {        
-                    49           return false;
-                    50         }
-                    51         else {
-                    52           setErrorMessage('La contraseñas no coinciden');
-                    53           return true;
-                    54         }
-                    55       };
-                    56       return {
-                    57         ...values,
-                    58         onChange,
-                    59         register,
-                    60         errorMessage
-                    61       };
-                    62   }
-                    63 
-                    64   export default RegisterViewModel;
-
+                    26          return false;
+                    27        }
+                    28        if (values.lastname === '') {
+                    29          setErrorMessage('El Apellido es requerido');
+                    30          return false;
+                    31        }
+                    32        if (values.email === '') {
+                    33          setErrorMessage('El Correo es requerido');
+                    34          return false;
+                    35        }
+                    36        if (values.phone === '') {
+                    37          setErrorMessage('El Teléfono es requerido');
+                    38          return false;
+                    39        }
+                    40        if (values.password === '') {
+                    41          setErrorMessage('La contraseña es requerida');
+                    42          return false;
+                    43        }
+                    44        if (values.confirmPassword === '') {
+                    45          setErrorMessage('La confirmación de contraseña es requerida');
+                    46          return false;
+                    47        }
+                    48        if (values.password !== values.confirmPassword) {        
+                    49          setErrorMessage('La contraseñas no coinciden');
+                    50          return false;
+                    51        }
+                    52        return true;
+                    53      }
+                    54      return {
+                    55        ...values,
+                    56        onChange,
+                    57        register,
+                    58        errorMessage
+                    59      }
+                    60   }
+                    61
+                    62   export default RegisterViewModel;
 
             02. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
                     
@@ -2856,7 +2853,57 @@
                     89     );
                     90   }
 
+            03. Detener los servidores ubicándose en la terminal de cada uno en 'Visual Studio Code' y presionando 'CTRL + C'
 
+            04. En la terminal de 'Visual Studio Code' de 'node_js' ejecute el siguiente comando para instalar el paquete en encriptación:
+
+                    ⦿   PS C:\..\node_js> npm i bcryptjs
+
+            05. Modificar el archivo 'node_js/models/user.js', quedando así:
+
+                    01   const db = require('../config/config.js');
+                    02   const bcrypt = require('bcryptjs');
+                    03   const User = {};
+                    04   User.create = async (user, result) => {
+                    05     const hash = await bcrypt.hash(user.password,10);
+                    06     const sql = `INSERT INTO USERS(
+                    07                   email, 
+                    08                   name, 
+                    09                   lastname,
+                    10                   phone,
+                    11                   image,
+                    12                   password,
+                    13                   created_at,
+                    14                   updated_at
+                    15                 ) VALUES (?,?,?,?,?,?,?,?)`;
+                    16     db.query(sql,
+                    17       [
+                    18         user.email,
+                    19         user.name,
+                    20         user.lastname,
+                    21         user.phone,
+                    22         user.image,
+                    23         hash,        
+                    24         new Date(),
+                    25         new Date()
+                    26       ], (err, res) => {
+                    27         if (err) {
+                    28           console.log('Error al crear el Usuario: ', err);
+                    29           result(err, null);
+                    30         } else {
+                    31           console.log('Usuario creado: ', { id: res.insertId, ...user });
+                    32           result(null, { id: res.insertId, ...user });
+                    33         }
+                    34       }
+                    35     )
+                    36   }
+                    37 
+                    38   module.exports = User;
+
+            06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
+
+                    ⦿   PS C:\..\my-app> npm run android
+                    ⦿   PS C:\..\node_js> npm run android
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||

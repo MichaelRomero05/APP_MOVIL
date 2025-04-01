@@ -9,8 +9,8 @@ const RegisterViewModel = () => {
       phone: '',
       email: '',
       password: '',
-      confirmPassword: '',
-    })
+      confirmPassword: ''
+    });
     const onChange = (property: string, value: any) => {
       setValues({ ...values, [property]: value });
     }
@@ -45,20 +45,18 @@ const RegisterViewModel = () => {
         setErrorMessage('La confirmación de contraseña es requerida');
         return false;
       }
-      if (values.password === values.confirmPassword) {        
+      if (values.password !== values.confirmPassword) {        
+        setErrorMessage('La contraseñas no coinciden');
         return false;
       }
-      else {
-        setErrorMessage('La contraseñas no coinciden');
-        return true;
-      }
-    };
+      return true;
+    }
     return {
       ...values,
       onChange,
       register,
       errorMessage
-    };
+    }
 }
 
 export default RegisterViewModel;
