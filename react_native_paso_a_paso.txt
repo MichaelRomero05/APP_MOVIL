@@ -2695,7 +2695,75 @@
 |-- 08.06.  Validaciones en los formularios: ------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
-            01. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
+
+                    01   import React, { useState } from 'react';
+                    02   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
+                    03 
+                    04   const RegisterViewModel = () => {
+                    05       const [errorMessage, setErrorMessage] = useState('');
+                    06       const [values, setValues] = useState({
+                    07         name: '',
+                    08         lastname: '',
+                    09         phone: '',
+                    10         email: '',
+                    11         password: '',
+                    12         confirmPassword: '',
+                    13       })
+                    14       const onChange = (property: string, value: any) => {
+                    15         setValues({ ...values, [property]: value });
+                    16       }
+                    17       const register = async () => {
+                    18           if (!isValidForm()) {
+                    19             const response = await RegisterAuthUseCase(values);
+                    20             console.log('Result: ' + JSON.stringify(response));          
+                    21           }
+                    22       }
+                    23       const isValidForm = (): boolean => {
+                    24         if (values.name === '') {
+                    25           setErrorMessage('El nombre es requerido');
+                    26           return false;
+                    27         }
+                    28         if (values.lastname === '') {
+                    29           setErrorMessage('El Apellido es requerido');
+                    30           return false;
+                    31         }
+                    32         if (values.email === '') {
+                    33           setErrorMessage('El Correo es requerido');
+                    34           return false;
+                    35         }
+                    36         if (values.phone === '') {
+                    37           setErrorMessage('El Teléfono es requerido');
+                    38           return false;
+                    39         }
+                    40         if (values.password === '') {
+                    41           setErrorMessage('La contraseña es requerida');
+                    42           return false;
+                    43         }
+                    44         if (values.confirmPassword === '') {
+                    45           setErrorMessage('La confirmación de contraseña es requerida');
+                    46           return false;
+                    47         }
+                    48         if (values.password === values.confirmPassword) {        
+                    49           return false;
+                    50         }
+                    51         else {
+                    52           setErrorMessage('La contraseñas no coinciden');
+                    53           return true;
+                    54         }
+                    55       };
+                    56       return {
+                    57         ...values,
+                    58         onChange,
+                    59         register,
+                    60         errorMessage
+                    61       };
+                    62   }
+                    63 
+                    64   export default RegisterViewModel;
+
+
+            02. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
                     
                     01   import React, { useEffect } from 'react';
                     02   import { Text, View, Image, ScrollView, ToastAndroid } from 'react-native';
@@ -2703,91 +2771,90 @@
                     04   import { CustomTextInput } from '../../componentes/CustomTextInput';
                     05   import useViewModel from './ViewModel';
                     06   import styles from './Styles';
-                    07 
+                    07
                     08   export const RegisterScreen = () => {
                     09 
                     10     const {name, lastname, phone, email, password, confirmPassword, errorMessage, onChange, register} = useViewModel();
                     11
-                    12      useEffect(() => {
-                    13        if (errorMessage !== '')
-                    14          ToastAndroid.show(errorMessage, ToastAndroid.LONG
-                    15        )
-                    16      }, [errorMessage]);
-                    17  
-                    18      return (
-                    19        <View style={styles.container}>
-                    20           <Image
-                    21             source={require('../../../../assets/chef.jpg')}
-                    22             style={styles.imageBackground}
-                    23           />
-                    24           <View style={styles.logoContainer}>
-                    25             <Image
-                    26               source={require('../../../../assets/logo.png')}
-                    27               style={styles.logoImage}
-                    28             />
-                    29             <Text style={styles.logoText}>FOOD APP</Text>
-                    30           </View>
-                    31           <View style={styles.form}>
-                    32             <ScrollView>
-                    33               <Text style={styles.formText}>REGÍSTRATE</Text>
-                    34               <CustomTextInput 
-                    35                 image = {require('../../../../assets/user.png')}
-                    36                 placeholder = 'Nombres'
-                    37                 keyboardType = 'default'
-                    38                 property = 'name'
-                    39                 onChangeText = { onChange }
-                    40                 value = { name }
-                    41               />
-                    42               <CustomTextInput 
-                    43                 image = {require('../../../../assets/my_user.png')}
-                    44                 placeholder = 'Apellidos'
-                    45                 keyboardType = 'default'
-                    46                 property = 'lastname'
-                    47                 onChangeText = { onChange }
-                    48                 value = { lastname }
-                    49               />
-                    50               <CustomTextInput 
-                    51                 image = {require('../../../../assets/email.png')}
-                    52                 placeholder = 'Correo Electrónico'
-                    53                 keyboardType = 'email-address'
-                    54                 property = 'email'
-                    55                 onChangeText = { onChange }
-                    56                 value = { email }
-                    57               />
-                    58               <CustomTextInput 
-                    59                 image = {require('../../../../assets/phone.png')}
-                    60                 placeholder = 'Teléfono'
-                    61                 keyboardType = 'numeric'
-                    62                 property = 'phone'
-                    63                 onChangeText = { onChange }
-                    64                 value = { phone }
-                    65               />
-                    66               <CustomTextInput 
-                    67                 image = {require('../../../../assets/password.png')}
-                    68                 placeholder = 'Contraseña'
-                    69                 keyboardType = 'default'
-                    70                 property = 'password'
-                    71                 onChangeText = { onChange }
-                    72                 value = { password }
-                    73                 secureTextEntry = { true }
-                    74               />          
-                    75               <CustomTextInput 
-                    76                 image = {require('../../../../assets/confirm_password.png')}
-                    77                 placeholder = 'Confirmar Contraseña'
-                    78                 keyboardType = 'default'
-                    79                 property = 'confirmPassword'
-                    80                 onChangeText = { onChange }
-                    81                 value = { confirmPassword }
-                    82                 secureTextEntry = { true }
-                    83               />
-                    84               <View style={{ marginTop: 10 }}>
-                    85                 <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
-                    86               </View>
-                    87             </ScrollView>
-                    88           </View>
-                    89         </View>
-                    90     );
-                    91   }
+                    12     useEffect(() => {
+                    13       if (errorMessage !== '') 
+                    14         ToastAndroid.show(errorMessage, ToastAndroid.LONG)    
+                    15     }, [errorMessage]);
+                    16     
+                    17     return (
+                    18       <View style={styles.container}>
+                    19           <Image
+                    20             source={require('../../../../assets/chef.jpg')}
+                    21             style={styles.imageBackground}
+                    22           />
+                    23           <View style={styles.logoContainer}>
+                    24             <Image
+                    25               source={require('../../../../assets/logo.png')}
+                    26               style={styles.logoImage}
+                    27             />
+                    28             <Text style={styles.logoText}>FOOD APP</Text>
+                    29           </View>
+                    30           <View style={styles.form}>
+                    31             <ScrollView>
+                    32               <Text style={styles.formText}>REGÍSTRATE</Text>
+                    33               <CustomTextInput 
+                    34                 image = {require('../../../../assets/user.png')}
+                    35                 placeholder = 'Nombres'
+                    36                 keyboardType = 'default'
+                    37                 property = 'name'
+                    38                 onChangeText = { onChange }
+                    39                 value = { name }
+                    40               />
+                    41               <CustomTextInput 
+                    42                 image = {require('../../../../assets/my_user.png')}
+                    43                 placeholder = 'Apellidos'
+                    44                 keyboardType = 'default'
+                    45                 property = 'lastname'
+                    46                 onChangeText = { onChange }
+                    47                 value = { lastname }
+                    48               />
+                    49               <CustomTextInput 
+                    50                 image = {require('../../../../assets/email.png')}
+                    51                 placeholder = 'Correo Electrónico'
+                    52                 keyboardType = 'email-address'
+                    53                 property = 'email'
+                    54                 onChangeText = { onChange }
+                    55                 value = { email }
+                    56               />
+                    57               <CustomTextInput 
+                    58                 image = {require('../../../../assets/phone.png')}
+                    59                 placeholder = 'Teléfono'
+                    60                 keyboardType = 'numeric'
+                    61                 property = 'phone'
+                    62                 onChangeText = { onChange }
+                    63                 value = { phone }
+                    64               />
+                    65               <CustomTextInput 
+                    66                 image = {require('../../../../assets/password.png')}
+                    67                 placeholder = 'Contraseña'
+                    68                 keyboardType = 'default'
+                    69                 property = 'password'
+                    70                 onChangeText = { onChange }
+                    71                 value = { password }
+                    72                 secureTextEntry = { true }
+                    73               />          
+                    74               <CustomTextInput 
+                    75                 image = {require('../../../../assets/confirm_password.png')}
+                    76                 placeholder = 'Confirmar Contraseña'
+                    77                 keyboardType = 'default'
+                    78                 property = 'confirmPassword'
+                    79                 onChangeText = { onChange }
+                    80                 value = { confirmPassword }
+                    81                 secureTextEntry = { true }
+                    82               />
+                    83               <View style={{ marginTop: 10 }}>
+                    84                 <RoundedButton text='CONFIRMAR' onPress={ () => register() } />
+                    85               </View>
+                    86             </ScrollView>
+                    87           </View>
+                    88         </View>
+                    89     );
+                    90   }
 
 
 

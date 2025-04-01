@@ -10,9 +10,8 @@ export const RegisterScreen = () => {
   const {name, lastname, phone, email, password, confirmPassword, errorMessage, onChange, register} = useViewModel();
 
   useEffect(() => {
-    if (errorMessage !== '')
-      ToastAndroid.show(errorMessage, ToastAndroid.LONG
-    )
+    if (errorMessage !== '') 
+      ToastAndroid.show(errorMessage, ToastAndroid.LONG)    
   }, [errorMessage]);
   
   return (
