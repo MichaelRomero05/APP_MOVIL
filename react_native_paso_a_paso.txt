@@ -2886,7 +2886,7 @@
                     02   const bcrypt = require('bcryptjs');
                     03   const User = {};
                     04   User.create = async (user, result) => {
-                    05     const hash = await bcrypt.hash(user.password,10);
+                    05     const hash = await bcrypt.hash(user.password, 10)
                     06     const sql = `INSERT INTO USERS(
                     07                   email, 
                     08                   name, 
@@ -2904,19 +2904,19 @@
                     20         user.lastname,
                     21         user.phone,
                     22         user.image,
-                    23         hash,        
+                    23         hash,
                     24         new Date(),
                     25         new Date()
                     26       ], (err, res) => {
                     27         if (err) {
-                    28           console.log('Error al crear el Usuario: ', err);
+                    28           console.log('Error al crear al Usuario: ', err);
                     29           result(err, null);
                     30         } else {
-                    31           console.log('Usuario creado: ', { id: res.insertId, ...user });
-                    32           result(null, { id: res.insertId, ...user });
+                    31           console.log('Usuario creado: ', {id: res.insertId, ...user});
+                    32           result(null, {id: res.insertId, ...user});
                     33         }
                     34       }
-                    35     )
+                    35     );
                     36   }
                     37 
                     38   module.exports = User;
@@ -2924,7 +2924,7 @@
             06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
 
                     ⦿   PS C:\..\my-app> npm run android
-                    ⦿   PS C:\..\node_js> npm run android
+                    ⦿   PS C:\..\node_js> node server.js
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
