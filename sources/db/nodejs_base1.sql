@@ -1,3 +1,5 @@
+-- DROP DATABASE NODEJS_BASE1;
+
 CREATE SCHEMA nodejs_base1 DEFAULT CHARACTER SET utf8 ;
 USE nodejs_base1;
 

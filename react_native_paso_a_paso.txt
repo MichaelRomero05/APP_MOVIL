@@ -1841,7 +1841,7 @@
                     73
                     74   export default HomeStyles;
 
-            03. En 'Home.tsx', importar los estilos en la línea 09 y eliminar las líneas desde la 64 a la 133: 
+            03. En 'Home.tsx', importar los estilos en la línea 09 y eliminar las líneas desde la 64 a la 133:
 
                     09   import styles from './Styles';
 
@@ -2431,12 +2431,12 @@
                     05   }
 
             06. En el archivo 'my-app/src/Data/repositories/AuthRepository.tsx' escribir el siguiente código:
-            
+
                     01   import { User } from "../../Domain/entities/User";
                     02   import { AuthRepository } from "../../Domain/repositories/AuthRepository";
                     03   import { ApiDelivery } from "../sources/remote/api/apiDelivery";
                     04   import { ResponseApiDelivery } from "../sources/remote/models/ResponseApiDelivery";
-                    05 
+                    05
                     06   export class AuthRepositoryImpl implements AuthRepository {
                     07       async register(user: User) {
                     08           try {
@@ -2454,9 +2454,9 @@
 
                     01   import { AuthRepositoryImpl } from "../../../Data/repositories/AuthRepository";
                     02   import { User } from "../../entities/User";
-                    03 
+                    03
                     04   const { register } = new AuthRepositoryImpl();
-                    05 
+                    05
                     06   export const RegisterAuthUseCase = async (user: User) => {
                     07       return await register(user);
                     08   }
@@ -2466,7 +2466,7 @@
                     01   import React, { useState } from 'react';
                     02   import { ApiDelivery } from '../../../Data/sources/remote/api/apiDelivery';
                     03   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
-                    04 
+                    04
                     05   const RegisterViewModel = () => {
                     06       const [values, setValues] = useState({
                     07         name: '',
@@ -2479,9 +2479,9 @@
                     14       const onChange = (property: string, value: any) => {
                     15         setValues({ ...values, [property]: value });
                     16       };
-                    17       const register = async () => {      
+                    17       const register = async () => {
                     18           const { result, error} = await RegisterAuthUseCase(values);
-                    19           console.log('result' + JSON.stringify(result));      
+                    19           console.log('result' + JSON.stringify(result));
                     20           console.log('error' + error);
                     21       }
                     22       return {
@@ -2490,7 +2490,7 @@
                     25         register
                     26       };
                     27   }
-                    28 
+                    28
                     29   export default RegisterViewModel;
 
 
@@ -2506,11 +2506,11 @@
                     04   import { CustomTextInput } from '../../componentes/CustomTextInput';
                     05   import useViewModel from './ViewModel';
                     06   import styles from './Styles';
-                    07 
+                    07
                     08   export const RegisterScreen = () => {
-                    09     
+                    09
                     10     const {name, lastname, phone, email, password, confirmPassword, onChange, register} = useViewModel();
-                    11     
+                    11
                     12     return (
                     13       <View style={styles.container}>
                     14           <Image
@@ -2527,7 +2527,7 @@
                     25           <View style={styles.form}>
                     26             <ScrollView>
                     27               <Text style={styles.formText}>REGÍSTRATE</Text>
-                    28               <CustomTextInput 
+                    28               <CustomTextInput
                     29                 image = {require('../../../../assets/user.png')}
                     30                 placeholder = 'Nombres'
                     31                 keyboardType = 'default'
@@ -2535,7 +2535,7 @@
                     33                 onChangeText = { onChange }
                     34                 value = { name }
                     35               />
-                    36               <CustomTextInput 
+                    36               <CustomTextInput
                     37                image = {require('../../../../assets/my_user.png')}
                     38                 placeholder = 'Apellidos'
                     39                 keyboardType = 'default'
@@ -2543,7 +2543,7 @@
                     41                 onChangeText = { onChange }
                     42                 value = { lastname }
                     43               />
-                    44               <CustomTextInput 
+                    44               <CustomTextInput
                     45                 image = {require('../../../../assets/email.png')}
                     46                 placeholder = 'Correo Electrónico'
                     47                 keyboardType = 'email-address'
@@ -2551,7 +2551,7 @@
                     49                 onChangeText = { onChange }
                     50                 value = { email }
                     51               />
-                    52               <CustomTextInput 
+                    52               <CustomTextInput
                     53                 image = {require('../../../../assets/phone.png')}
                     54                 placeholder = 'Teléfono'
                     55                 keyboardType = 'numeric'
@@ -2559,7 +2559,7 @@
                     57                 onChangeText = { onChange }
                     58                 value = { phone }
                     59               />
-                    60               <CustomTextInput 
+                    60               <CustomTextInput
                     61                 image = {require('../../../../assets/password.png')}
                     62                 placeholder = 'Contraseña'
                     63                 keyboardType = 'default'
@@ -2567,8 +2567,8 @@
                     65                 onChangeText = { onChange }
                     66                 value = { password }
                     67                 secureTextEntry = { true }
-                    68               />          
-                    69               <CustomTextInput 
+                    68               />
+                    69               <CustomTextInput
                     70                 image = {require('../../../../assets/confirm_password.png')}
                     71                 placeholder = 'Confirmar Contraseña'
                     72                 keyboardType = 'default'
@@ -2607,7 +2607,7 @@
 
                     01   import { User } from "../entities/User";
                     02   import { ResponseApiDelivery } from "../../Data/sources/remote/models/ResponseApiDelivery";
-                    03 
+                    03
                     04   export interface AuthRepository {
                     05       register(user: User): Promise<ResponseApiDelivery>;
                     06   }
@@ -2619,7 +2619,7 @@
                     03   import { AuthRepository } from "../../Domain/repositories/AuthRepository";
                     04   import { ApiDelivery } from "../sources/remote/api/apiDelivery";
                     05   import { ResponseApiDelivery } from "../sources/remote/models/ResponseApiDelivery";
-                    06 
+                    06
                     07   export class AuthRepositoryImpl implements AuthRepository {
                     08       async register(user: User): Promise<ResponseApiDelivery> {
                     09           try {
@@ -2639,7 +2639,7 @@
                     01   import React, { useState } from 'react';
                     02   import { ApiDelivery } from '../../../Data/sources/remote/api/apiDelivery';
                     03   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
-                    04 
+                    04
                     05   const RegisterViewModel = () => {
                     06       const [values, setValues] = useState({
                     07         name: '',
@@ -2652,9 +2652,9 @@
                     14       const onChange = (property: string, value: any) => {
                     15         setValues({ ...values, [property]: value });
                     16       };
-                    17       const register = async () => {      
+                    17       const register = async () => {
                     18           const response = await RegisterAuthUseCase(values);
-                    19           console.log('Result: ' + JSON.stringify(response));        
+                    19           console.log('Result: ' + JSON.stringify(response));
                     20       }
                     21       return {
                     22         ...values,
@@ -2662,18 +2662,18 @@
                     24         register
                     25       };
                     26   }
-                    27 
+                    27
                     28   export default RegisterViewModel;
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.04.  Estructura de carpetas del proyecto: --------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
+
             01. Arquitectura limpia y patrón MVVM:
 
-                La arquitectura limpia (Clean Architecture) y el patrón de diseño Model-View-ViewModel (MVVM) son dos conceptos que se pueden usar 
-                juntos para estructurar una aplicación de manera eficiente y mantenible. En la figura siguiente se muestra la estructura general de 
+                La arquitectura limpia (Clean Architecture) y el patrón de diseño Model-View-ViewModel (MVVM) son dos conceptos que se pueden usar
+                juntos para estructurar una aplicación de manera eficiente y mantenible. En la figura siguiente se muestra la estructura general de
                 cómo podrían organizarse los archivos en un proyecto que utiliza Clean Architecture y el patrón MVVM
 
                 https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/08/08_04_clean_architecture_y_patr%C3%B3n_MVVM.png
@@ -2685,7 +2685,7 @@
 
             01. Organización por módulos:
 
-                Presenta la relación entre los diferentes objetos, no es estrictamente un diagrama de clases, sino que pretende dar información 
+                Presenta la relación entre los diferentes objetos, no es estrictamente un diagrama de clases, sino que pretende dar información
                 necesaria para comprender la funcionalidad de cada módulo, el archivo en el que se codifica y la capa a la que pertenece
 
                 https://github.com/ProfeAlbeiro/react_native/blob/main/sources/img/paso_a_paso/08/08_05_organizaci%C3%B3n_x_m%C3%B3dulos.png
@@ -2694,12 +2694,12 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 08.06.  Validaciones en los formularios: ------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
-            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:                    
-                    
+
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
+
                     01   import React, { useState } from 'react';
                     02   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
-                    03 
+                    03
                     04   const RegisterViewModel = () => {
                     05     const [errorMessage, setErrorMessage] = useState('');
                     06     const [values, setValues] = useState({
@@ -2710,11 +2710,11 @@
                     11       password: '',
                     12       confirmPassword: '',
                     13     });
-                    14 
+                    14
                     15     const onChange = (property: string, value: any) => {
                     16       setValues({ ...values, [property]: value });
                     17     };
-                    18    
+                    18
                     19     const resetForm = () => {
                     20       setValues({
                     21         name: '',
@@ -2725,7 +2725,7 @@
                     26         confirmPassword: '',
                     27       });
                     28     };
-                    29 
+                    29
                     30     const isValidForm = (): boolean => {
                     31       setErrorMessage('');
                     32       if (values.name === '') {
@@ -2758,8 +2758,8 @@
                     59       }
                     60       return true;
                     61     };
-                    62 
-                    63     const register = async () => {   
+                    62
+                    63     const register = async () => {
                     64       if (isValidForm()) {
                     65         try {
                     66           const response = await RegisterAuthUseCase(values);
@@ -2768,9 +2768,9 @@
                     69         } catch (error) {
                     70           setErrorMessage('Error al registrar. Por favor, inténtalo de nuevo.');
                     71         }
-                    72       }   
+                    72       }
                     73     };
-                    74 
+                    74
                     75     return {
                     76       ...values,
                     77       onChange,
@@ -2778,11 +2778,11 @@
                     79       errorMessage,
                     80     };
                     81   };
-                    82 
+                    82
                     83   export default RegisterViewModel;
 
             02. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
-                    
+
                     01   import React, { useEffect } from 'react';
                     02   import { Text, View, Image, ScrollView, ToastAndroid } from 'react-native';
                     03   import { RoundedButton } from '../../componentes/RoundedButton';
@@ -2791,14 +2791,14 @@
                     06   import styles from './Styles';
                     07
                     08   export const RegisterScreen = () => {
-                    09 
+                    09
                     10     const {name, lastname, phone, email, password, confirmPassword, errorMessage, onChange, register} = useViewModel();
                     11
                     12     useEffect(() => {
-                    13       if (errorMessage !== '') 
-                    14         ToastAndroid.show(errorMessage, ToastAndroid.LONG)    
+                    13       if (errorMessage !== '')
+                    14         ToastAndroid.show(errorMessage, ToastAndroid.LONG)
                     15     }, [errorMessage]);
-                    16     
+                    16
                     17     return (
                     18       <View style={styles.container}>
                     19           <Image
@@ -2815,7 +2815,7 @@
                     30           <View style={styles.form}>
                     31             <ScrollView>
                     32               <Text style={styles.formText}>REGÍSTRATE</Text>
-                    33               <CustomTextInput 
+                    33               <CustomTextInput
                     34                 image = {require('../../../../assets/user.png')}
                     35                 placeholder = 'Nombres'
                     36                 keyboardType = 'default'
@@ -2823,7 +2823,7 @@
                     38                 onChangeText = { onChange }
                     39                 value = { name }
                     40               />
-                    41               <CustomTextInput 
+                    41               <CustomTextInput
                     42                 image = {require('../../../../assets/my_user.png')}
                     43                 placeholder = 'Apellidos'
                     44                 keyboardType = 'default'
@@ -2831,7 +2831,7 @@
                     46                 onChangeText = { onChange }
                     47                 value = { lastname }
                     48               />
-                    49               <CustomTextInput 
+                    49               <CustomTextInput
                     50                 image = {require('../../../../assets/email.png')}
                     51                 placeholder = 'Correo Electrónico'
                     52                 keyboardType = 'email-address'
@@ -2839,7 +2839,7 @@
                     54                 onChangeText = { onChange }
                     55                 value = { email }
                     56               />
-                    57               <CustomTextInput 
+                    57               <CustomTextInput
                     58                 image = {require('../../../../assets/phone.png')}
                     59                 placeholder = 'Teléfono'
                     60                 keyboardType = 'numeric'
@@ -2847,7 +2847,7 @@
                     62                 onChangeText = { onChange }
                     63                 value = { phone }
                     64               />
-                    65               <CustomTextInput 
+                    65               <CustomTextInput
                     66                 image = {require('../../../../assets/password.png')}
                     67                 placeholder = 'Contraseña'
                     68                 keyboardType = 'default'
@@ -2855,8 +2855,8 @@
                     70                 onChangeText = { onChange }
                     71                 value = { password }
                     72                 secureTextEntry = { true }
-                    73               />          
-                    74               <CustomTextInput 
+                    73               />
+                    74               <CustomTextInput
                     75                 image = {require('../../../../assets/confirm_password.png')}
                     76                 placeholder = 'Confirmar Contraseña'
                     77                 keyboardType = 'default'
@@ -2888,8 +2888,8 @@
                     04   User.create = async (user, result) => {
                     05     const hash = await bcrypt.hash(user.password, 10)
                     06     const sql = `INSERT INTO USERS(
-                    07                   email, 
-                    08                   name, 
+                    07                   email,
+                    08                   name,
                     09                   lastname,
                     10                   phone,
                     11                   image,
@@ -2918,7 +2918,7 @@
                     34       }
                     35     );
                     36   }
-                    37 
+                    37
                     38   module.exports = User;
 
             06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
@@ -2960,7 +2960,7 @@
                     01   const db = require('../config/config.js');
                     02   const bcrypt = require('bcryptjs');
                     03   const User = {};
-                    04 
+                    04
                     05   User.findById = (id, result) => {
                     06     const sql = `SELECT id, email, name, lastname, image, password FROM users WHERE id = ?`;
                     07     db.query(sql,
@@ -2972,17 +2972,17 @@
                     13             else {
                     14                 console.log('Usuario consultado: ',  user[0] );
                     15                 result(null, user[0]);
-                    16 
+                    16
                     17             }
                     18         }
                     19     );
                     20   }
-                    21 
+                    21
                     22   User.findByEmail = (email, result) => {
                     23     const sql = `SELECT id, email, name, lastname, image, phone, password FROM users WHERE email = ?`;
                     24     db.query(
                     25         sql,
-                    26         [email], 
+                    26         [email],
                     27         (err, user) => {
                     28             if (err) {
                     29                 console.log('Error al consultar: ', err);
@@ -2990,17 +2990,17 @@
                     31             }
                     32             else {
                     33                 console.log('Usuario consultado: ',  user[0] );
-                    34                 result(null, user[0]);                    
+                    34                 result(null, user[0]);
                     35             }
                     36         }
                     37     );
                     38   }
-                    39 
+                    39
                     40   User.create = async (user, result) => {
                     41     const hash = await bcrypt.hash(user.password, 10)
                     42     const sql = `INSERT INTO USERS(
-                    43                   email, 
-                    44                   name, 
+                    43                   email,
+                    44                   name,
                     45                   lastname,
                     46                   phone,
                     47                   image,
@@ -3029,10 +3029,111 @@
                     70       }
                     71     );
                     72   }
-                    73 
+                    73
                     74   module.exports = User;
 
-            06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
+            05. Crear el archivo 'node_js/config/passport.js' y escribir el siguiente código:
+
+                    01   const JwtStrategy = require('passport-jwt').Strategy;
+                    02   const ExtractJwt = require('passport-jwt').ExtractJwt;
+                    03   const Keys = require('./keys');
+                    04   const User = require('../models/user');
+                    05
+                    06   module.exports = (passport) => {
+                    07     let opts = {};
+                    08     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+                    09     opts.secretOrKey = Keys.secretOrKey;
+                    10
+                    11     passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
+                    12       User.findById(jwt_payload.id, (err, user) => {
+                    13           if (err) {
+                    14               return done(err, false);
+                    15           }
+                    16           if (user) {
+                    17               return done(null, user);
+                    18           }
+                    19           else{
+                    20               return done(null, false);
+                    21           }
+                    22       });
+                    23     }));
+                    24   }
+
+            06. Modificar el código del archivo 'node_js/controllers/userController.js' para incluir el método 'login', quedando así:
+
+                    01   const User = require('../models/user');
+                    02   const bcrypt = require('bcryptjs');
+                    03   const jwt = require('jsonwebtoken');
+                    04   const keys = require('../config/keys');
+                    05
+                    06   module.exports = {
+                    07     login(req, res) {
+                    08       const email = req.body.email;
+                    09       const password = req.body.password;
+                    10
+                    11       User.findByEmail(email, async (err, myUser) => {
+                    12         if (err) {
+                    13           return res.status(501).json({
+                    14             success: false,
+                    15             message: 'Error al consultar el usuario',
+                    16             error: err
+                    17           });
+                    18         }
+                    19         if (!myUser) {
+                    20           return res.status(401).json({
+                    21             success: false,
+                    22             message: 'El email no existe en la base de datos'
+                    23           });
+                    24         }
+                    25         const isPasswordValid = await bcrypt.compare(password, myUser.password);
+                    26         if (isPasswordValid) {
+                    27           const token = jwt.sign({ id: myUser.id, email: myUser.email }, keys.secretOrKey, {});
+                    28
+                    29           const data = {
+                    30             id: myUser.id,
+                    31             email: myUser.email,
+                    32             name: myUser.name,
+                    33             lastname: myUser.lastname,
+                    34             image: myUser.image,
+                    35             phone: myUser.phone,
+                    36             session_token: `JWT ${token}`
+                    37           }
+                    38           return res.status(201).json({
+                    39             success: true,
+                    40             message: 'Usuario autenticado ',
+                    41             data: data
+                    42           });
+                    43         }
+                    44         else {
+                    45           return res.status(401).json({
+                    46             success: false,
+                    47             message: 'Contraseña o correo incorrecto'
+                    48           });
+                    49         }
+                    50       });
+                    51     },
+                    52
+                    53     register(req, res) {
+                    54       const user = req.body;
+                    55       User.create(user, (err, data) => {
+                    56         if (err) {
+                    57           return res.status(501).json ({
+                    58             success: false,
+                    59             message: 'Error al crear al usuario',
+                    60             error: err
+                    61           });
+                    62         } else {
+                    63           return res.status(201).json({
+                    64             success: true,
+                    65             message: 'Creado el Usuario',
+                    66             data: data
+                    67           });
+                    68         }
+                    69       });
+                    70     }
+                    71   }
+
+            07. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
