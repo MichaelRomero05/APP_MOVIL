@@ -2933,13 +2933,28 @@
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
+            Consulte la página: https://jwt.io/, donde se encuentra la documentación de los paquetes a utilizar para trabajar con 'json web token'.
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 09.01.  Configuración del Back-end para generar el Token: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Detener los servidores ubicándose en la terminal de cada uno en 'Visual Studio Code' y presionando 'CTRL + C'
 
+            02. En la terminal de 'Visual Studio Code' de 'node_js' ejecute los siguiente comandos para incluir el 'json web token':
 
+                    ⦿   PS C:\..\node_js> npm i passport
+                    ⦿   PS C:\..\node_js> npm i passport-jwt
+                    ⦿   PS C:\..\node_js> npm i jsonwebtoken
+
+            03. Ingrese a la siguiente página: https://www.vondy.com/random-key-generator--ZzGGMYgS?lc=5 (o en alguna página que genere códigos de 256
+                bit de forma aleatoria) para generar una clave de 256 bits; cópiela y péguela en un nuevo archivo denominado 'node_js/config/keys.js':
+
+                    01   module.exports = {
+                    02       secretOrKey: 'e9f94f8d3a1e6d7c2b3f9e5a7c8d4f2b7a0e1d3c4f5b6a7e9f8d0c3b4a6d2e1'
+                    03   }
+
+            06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
 
 
 
