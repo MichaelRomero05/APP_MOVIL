@@ -2954,8 +2954,85 @@
                     02       secretOrKey: 'e9f94f8d3a1e6d7c2b3f9e5a7c8d4f2b7a0e1d3c4f5b6a7e9f8d0c3b4a6d2e1'
                     03   }
 
-            06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
+            04. Modificar el código del archivo 'node_js/models/user.js' para incluir los métodos 'findById' y 'findByEmail' justo antes del método
+                'create', quedando así:
 
+                    01   const db = require('../config/config.js');
+                    02   const bcrypt = require('bcryptjs');
+                    03   const User = {};
+                    04 
+                    05   User.findById = (id, result) => {
+                    06     const sql = `SELECT id, email, name, lastname, image, password FROM users WHERE id = ?`;
+                    07     db.query(sql,
+                    08         [id], (err, user) => {
+                    09             if (err) {
+                    10                 console.log('Error al consultar: ', err);
+                    11                 result(err, null);
+                    12             }
+                    13             else {
+                    14                 console.log('Usuario consultado: ',  user[0] );
+                    15                 result(null, user[0]);
+                    16 
+                    17             }
+                    18         }
+                    19     );
+                    20   }
+                    21 
+                    22   User.findByEmail = (email, result) => {
+                    23     const sql = `SELECT id, email, name, lastname, image, phone, password FROM users WHERE email = ?`;
+                    24     db.query(
+                    25         sql,
+                    26         [email], 
+                    27         (err, user) => {
+                    28             if (err) {
+                    29                 console.log('Error al consultar: ', err);
+                    30                 result(err, null);
+                    31             }
+                    32             else {
+                    33                 console.log('Usuario consultado: ',  user[0] );
+                    34                 result(null, user[0]);                    
+                    35             }
+                    36         }
+                    37     );
+                    38   }
+                    39 
+                    40   User.create = async (user, result) => {
+                    41     const hash = await bcrypt.hash(user.password, 10)
+                    42     const sql = `INSERT INTO USERS(
+                    43                   email, 
+                    44                   name, 
+                    45                   lastname,
+                    46                   phone,
+                    47                   image,
+                    48                   password,
+                    49                   created_at,
+                    50                   updated_at
+                    51                 ) VALUES (?,?,?,?,?,?,?,?)`;
+                    52     db.query(sql,
+                    53       [
+                    54         user.email,
+                    55         user.name,
+                    56         user.lastname,
+                    57         user.phone,
+                    58         user.image,
+                    59         hash,
+                    60         new Date(),
+                    61         new Date()
+                    62       ], (err, res) => {
+                    63         if (err) {
+                    64           console.log('Error al crear al Usuario: ', err);
+                    65           result(err, null);
+                    66         } else {
+                    67           console.log('Usuario creado: ', {id: res.insertId, ...user});
+                    68           result(null, {id: res.insertId, ...user});
+                    69         }
+                    70       }
+                    71     );
+                    72   }
+                    73 
+                    74   module.exports = User;
+
+            06. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
