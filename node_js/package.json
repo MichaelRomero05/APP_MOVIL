@@ -13,7 +13,6 @@
   "author": "Instructor Albeiro Ramos",
   "license": "MIT",
   "dependencies": {
-    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "http": "^0.0.1-security",

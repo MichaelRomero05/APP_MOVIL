@@ -1,4 +1,4 @@
-import { Axios, AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { User } from "../../Domain/entities/User";
 import { AuthRepository } from "../../Domain/repositories/AuthRepository";
 import { ApiDelivery } from "../sources/remote/api/apiDelivery";
