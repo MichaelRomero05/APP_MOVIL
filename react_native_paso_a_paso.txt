@@ -2695,70 +2695,91 @@
 |-- 08.06.  Validaciones en los formularios: ------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
             
-            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:
-
+            01. Modificar el archivo 'my-app/src/Presentation/views/register/ViewModel.tsx', quedando así:                    
+                    
                     01   import React, { useState } from 'react';
                     02   import { RegisterAuthUseCase } from '../../../Domain/useCases/auth/RegisterAuth';
-                    03
+                    03 
                     04   const RegisterViewModel = () => {
-                    05       const [errorMessage, setErrorMessage] = useState('');
-                    06       const [values, setValues] = useState({
-                    07         name: '',
-                    08         lastname: '',
-                    09         phone: '',
-                    10         email: '',
-                    11         password: '',
-                    12         confirmPassword: ''
-                    13       });
-                    14       const onChange = (property: string, value: any) => {
-                    15         setValues({ ...values, [property]: value });
-                    16       }
-                    17       const register = async () => {
-                    18           if (!isValidForm()) {
-                    19             const response = await RegisterAuthUseCase(values);
-                    20             console.log('Result: ' + JSON.stringify(response));          
-                    21           }
-                    22      }
-                    23       const isValidForm = (): boolean => {
-                    24         if (values.name === '') {
-                    25           setErrorMessage('El nombre es requerido');
-                    26          return false;
-                    27        }
-                    28        if (values.lastname === '') {
-                    29          setErrorMessage('El Apellido es requerido');
-                    30          return false;
-                    31        }
-                    32        if (values.email === '') {
-                    33          setErrorMessage('El Correo es requerido');
-                    34          return false;
-                    35        }
-                    36        if (values.phone === '') {
-                    37          setErrorMessage('El Teléfono es requerido');
-                    38          return false;
-                    39        }
-                    40        if (values.password === '') {
-                    41          setErrorMessage('La contraseña es requerida');
-                    42          return false;
-                    43        }
-                    44        if (values.confirmPassword === '') {
-                    45          setErrorMessage('La confirmación de contraseña es requerida');
-                    46          return false;
-                    47        }
-                    48        if (values.password !== values.confirmPassword) {        
-                    49          setErrorMessage('La contraseñas no coinciden');
-                    50          return false;
-                    51        }
-                    52        return true;
-                    53      }
-                    54      return {
-                    55        ...values,
-                    56        onChange,
-                    57        register,
-                    58        errorMessage
-                    59      }
-                    60   }
-                    61
-                    62   export default RegisterViewModel;
+                    05     const [errorMessage, setErrorMessage] = useState('');
+                    06     const [values, setValues] = useState({
+                    07       name: '',
+                    08       lastname: '',
+                    09       phone: '',
+                    10       email: '',
+                    11       password: '',
+                    12       confirmPassword: '',
+                    13     });
+                    14 
+                    15     const onChange = (property: string, value: any) => {
+                    16       setValues({ ...values, [property]: value });
+                    17     };
+                    18    
+                    19     const resetForm = () => {
+                    20       setValues({
+                    21         name: '',
+                    22         lastname: '',
+                    23         phone: '',
+                    24         email: '',
+                    25         password: '',
+                    26         confirmPassword: '',
+                    27       });
+                    28     };
+                    29 
+                    30     const isValidForm = (): boolean => {
+                    31       setErrorMessage('');
+                    32       if (values.name === '') {
+                    33         setErrorMessage('El nombre es requerido');
+                    34         return false;
+                    35       }
+                    36       if (values.lastname === '') {
+                    37         setErrorMessage('El apellido es requerido');
+                    38         return false;
+                    39       }
+                    40       if (values.email === '') {
+                    41         setErrorMessage('El correo es requerido');
+                    42         return false;
+                    43       }
+                    44       if (values.phone === '') {
+                    45         setErrorMessage('El teléfono es requerido');
+                    46         return false;
+                    47       }
+                    48       if (values.password === '') {
+                    49         setErrorMessage('La contraseña es requerida');
+                    50         return false;
+                    51       }
+                    52       if (values.confirmPassword === '') {
+                    53         setErrorMessage('La confirmación de contraseña es requerida');
+                    54         return false;
+                    55       }
+                    56       if (values.password !== values.confirmPassword) {
+                    57         setErrorMessage('Las contraseñas no coinciden');
+                    58         return false;
+                    59       }
+                    60       return true;
+                    61     };
+                    62 
+                    63     const register = async () => {   
+                    64       if (isValidForm()) {
+                    65         try {
+                    66           const response = await RegisterAuthUseCase(values);
+                    67           console.log('Result: ' + JSON.stringify(response));
+                    68           resetForm();
+                    69         } catch (error) {
+                    70           setErrorMessage('Error al registrar. Por favor, inténtalo de nuevo.');
+                    71         }
+                    72       }   
+                    73     };
+                    74 
+                    75     return {
+                    76       ...values,
+                    77       onChange,
+                    78       register,
+                    79       errorMessage,
+                    80     };
+                    81   };
+                    82 
+                    83   export default RegisterViewModel;
 
             02. Modificar el archivo 'my-app/src/Presentation/views/register/Register.tsx', quedando así:
                     
