@@ -3133,7 +3133,55 @@
                     70     }
                     71   }
 
-            07. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
+            07. Modificar el código del archivo 'node_js/server.js' de la siguiente forma:
+
+                    01   const express = require('express');
+                    02   const passport = require('passport');
+                    03
+                    04   const app = express();
+                    05   const http = require('http');
+                    06   const server = http.createServer(app);
+                    07   const logger = require('morgan');
+                    08   const cors = require('cors');
+                    09
+                    10   const usersRoutes = require('./routes/userRoutes');
+                    11
+                    12   const port = process.env.PORT || 3000;
+                    13
+                    14   app.use(logger('dev'));
+                    15   app.use(express.json());
+                    16   app.use(express.urlencoded({ extended: true }));
+                    17   app.use(cors());
+                    18   app.use(passport.initialize());
+                    19   app.use(passport.session());
+                    20
+                    21   require('./config/passport')(passport);
+                    22
+                    23   app.disable('x-powered-by');
+                    24
+                    25   app.set('port', port);
+                    26
+                    27   usersRoutes(app);
+                    28
+                    29   server.listen(3000, '192.168.137.1' || 'localhost', function(){
+                    30     console.log('App node.js ' + process.pid + ' ejecutando en ' + server.address().address + ':' + server.address().port);
+                    31   });
+                    32
+                    33   app.get('/', (req, res) => {
+                    34     res.send('Ruta raíz del Backend');
+                    35   });
+                    36
+                    37   app.get('/test', (req, res) => {
+                    38     res.send('Ruta TEST');
+                    39   });
+                    40
+                    41   app.use((err, req, resp, next) => {
+                    42     console.log(err);
+                    43     res.status(err.status || 500).send(err.stack);
+                    44   });
+
+
+            08. Ejectuar nuevamente los servidores en la terminal de cada uno en 'Visual Studio Code':
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
