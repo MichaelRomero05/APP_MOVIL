@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth';
 
 const HomeViewModel = () => {
-  const [erroMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [values, setValues] = useState({
     email: '',
@@ -39,7 +39,7 @@ const HomeViewModel = () => {
     ...values,
     onChange,
     login,
-    erroMessage
+    errorMessage
   }
 }
 
