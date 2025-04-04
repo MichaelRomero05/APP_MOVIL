@@ -26,7 +26,7 @@ app.set('port', port);
 
 usersRoutes(app);
 
-server.listen(3000, '10.1.201.109' || 'localhost', function(){
+server.listen(3000, '192.168.137.1' || 'localhost', function(){
   console.log('App node.js ' + process.pid + ' ejecutando en ' + server.address().address + ':' + server.address().port);
 });
 
