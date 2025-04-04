@@ -3218,6 +3218,23 @@
                           03       "message": "El email no existe en la base de datos",
                           04   }
 
+                    ⦿   Cuando el usuario es correcto, la respuesta debe ser algo similar a lo siguiente (Observe que contiene el token):
+
+                          01   {
+                          02     "success": true,
+                          03     "message": "Usuario autenticado ",
+                          04     "data": {
+                          05         "id": 1,
+                          06         "email": "albeiro@ramos.com",
+                          07         "name": "albeiro",
+                          08         "lastname": "ramos",
+                          09         "image": null,
+                          10         "phone": "3103103102",
+                          11         "session_token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGJlaXJvQHJhbW9zLmNvbSIsImlhdCI6MTc0MzcyNjM0Nn0.195tcRSX0Opu9RiDww4K7DudWsijtMPZhTinncvujGI"
+                          12     }
+                          13   }
+
+
                   NOTA:   ⦿   En caso de error ingrese a 'node_js/package.json' y cambie la version de la dependencia de passport, quedando así:
 
                                 23   "passport": "^0.4.1",
