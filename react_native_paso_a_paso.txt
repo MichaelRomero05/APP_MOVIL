@@ -3828,7 +3828,7 @@
                     40 
                     41   export default App;
 
-            03. Modificar el código del archivo 'my-app/src/Presentation/views/home/Home.tsx', quedando de la siguiente forma:
+            04. Modificar el código del archivo 'my-app/src/Presentation/views/home/Home.tsx', quedando de la siguiente forma:
 
                     01   import React, { useState, useEffect } from 'react';
                     02   import { Text, View, Image, TextInput, ToastAndroid, TouchableOpacity } from 'react-native';
@@ -3909,9 +3909,59 @@
 |-- 10.03.  Cerrar la Sesión: ---------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Incluir código en el archivo 'my-app/src/Domain/useCases/userLocal/RemoveUserLocal.tsx', quedando de la siguiente forma:
 
+                    01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
+                    02   import { User } from '../../entities/User';
+                    03 
+                    04   const { remove } = new UserLocalRepositoryImp();
+                    05 
+                    06   export const RemoveUserLocalUseCase = async () => {
+                    07       return await remove();
+                    08   }
 
+            02. Incluir código en el archivo 'my-app/src/Presentation/views/profile/info/ViewModel.tsx', quedando de la siguiente forma:
 
+                    01   import React from 'react';
+                    02   import { RemoveUserLocalUseCase } from '../../../../Domain/useCases/userLocal/RemoveUserLocal';
+                    03 
+                    04   export const ProfileInfoViewModel = () => {
+                    05       const removeSession = async () => {
+                    06           await RemoveUserLocalUseCase();
+                    07       }
+                    08     return {
+                    09       removeSession
+                    10     }
+                    11   }
+                    12 
+                    13   export default ProfileInfoViewModel;
+
+            04. Modificar el código del archivo 'my-app/src/Presentation/views/profile/info/ProfileInfo.tsx', quedando de la siguiente forma:
+
+                    01   import { StackScreenProps } from '@react-navigation/stack';
+                    02   import React from 'react';
+                    03   import { View, Text, Button } from 'react-native';
+                    04   import { RootStackParamList } from '../../../../../App';
+                    05   import useViewModel from './ViewModel';
+                    06 
+                    07   interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'> { };
+                    08 
+                    09   export const ProfileInfoScreen = ({ navigation, route }: Props) => {
+                    10 
+                    11     const { removeSession } = useViewModel();
+                    12     
+                    13     return (
+                    14       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    15         <Button
+                    16           onPress={() => {
+                    17               removeSession();
+                    18               navigation.navigate('HomeScreen');
+                    19           }}
+                    20           title="Cerrar Sesion"
+                    21         />
+                    22      </View>
+                    23    )
+                    24   }
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
