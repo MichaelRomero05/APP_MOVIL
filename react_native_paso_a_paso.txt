@@ -3458,7 +3458,7 @@
             Consulte la siguiente documentación: https://www.npmjs.com/package/@react-native-async-storage/async-storage
 
             01. Detenga el servidor 'my-app' ubicándose en la terminal de Visual Studio Code y presionando 'CTRL + C'.
-            
+
             02. Ejecutar en la terminal de Visual Studio Code el siguiente comando para importar la dependencia de almacenamiento de sesión de usuario:
 
                     ⦿   PS C:\..\my-app> npm i @react-native-async-storage/async-storage
@@ -3466,9 +3466,9 @@
             03. Incluir código en el archivo 'my-app/src/Data/sources/local/LocalStorage.tsx', quedando de la siguiente forma:
 
                     01   import AsyncStorage from '@react-native-async-storage/async-storage';
-                    02 
+                    02
                     03   export const LocalStorage = () => {
-                    04     
+                    04
                     05     const save = async (key: string, value: string) => {
                     06       try {
                     07         await AsyncStorage.setItem(key, value);
@@ -3476,12 +3476,12 @@
                     09         console.log('Error en Local Storage: ' + error);
                     10       }
                     11     }
-                    12 
+                    12
                     13     const getItem = async (key: string) => {
                     14       try {
                     15         const item = await AsyncStorage.getItem(key);
                     16         return item;
-                    17 
+                    17
                     18       } catch (error) {
                     19         console.log('Error en Local Storage: ' + error);
                     20       }
@@ -3505,7 +3505,7 @@
             04. Incluir código en el archivo 'my-app/src/Domain/repositories/UserLocalRepository.tsx', quedando de la siguiente forma:
 
                     01   import { User } from "../entities/User";
-                    02 
+                    02
                     03   export interface UserLocalRepository {
                     04     save(user: User): void;
                     05     getUser(): Promise<User>;
@@ -3513,25 +3513,25 @@
                     07   }
 
             05. Incluir código en el archivo 'my-app/src/Data/repositories/UserLocalRepository.tsx', quedando de la siguiente forma:
-          
+
                     01   import { User } from "../../Domain/entities/User";
                     02   import { UserLocalRepository } from "../../Domain/repositories/UserLocalRepository";
                     03   import { LocalStorage } from "../sources/local/LocalStorage";
-                    04 
+                    04
                     05   export class UserLocalRepositoryImp implements UserLocalRepository{
-                    06 
+                    06
                     07     async save(user: User): Promise<void> {
                     08       const { save } = LocalStorage();
-                    09       await save('user', JSON.stringify(user));  
+                    09       await save('user', JSON.stringify(user));
                     10     }
-                    11 
+                    11
                     12     async getUser(): Promise<User> {
                     13       const { getItem } = LocalStorage();
                     14       const data = await getItem('user');
                     15       const user: User = JSON.parse(data as any);
                     16       return user;
                     17     }
-                    18 
+                    18
                     19     async remove(): Promise<void> {
                     20       const { remove } = LocalStorage();
                     21       await remove('user');
@@ -3542,19 +3542,19 @@
 
                     01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
                     02   import { User } from '../../entities/User';
-                    03 
+                    03
                     04   const { save } = new UserLocalRepositoryImp();
-                    05 
+                    05
                     06   export const SaveUserUseCase = async(user: User) => {
                     07     return await save(user);
                     08   }
-            
+
             07. Incluir código en el archivo 'my-app/src/Domain/useCases/userLocal/GetUserLocal.tsx', quedando de la siguiente forma:
 
                     01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
-                    02 
+                    02
                     03   const { getUser } = new UserLocalRepositoryImp();
-                    04 
+                    04
                     05   export const GetUserLocalUseCase = async() => {
                     06     return await getUser();
                     07   }
@@ -3565,28 +3565,28 @@
                     02   import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth';
                     03   import { SaveUserUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
                     04   import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserLocal';
-                    05 
+                    05
                     06   const HomeViewModel = () => {
                     07     const [errorMessage, setErrorMessage] = useState('');
-                    08 
+                    08
                     09     const [values, setValues] = useState({
                     10       email: '',
                     11       password: '',
                     12     });
-                    13 
+                    13
                     14     useEffect(() => {
                     15       getUserSession();
                     16     }, []);
-                    17 
+                    17
                     18     const getUserSession = async () => {
                     19       const user = await GetUserLocalUseCase();
                     20       console.log('Sesión de Usuario: ' + JSON.stringify(user));
                     21     };
-                    22 
+                    22
                     23     const onChange = (property: string, value: any) => {
                     24       setValues({ ...values, [property]: value });
                     25     };
-                    26 
+                    26
                     27     const login = async () => {
                     28       if (isValidForm()) {
                     29         const response = await LoginAuthUseCase(values.email, values.password);
@@ -3610,7 +3610,7 @@
                     47       }
                     48       return true;
                     49     };
-                    50 
+                    50
                     51     return {
                     52       ...values,
                     53       onChange,
@@ -3618,14 +3618,14 @@
                     55       errorMessage
                     56     }
                     57   }
-                    58 
+                    58
                     59   export default HomeViewModel;
 
             09. Iniciar nuevamente el servidor 'my-app' desde la terminal de Visual Studio Code.
-                          
+
                     ⦿   PS C:\..\my-app> npm run android
-            
-            10. Inicie sesión con un usuario válido y en la terminal de Visual Studio Code, recargar la aplicación ('r'). Notará que aparecen los 
+
+            10. Inicie sesión con un usuario válido y en la terminal de Visual Studio Code, recargar la aplicación ('r'). Notará que aparecen los
                 datos del usuario como una sesión:
 
                     ⦿   PS C:\..\my-app> r
@@ -3650,15 +3650,15 @@
                         └── Presentation/
                             └── hooks/                        #   Nueva carpeta.
                                 └── useUserLocal.tsx          #   Nuevo archivo.
-            
+
             02. Incluir código en el archivo 'my-app/src/Presentation/hooks/useUserLocal.tsx', quedando de la siguiente forma:
-                    
+
                     01   import React, { useEffect, useState } from 'react';
                     02   import { GetUserLocalUseCase } from '../../Domain/useCases/userLocal/GetUserLocal';
                     03   import { User } from '../../Domain/entities/User';
-                    04 
+                    04
                     05   export const useUserLocal = () => {
-                    06 
+                    06
                     07     const [user, setUser] = useState<User>()
                     08     useEffect(() => {
                     09       getUserSession();
@@ -3682,40 +3682,40 @@
                     03   import { SaveUserUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
                     04   import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserLocal';
                     05   import { useUserLocal } from '../../hooks/useUserLocal';
-                    06 
+                    06
                     07   const HomeViewModel = () => {
-                    08    
+                    08
                     09     const [errorMessage, setErrorMessage] = useState('');
-                    10 
+                    10
                     11     const [values, setValues] = useState({
                     12       email: '',
                     13       password: '',
                     14     });
-                    15 
+                    15
                     16     const { user, getUserSession } = useUserLocal();
                     17     console.log('Usuario: ' + JSON.stringify(user));
                     18
                     19     useEffect(() => {
                     20       getUserSession();
                     21     }, []);
-                    22     
+                    22
                     23     const onChange = (property: string, value: any) => {
                     24       setValues({ ...values, [property]: value });
                     25     };
-                    26 
+                    26
                     27     const login = async () => {
                     28       if (isValidForm()) {
                     29         const response = await LoginAuthUseCase(values.email, values.password);
                     30         console.log('Respuesta: ' + JSON.stringify(response));
                     31         if (!response.success) {
                     32           setErrorMessage(response.message);
-                    33         } else {        
+                    33         } else {
                     34           await SaveUserUseCase(response.data);
                     35           getUserSession();
                     36         }
                     37       }
                     38     };
-                    39 
+                    39
                     40     const isValidForm = () => {
                     41       if (values.email === '') {
                     42         setErrorMessage('El email es requerido');
@@ -3727,20 +3727,20 @@
                     48       }
                     49       return true;
                     50     };
-                    51 
+                    51
                     52     return {
                     53       ...values,
-                    54       user, 
+                    54       user,
                     55       onChange,
                     56       login,
                     57       errorMessage
                     58     }
                     59   }
-                    60 
+                    60
                     61   export default HomeViewModel;
 
-            04. En la terminal de Visual Studio Code, recargue la aplicación ('r'). Notará que aparecen los datos del usuario como una sesión, pero 
-                usando custom hook:                
+            04. En la terminal de Visual Studio Code, recargue la aplicación ('r'). Notará que aparecen los datos del usuario como una sesión, pero
+                usando custom hook:
 
                     ⦿   PS C:\..\my-app> r
 
@@ -3754,7 +3754,7 @@
                     my-app/
                     └── src/
                         └── Presentation/
-                            └── views/                          
+                            └── views/
                                 └── profile/                    #   Nueva carpeta.
                                     └── info/                   #   Nueva carpeta.
                                         ├── ProfileInfo.tsx     #   Nuevo archivo.
@@ -3762,20 +3762,20 @@
 
 
             02. Incluir código en el archivo 'my-app/src/Presentation/views/profile/info/ProfileInfo.tsx', quedando de la siguiente forma:
-                    
+
                     01   import { StackScreenProps } from '@react-navigation/stack';
                     02   import React from 'react';
                     03   import { View, Text, Button } from 'react-native';
                     04   import { RootStackParamList } from '../../../../../App';
-                    05 
+                    05
                     06   interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'> { };
-                    07 
+                    07
                     08   export const ProfileInfoScreen = ({ navigation, route }: Props) => {
-                    09       
+                    09
                     10       return (
                     11           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     12               <Button
-                    13                   onPress={() => {                    
+                    13                   onPress={() => {
                     14                       navigation.navigate('HomeScreen');
                     15                   }}
                     16                   title="Cerrar Sesion"
@@ -3792,15 +3792,15 @@
                     04   import { HomeScreen } from './src/Presentation/views/home/home';
                     05   import { RegisterScreen } from './src/Presentation/views/register/Register';
                     06   import { ProfileInfoScreen } from './src/Presentation/views/profile/info/ProfileInfo';
-                    07 
+                    07
                     08   export type RootStackParamList = {
                     09     HomeScreen: undefined;
                     10     RegisterScreen: undefined;
                     11     ProfileInfoScreen: undefined;
                     12   }
-                    13 
+                    13
                     14   const Stack = createNativeStackNavigator <RootStackParamList> ();
-                    15 
+                    15
                     16   const App = () => {
                     17     return (
                     18       <NavigationContainer>
@@ -3819,13 +3819,13 @@
                     31           />
                     32           <Stack.Screen
                     33             name="ProfileInfoScreen"
-                    34             component={ProfileInfoScreen}          
+                    34             component={ProfileInfoScreen}
                     35           />
                     36         </Stack.Navigator>
                     37       </NavigationContainer>
                     38     );
                     39   };
-                    40 
+                    40
                     41   export default App;
 
             04. Modificar el código del archivo 'my-app/src/Presentation/views/home/Home.tsx', quedando de la siguiente forma:
@@ -3839,25 +3839,25 @@
                     07   import { CustomTextInput } from '../../componentes/CustomTextInput';
                     08   import  useViewModel  from './ViewModel';
                     09   import styles from './Styles';
-                    10 
+                    10
                     11   export const HomeScreen = () => {
-                    12 
+                    12
                     13     const {email, password, errorMessage, user, onChange, login} = useViewModel();
-                    14 
+                    14
                     15     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-                    16 
+                    16
                     17     useEffect(() => {
                     18       if (errorMessage !== '') {
                     19         ToastAndroid.show(errorMessage, ToastAndroid.LONG);
                     20       }
                     21     }, [errorMessage]);
-                    22 
+                    22
                     23     useEffect(() => {
                     24       if (user?.id !== null && user?.id !== undefined) {
                     25         navigation.replace('ProfileInfoScreen');
                     26       }
                     27     }, [user]);
-                    28 
+                    28
                     29     return (
                     30         <View style={styles.container}>
                     31           <Image
@@ -3913,9 +3913,9 @@
 
                     01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
                     02   import { User } from '../../entities/User';
-                    03 
+                    03
                     04   const { remove } = new UserLocalRepositoryImp();
-                    05 
+                    05
                     06   export const RemoveUserLocalUseCase = async () => {
                     07       return await remove();
                     08   }
@@ -3924,7 +3924,7 @@
 
                     01   import React from 'react';
                     02   import { RemoveUserLocalUseCase } from '../../../../Domain/useCases/userLocal/RemoveUserLocal';
-                    03 
+                    03
                     04   export const ProfileInfoViewModel = () => {
                     05       const removeSession = async () => {
                     06           await RemoveUserLocalUseCase();
@@ -3933,7 +3933,7 @@
                     09       removeSession
                     10     }
                     11   }
-                    12 
+                    12
                     13   export default ProfileInfoViewModel;
 
             04. Modificar el código del archivo 'my-app/src/Presentation/views/profile/info/ProfileInfo.tsx', quedando de la siguiente forma:
@@ -3943,13 +3943,13 @@
                     03   import { View, Text, Button } from 'react-native';
                     04   import { RootStackParamList } from '../../../../../App';
                     05   import useViewModel from './ViewModel';
-                    06 
+                    06
                     07   interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'> { };
-                    08 
+                    08
                     09   export const ProfileInfoScreen = ({ navigation, route }: Props) => {
-                    10 
+                    10
                     11     const { removeSession } = useViewModel();
-                    12     
+                    12
                     13     return (
                     14       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     15         <Button
