@@ -3234,22 +3234,21 @@
                           12     }
                           13   }
 
-
-                  NOTA:   ⦿   En caso de error ingrese a 'node_js/package.json' y cambie la version de la dependencia de passport, quedando así:
+                  NOTA:   ⦿   En caso de error, ingrese a 'node_js/package.json' y cambie la version de la dependencia de passport, quedando así:
 
                                 23   "passport": "^0.4.1",
 
-                          ⦿   Detenga el servidor 'node_js' ubicándose en la terminal de Visual Studio Code y presionando con 'CTRL + C'.
+                          ⦿   Detenga el servidor 'node_js' ubicándose en la terminal de Visual Studio Code y presionando 'CTRL + C'.
 
                           ⦿   Ejecutar en la terminal de Visual Studio Code el siguiente comando para que reciba el cambio en 'node_js/package.json':
 
                                 ⦿   PS C:\..\node_js> npm i
 
-                          ⦿   Inicie nuevamente el servidor 'node_js' desde la terminal de Visual Studio Code:.
+                          ⦿   Inicie nuevamente el servidor 'node_js' desde la terminal de Visual Studio Code.
 
                                 ⦿   PS C:\..\node_js> node server.js
 
-
+                          ⦿   Vuelva a iniciar este mismo punto.
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 09.02.  Enviando el login desde la App: -------------------------------------------------------------------------------------------------------------|
