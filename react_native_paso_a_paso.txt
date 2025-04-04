@@ -3637,6 +3637,7 @@
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
+            07. Incluir código en el archivo 'my-app/src/Domain/useCases/userLocal/GetUserLocal.tsx', quedando de la siguiente forma:
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 10.01.  Implementación del Custom Hook: -------------------------------------------------------------------------------------------------------------|
@@ -3742,14 +3743,166 @@
                 usando custom hook:                
 
                     ⦿   PS C:\..\my-app> r
-            
-
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 10.02.  Navegar usando Custom Hook: -----------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. En la carpeta 'my-app/src/Presentation/views' crear las siguientes carpetas y archivos:
+
+                    my-app/
+                    └── src/
+                        └── Presentation/
+                            └── views/                          
+                                └── profile/                    #   Nueva carpeta.
+                                    └── info/                   #   Nueva carpeta.
+                                        ├── ProfileInfo.tsx     #   Nuevo archivo.
+                                        └── ViewModel.tsx       #   Nuevo archivo.
+
+
+            02. Incluir código en el archivo 'my-app/src/Presentation/views/profile/info/ProfileInfo.tsx', quedando de la siguiente forma:
+                    
+                    01   import { StackScreenProps } from '@react-navigation/stack';
+                    02   import React from 'react';
+                    03   import { View, Text, Button } from 'react-native';
+                    04   import { RootStackParamList } from '../../../../../App';
+                    05 
+                    06   interface Props extends StackScreenProps<RootStackParamList, 'ProfileInfoScreen'> { };
+                    07 
+                    08   export const ProfileInfoScreen = ({ navigation, route }: Props) => {
+                    09       
+                    10       return (
+                    11           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    12               <Button
+                    13                   onPress={() => {                    
+                    14                       navigation.navigate('HomeScreen');
+                    15                   }}
+                    16                   title="Cerrar Sesion"
+                    17               />
+                    18           </View>
+                    19       )
+                    20   }
+
+            03. Modificar el código del archivo 'my-app/src/App.tsx', quedando de la siguiente forma:
+
+                    01   import * as React from 'react';
+                    02   import { NavigationContainer } from '@react-navigation/native';
+                    03   import { createNativeStackNavigator } from '@react-navigation/native-stack';
+                    04   import { HomeScreen } from './src/Presentation/views/home/home';
+                    05   import { RegisterScreen } from './src/Presentation/views/register/Register';
+                    06   import { ProfileInfoScreen } from './src/Presentation/views/profile/info/ProfileInfo';
+                    07 
+                    08   export type RootStackParamList = {
+                    09     HomeScreen: undefined;
+                    10     RegisterScreen: undefined;
+                    11     ProfileInfoScreen: undefined;
+                    12   }
+                    13 
+                    14   const Stack = createNativeStackNavigator <RootStackParamList> ();
+                    15 
+                    16   const App = () => {
+                    17     return (
+                    18       <NavigationContainer>
+                    19         <Stack.Navigator screenOptions={{headerShown: false}}>
+                    20           <Stack.Screen
+                    21             name="HomeScreen"
+                    22             component={HomeScreen}
+                    23           />
+                    24           <Stack.Screen
+                    25             name="RegisterScreen"
+                    26             component={RegisterScreen}
+                    27             options={{
+                    28               headerShown: true,
+                    29               title: "Registro",
+                    30             }}
+                    31           />
+                    32           <Stack.Screen
+                    33             name="ProfileInfoScreen"
+                    34             component={ProfileInfoScreen}          
+                    35           />
+                    36         </Stack.Navigator>
+                    37       </NavigationContainer>
+                    38     );
+                    39   };
+                    40 
+                    41   export default App;
+
+            03. Modificar el código del archivo 'my-app/src/Presentation/views/home/Home.tsx', quedando de la siguiente forma:
+
+                    01   import React, { useState, useEffect } from 'react';
+                    02   import { Text, View, Image, TextInput, ToastAndroid, TouchableOpacity } from 'react-native';
+                    03   import { RoundedButton } from '../../componentes/RoundedButton';
+                    04   import { StackNavigationProp } from '@react-navigation/stack';
+                    05   import { RootStackParamList } from '../../../../App';
+                    06   import { useNavigation } from '@react-navigation/native';
+                    07   import { CustomTextInput } from '../../componentes/CustomTextInput';
+                    08   import  useViewModel  from './ViewModel';
+                    09   import styles from './Styles';
+                    10 
+                    11   export const HomeScreen = () => {
+                    12 
+                    13     const {email, password, errorMessage, user, onChange, login} = useViewModel();
+                    14 
+                    15     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+                    16 
+                    17     useEffect(() => {
+                    18       if (errorMessage !== '') {
+                    19         ToastAndroid.show(errorMessage, ToastAndroid.LONG);
+                    20       }
+                    21     }, [errorMessage]);
+                    22 
+                    23     useEffect(() => {
+                    24       if (user?.id !== null && user?.id !== undefined) {
+                    25         navigation.replace('ProfileInfoScreen');
+                    26       }
+                    27     }, [user]);
+                    28 
+                    29     return (
+                    30         <View style={styles.container}>
+                    31           <Image
+                    32             source={require('../../../../assets/chef.jpg')}
+                    33             style={styles.imageBackground}
+                    34           />
+                    35           <View style={styles.logoContainer}>
+                    36             <Image
+                    37               source={require('../../../../assets/logo.png')}
+                    38               style={styles.logoImage}
+                    39             />
+                    40             <Text style={styles.logoText}>FOOD APP</Text>
+                    41           </View>
+                    42           <View style={styles.form}>
+                    43             <Text style={styles.formText}>INGRESAR</Text>
+                    44             <CustomTextInput
+                    45               image = {require('../../../../assets/email.png')}
+                    46               placeholder = 'Correo Electrónico'
+                    47               keyboardType = 'email-address'
+                    48               property = 'email'
+                    49               onChangeText = { onChange }
+                    50               value = {email}
+                    51             />
+                    52             <CustomTextInput
+                    53               image = {require('../../../../assets/password.png')}
+                    54               placeholder = 'Contraseña'
+                    55               keyboardType = 'default'
+                    56               property = 'password'
+                    57               onChangeText = { onChange }
+                    58               value = {password}
+                    59               secureTextEntry = { true }
+                    60             />
+                    61             <View style={{ marginTop: 30 }}>
+                    62               <RoundedButton text='ENVIAR' onPress={ () => login() } />
+                    63             </View>
+                    64             <View style={styles.formRegister}>
+                    65               <Text>¿No tienes cuenta?</Text>
+                    66               <TouchableOpacity onPress={ () => navigation.navigate('RegisterScreen') }>
+                    67                 <Text style={styles.formRegisterText}>Regístrate</Text>
+                    68               </TouchableOpacity>
+                    69             </View>
+                    70           </View>
+                    71         </View>
+                    72     );
+                    73   }
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
