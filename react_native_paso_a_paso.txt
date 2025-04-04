@@ -3254,8 +3254,15 @@
 |-- 09.02.  Enviando el login desde la App: -------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            01. Modificar el código del archivo 'my-app/src/Domain/repositories/AuthRepository.tsx' para incluir el 'login':
 
-
+                    01   import { User } from "../entities/User";
+                    02   import { ResponseApiDelivery } from "../../Data/sources/remote/models/ResponseApiDelivery";
+                    03
+                    04   export interface AuthRepository {
+                    05       login(email: string, password: string): Promise<ResponseApiDelivery>;
+                    06       register(user: User): Promise<ResponseApiDelivery>;
+                    07   }
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
