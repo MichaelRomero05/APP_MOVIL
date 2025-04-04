@@ -3625,8 +3625,8 @@
                           
                     ⦿   PS C:\..\my-app> npm run android
             
-            10. Loguerse con un usuario válido y en la terminal de Visual Studio Code, recargar la aplicación ('r'). Notará que aparecen los datos del 
-                usuario como una sesión
+            10. Inicie sesión con un usuario válido y en la terminal de Visual Studio Code, recargar la aplicación ('r'). Notará que aparecen los 
+                datos del usuario como una sesión:
 
                     ⦿   PS C:\..\my-app> r
 
@@ -3641,6 +3641,108 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 10.01.  Implementación del Custom Hook: -------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. En la carpeta 'my-app/src/Presentation' crear las siguientes carpetas y archivos:
+
+                    my-app/
+                    └── src/
+                        └── Presentation/
+                            └── hooks/                        #   Nueva carpeta.
+                                └── useUserLocal.tsx          #   Nuevo archivo.
+            
+            02. Incluir código en el archivo 'my-app/src/Presentation/hooks/useUserLocal.tsx', quedando de la siguiente forma:
+                    
+                    01   import React, { useEffect, useState } from 'react';
+                    02   import { GetUserLocalUseCase } from '../../Domain/useCases/userLocal/GetUserLocal';
+                    03   import { User } from '../../Domain/entities/User';
+                    04 
+                    05   export const useUserLocal = () => {
+                    06 
+                    07     const [user, setUser] = useState<User>()
+                    08     useEffect(() => {
+                    09       getUserSession();
+                    10     }, []);
+                    11
+                    12     const getUserSession = async () => {
+                    13       const user = await GetUserLocalUseCase();
+                    14       setUser(user);
+                    15     };
+                    16
+                    17     return {
+                    18       user,
+                    19       getUserSession
+                    20     }
+                    21   }
+
+            03. Modificar el código del archivo 'my-app/src/Presentation/views/home/ViewModel.tsx', quedando de la siguiente forma:
+
+                    01   import React, { useEffect, useState } from 'react';
+                    02   import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth';
+                    03   import { SaveUserUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
+                    04   import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserLocal';
+                    05   import { useUserLocal } from '../../hooks/useUserLocal';
+                    06 
+                    07   const HomeViewModel = () => {
+                    08    
+                    09     const [errorMessage, setErrorMessage] = useState('');
+                    10 
+                    11     const [values, setValues] = useState({
+                    12       email: '',
+                    13       password: '',
+                    14     });
+                    15 
+                    16     const { user, getUserSession } = useUserLocal();
+                    17     console.log('Usuario: ' + JSON.stringify(user));
+                    18
+                    19     useEffect(() => {
+                    20       getUserSession();
+                    21     }, []);
+                    22     
+                    23     const onChange = (property: string, value: any) => {
+                    24       setValues({ ...values, [property]: value });
+                    25     };
+                    26 
+                    27     const login = async () => {
+                    28       if (isValidForm()) {
+                    29         const response = await LoginAuthUseCase(values.email, values.password);
+                    30         console.log('Respuesta: ' + JSON.stringify(response));
+                    31         if (!response.success) {
+                    32           setErrorMessage(response.message);
+                    33         } else {        
+                    34           await SaveUserUseCase(response.data);
+                    35           getUserSession();
+                    36         }
+                    37       }
+                    38     };
+                    39 
+                    40     const isValidForm = () => {
+                    41       if (values.email === '') {
+                    42         setErrorMessage('El email es requerido');
+                    43         return false;
+                    44       }
+                    45       if (values.password === '') {
+                    46         setErrorMessage('La contraseña es requerido');
+                    47         return false;
+                    48       }
+                    49       return true;
+                    50     };
+                    51 
+                    52     return {
+                    53       ...values,
+                    54       user, 
+                    55       onChange,
+                    56       login,
+                    57       errorMessage
+                    58     }
+                    59   }
+                    60 
+                    61   export default HomeViewModel;
+
+            04. En la terminal de Visual Studio Code, recargue la aplicación ('r'). Notará que aparecen los datos del usuario como una sesión, pero 
+                usando custom hook:                
+
+                    ⦿   PS C:\..\my-app> r
+            
 
 
 
