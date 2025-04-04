@@ -53,9 +53,6 @@ const HomeViewModel = () => {
             setErrorMessage('La contraseña es requerida');
             return false;
         }
-
-
-
         return true;
     }
 

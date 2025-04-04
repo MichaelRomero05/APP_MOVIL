@@ -2378,11 +2378,16 @@
                             ├── entities/                                 #   Nueva carpeta.
                             │   └── User.tsx                              #   Nuevo archivo.
                             ├── repositories/                             #   Nueva carpeta.
-                            │   └── AuthRepository.tsx                    #   Nuevo archivo.
+                            │   ├── AuthRepository.tsx                    #   Nuevo archivo.
+                            │   └── UserLocalRepository.tsx               #   Nuevo archivo.
                             └── useCases/                                 #   Nueva carpeta.
-                                └── auth/                                 #   Nueva carpeta.
-                                    └── LoginAuth.tsx                     #   Nuevo archivo.
-                                    └── RegisterAuth.tsx                  #   Nuevo archivo.
+                                ├── auth/                                 #   Nueva carpeta.
+                                │   ├── LoginAuth.tsx                     #   Nuevo archivo.
+                                │   └── RegisterAuth.tsx                  #   Nuevo archivo.
+                                └── userLocal/                            #   Nueva carpeta.
+                                    ├── GetUserLocal.tsx                  #   Nuevo archivo.
+                                    ├── RemoveUserLocal.tsx               #   Nuevo archivo.
+                                    └── SaveUserLocal.tsx                 #   Nuevo archivo.
 
             NOTA:   ⦿   No olvide eliminar el archivo 'delete.txt'
 
@@ -3434,14 +3439,196 @@
 
             06. Modificar el código del archivo 'my-app/src/Domain/entities/User.tsx' para incluir el 'login':
 
-
+                    01   export interface User {
+                    02     id?: string;
+                    03     name: string;
+                    04     lastname: string;
+                    05     phone: string;
+                    06     email: string;
+                    07     password: string;
+                    08     confirmPassword: string;
+                    09     session_token?: string;
+                    10   }
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 09.03.  Almacenamiento interno de la sesión del usuario: --------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+            Consulte la siguiente documentación: https://www.npmjs.com/package/@react-native-async-storage/async-storage
 
+            01. Detenga el servidor 'my-app' ubicándose en la terminal de Visual Studio Code y presionando 'CTRL + C'.
+            
+            02. Ejecutar en la terminal de Visual Studio Code el siguiente comando para importar la dependencia de almacenamiento de sesión de usuario:
+
+                    ⦿   PS C:\..\my-app> npm i @react-native-async-storage/async-storage
+
+            03. Incluir código en el archivo 'my-app/src/Data/sources/local/LocalStorage.tsx', quedando de la siguiente forma:
+
+                    01   import AsyncStorage from '@react-native-async-storage/async-storage';
+                    02 
+                    03   export const LocalStorage = () => {
+                    04     
+                    05     const save = async (key: string, value: string) => {
+                    06       try {
+                    07         await AsyncStorage.setItem(key, value);
+                    08       } catch (error) {
+                    09         console.log('Error en Local Storage: ' + error);
+                    10       }
+                    11     }
+                    12 
+                    13     const getItem = async (key: string) => {
+                    14       try {
+                    15         const item = await AsyncStorage.getItem(key);
+                    16         return item;
+                    17 
+                    18       } catch (error) {
+                    19         console.log('Error en Local Storage: ' + error);
+                    20       }
+                    21     }
+                    22
+                    23     const remove = async (key: string) => {
+                    24       try {
+                    25         await AsyncStorage.removeItem(key);
+                    26       } catch (error) {
+                    27         console.log('Error en Local Storage: ' + error);
+                    28       }
+                    29     }
+                    30
+                    31     return {
+                    32       save,
+                    33       getItem,
+                    34       remove
+                    35     }
+                    36   }
+
+            04. Incluir código en el archivo 'my-app/src/Domain/repositories/UserLocalRepository.tsx', quedando de la siguiente forma:
+
+                    01   import { User } from "../entities/User";
+                    02 
+                    03   export interface UserLocalRepository {
+                    04     save(user: User): void;
+                    05     getUser(): Promise<User>;
+                    06     remove(): Promise<void>;
+                    07   }
+
+            05. Incluir código en el archivo 'my-app/src/Data/repositories/UserLocalRepository.tsx', quedando de la siguiente forma:
+          
+                    01   import { User } from "../../Domain/entities/User";
+                    02   import { UserLocalRepository } from "../../Domain/repositories/UserLocalRepository";
+                    03   import { LocalStorage } from "../sources/local/LocalStorage";
+                    04 
+                    05   export class UserLocalRepositoryImp implements UserLocalRepository{
+                    06 
+                    07     async save(user: User): Promise<void> {
+                    08       const { save } = LocalStorage();
+                    09       await save('user', JSON.stringify(user));  
+                    10     }
+                    11 
+                    12     async getUser(): Promise<User> {
+                    13       const { getItem } = LocalStorage();
+                    14       const data = await getItem('user');
+                    15       const user: User = JSON.parse(data as any);
+                    16       return user;
+                    17     }
+                    18 
+                    19     async remove(): Promise<void> {
+                    20       const { remove } = LocalStorage();
+                    21       await remove('user');
+                    22     }
+                    23   }
+
+            06. Incluir código en el archivo 'my-app/src/Domain/useCases/userLocal/SaveUserLocal.tsx', quedando de la siguiente forma:
+
+                    01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
+                    02   import { User } from '../../entities/User';
+                    03 
+                    04   const { save } = new UserLocalRepositoryImp();
+                    05 
+                    06   export const SaveUserUseCase = async(user: User) => {
+                    07     return await save(user);
+                    08   }
+            
+            07. Incluir código en el archivo 'my-app/src/Domain/useCases/userLocal/GetUserLocal.tsx', quedando de la siguiente forma:
+
+                    01   import { UserLocalRepositoryImp } from '../../../Data/repositories/UserLocalRepository';
+                    02 
+                    03   const { getUser } = new UserLocalRepositoryImp();
+                    04 
+                    05   export const GetUserLocalUseCase = async() => {
+                    06     return await getUser();
+                    07   }
+
+            08. Modificar el código del archivo 'my-app/src/Presentation/views/home/ViewModel.tsx', quedando de la siguiente forma:
+
+                    01   import React, { useEffect, useState } from 'react';
+                    02   import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth';
+                    03   import { SaveUserUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
+                    04   import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserLocal';
+                    05 
+                    06   const HomeViewModel = () => {
+                    07     const [errorMessage, setErrorMessage] = useState('');
+                    08 
+                    09     const [values, setValues] = useState({
+                    10       email: '',
+                    11       password: '',
+                    12     });
+                    13 
+                    14     useEffect(() => {
+                    15       getUserSession();
+                    16     }, []);
+                    17 
+                    18     const getUserSession = async () => {
+                    19       const user = await GetUserLocalUseCase();
+                    20       console.log('Sesión de Usuario: ' + JSON.stringify(user));
+                    21     };
+                    22 
+                    23     const onChange = (property: string, value: any) => {
+                    24       setValues({ ...values, [property]: value });
+                    25     };
+                    26 
+                    27     const login = async () => {
+                    28       if (isValidForm()) {
+                    29         const response = await LoginAuthUseCase(values.email, values.password);
+                    30         console.log('Respuesta: ' + JSON.stringify(response));
+                    31         if (!response.success) {
+                    32           setErrorMessage(response.message);
+                    33         } else {
+                    34           SaveUserUseCase(response.data);
+                    35         }
+                    36       }
+                    37     };
+                    38
+                    39     const isValidForm = () => {
+                    40       if (values.email === '') {
+                    41         setErrorMessage('El email es requerido');
+                    42         return false;
+                    43       }
+                    44       if (values.password === '') {
+                    45         setErrorMessage('La contraseña es requerido');
+                    46         return false;
+                    47       }
+                    48       return true;
+                    49     };
+                    50 
+                    51     return {
+                    52       ...values,
+                    53       onChange,
+                    54       login,
+                    55       errorMessage
+                    56     }
+                    57   }
+                    58 
+                    59   export default HomeViewModel;
+
+            09. Iniciar nuevamente el servidor 'my-app' desde la terminal de Visual Studio Code.
+                          
+                    ⦿   PS C:\..\my-app> npm run android
+            
+            10. Loguerse con un usuario válido y en la terminal de Visual Studio Code, recargar la aplicación ('r'). Notará que aparecen los datos del 
+                usuario como una sesión
+
+                    ⦿   PS C:\..\my-app> r
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
