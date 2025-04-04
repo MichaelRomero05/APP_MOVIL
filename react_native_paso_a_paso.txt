@@ -3264,6 +3264,50 @@
                     06       register(user: User): Promise<ResponseApiDelivery>;
                     07   }
 
+            02. Modificar el código del archivo 'my-app/src/Data/repositories/AuthRepository.tsx' para incluir el 'login':
+
+                    01   import { AxiosError } from "axios";
+                    02   import { User } from "../../Domain/entities/User";
+                    03   import { AuthRepository } from "../../Domain/repositories/AuthRepository";
+                    04   import { ApiDelivery } from "../sources/remote/api/apiDelivery";
+                    05   import { ResponseApiDelivery } from "../sources/remote/models/ResponseApiDelivery";
+                    06
+                    07   export class AuthRepositoryImpl implements AuthRepository {
+                    08
+                    09     async register(user: User): Promise<ResponseApiDelivery> {
+                    10       try {
+                    11         const response = await ApiDelivery.post<ResponseApiDelivery>('./users/create', user);
+                    12         return Promise.resolve(response.data);
+                    13       } catch (error) {
+                    14         let e = (error as AxiosError);
+                    15         console.log('Error: ' + JSON.stringify(e.response?.data));
+                    16         const apiError: ResponseApiDelivery = JSON.parse(JSON.stringify(e.response?.data));
+                    17         return Promise.resolve(apiError);
+                    18       }
+                    19     }
+                    20
+                    21     async login(email: string, password: string): Promise<ResponseApiDelivery> {
+                    22       try {
+                    23         const response = await ApiDelivery.post<ResponseApiDelivery>('/users/login', {
+                    24           email: email,
+                    25           password: password
+                    26         });
+                    27         return Promise.resolve(response.data);
+                    28       } catch (error) {
+                    29         let e = (error as AxiosError);
+                    30         console.log('error' + JSON.stringify(e.response?.data));
+                    31         const apiError:ResponseApiDelivery = JSON.parse(JSON.stringify(e.response?.data));
+                    32         return Promise.resolve(apiError);
+                    33       }
+                    34     }
+                    35   }
+
+
+
+
+
+
+
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 09.03.  Almacenamiento interno de la sesión del usuario: --------------------------------------------------------------------------------------------|
