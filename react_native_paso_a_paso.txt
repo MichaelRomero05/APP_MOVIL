@@ -3230,7 +3230,7 @@
                           08         "lastname": "ramos",
                           09         "image": null,
                           10         "phone": "3103103102",
-                          11         "session_token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGJlaXJvQHJhbW9zLmNvbSIsImlhdCI6MTc0MzcyNjM0Nn0.195tcRSX0Opu9RiDww4K7DudWsijtMPZhTinncvujGI"
+                          11         "session_token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGJlaXJvQHJhbW9zLmNvbSIs"
                           12     }
                           13   }
 
