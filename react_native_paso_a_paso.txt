@@ -3224,13 +3224,13 @@
                           02     "success": true,
                           03     "message": "Usuario autenticado ",
                           04     "data": {
-                          05         "id": 1,
-                          06         "email": "albeiro@ramos.com",
-                          07         "name": "albeiro",
-                          08         "lastname": "ramos",
-                          09         "image": null,
-                          10         "phone": "3103103102",
-                          11         "session_token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGJlaXJvQHJhbW9zLmNvbSIs"
+                          05       "id": 1,
+                          06       "email": "albeiro@ramos.com",
+                          07       "name": "albeiro",
+                          08       "lastname": "ramos",
+                          09       "image": null,
+                          10       "phone": "3103103102",
+                          11       "session_token": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbGJlaXJvQHJhbW9zLmNvbSIs"
                           12     }
                           13   }
 
