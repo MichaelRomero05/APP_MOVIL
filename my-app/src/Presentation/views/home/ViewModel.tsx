@@ -5,7 +5,7 @@ import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserL
 import { useUserLocal } from '../../hooks/useUserLocal';
 
 const HomeViewModel = () => {
-  
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const [values, setValues] = useState({
@@ -15,7 +15,7 @@ const HomeViewModel = () => {
 
   const { user, getUserSession } = useUserLocal();
   console.log('Usuario: ' + JSON.stringify(user));
-  
+
   useEffect(() => {
     getUserSession();
   }, []);
@@ -27,15 +27,29 @@ const HomeViewModel = () => {
   const login = async () => {
     if (isValidForm()) {
       const response = await LoginAuthUseCase(values.email, values.password);
-      console.log('Respuesta: ' + JSON.stringify(response));
       if (!response.success) {
         setErrorMessage(response.message);
-      } else {        
+      } else {
         await SaveUserUseCase(response.data);
-        getUserSession();
+        const updatedUser = await getUserSession(); // Asegúrate de que retorne el usuario actualizado
+        console.log('Usuario actualizado:', updatedUser); // Verifica aquí
       }
     }
   };
+
+
+  // const login = async () => {
+  //   if (isValidForm()) {
+  //     const response = await LoginAuthUseCase(values.email, values.password);
+  //     console.log('Respuesta: ' + JSON.stringify(response));
+  //     if (!response.success) {
+  //       setErrorMessage(response.message);
+  //     } else {
+  //       await SaveUserUseCase(response.data);
+  //       getUserSession();
+  //     }
+  //   }
+  // };
 
   const isValidForm = () => {
     if (values.email === '') {

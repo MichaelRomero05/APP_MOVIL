@@ -3991,3 +3991,5 @@
                     ⦿   PS C:\..> cd node_js
                     ⦿   PS C:\..\node_js> npm install
                     ⦿   PS C:\..\node_js> node server.js
+
+            05. Tomar en cuenta la 'ipconfig' del 'node_js/server.js' y 'my-app/src/Data/sources/remote/api/apiDelivery.tsx' ya que deben coincidir
