@@ -3978,18 +3978,20 @@
 
                 https://github.com/ProfeAlbeiro/react_native/blob/main/sources/db/nodejs_base1.sql
 
-            02. Abrir la carpeta raíz del proyecto 'Visual Studio Code'. Ejemplo: 'my-app'.
+            02. Abrir el emulador de Android Studio
 
-            03. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+            03. Tomar en cuenta la 'ipconfig' del 'node_js/server.js' y 'my-app/src/Data/sources/remote/api/apiDelivery.tsx' ya que deben coincidir
+
+            04. Abrir una terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
+
+                    ⦿   PS C:\..> cd node_js
+                    ⦿   PS C:\..\node_js> npm install
+                    ⦿   PS C:\..\node_js> node server.js
+            
+            05. Abrir otra terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
 
                     ⦿   PS C:\..> cd my-app
                     ⦿   PS C:\..\my-app> npm install
                     ⦿   PS C:\..\my-app> npm run android
 
-            04. Abrir otra terminal en 'Visual Studio Code' y ejecutar los siguientes comandos:
-
-                    ⦿   PS C:\..> cd node_js
-                    ⦿   PS C:\..\node_js> npm install
-                    ⦿   PS C:\..\node_js> node server.js
-
-            05. Tomar en cuenta la 'ipconfig' del 'node_js/server.js' y 'my-app/src/Data/sources/remote/api/apiDelivery.tsx' ya que deben coincidir
+            
