@@ -4,7 +4,7 @@ host: 'localhost',
 user: 'root',
 password: 'Ssromero05',
 database: 'db_node_react',
-port: 3307
+port: 3306
 });
 
 db.connect(function(err) {
