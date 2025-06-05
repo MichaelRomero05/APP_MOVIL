@@ -627,7 +627,7 @@
             
             02. Debe aparecer en la terminal, texto similar a lo siguiente:
             
-                    App node.js 14124 ejecutando en 192.168.1.77:3000
+                    App node.js 14124 ejecutando en 192.168.1.22:3000
                     Base de datos conectada
 
             NOTA:   ⦿   Para detener el servidor, ubíquese en la terminal de Visual Studio Code y presione 'CTRL + C'.
@@ -647,7 +647,7 @@
 
                     ⦿   Cambiar al método 'POST'
 
-                    ⦿   Escribir el siguiente 'EndPoint': http://192.168.1.77:3000/api/users/create
+                    ⦿   Escribir el siguiente 'EndPoint': http://192.168.1.22:3000/api/users/create
 
             NOTA:   ⦿   Recuerde modificar la dirección IP para su aplicación
 
@@ -686,7 +686,7 @@
 
                     ⦿   Cambiar al método 'POST'
 
-                    ⦿   Escribir el siguiente 'EndPoint': http://192.168.1.77:3000/api/users/login
+                    ⦿   Escribir el siguiente 'EndPoint': http://192.168.1.22:3000/api/users/login
 
             NOTA:   ⦿   Recuerde modificar la dirección IP para su aplicación.
 
