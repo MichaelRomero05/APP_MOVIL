@@ -2,12 +2,10 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
-
 module.exports = {
   login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
-
     User.findByEmail(email, async (err, myUser) => {
       if (err) {
         return res.status(501).json({
@@ -25,7 +23,6 @@ module.exports = {
       const isPasswordValid = await bcrypt.compare(password, myUser.password);
       if (isPasswordValid) {
         const token = jwt.sign({ id: myUser.id, email: myUser.email }, keys.secretOrKey, {});
-
         const data = {
           id: myUser.id,
           email: myUser.email,
@@ -49,7 +46,6 @@ module.exports = {
       }
     });
   },
-
   register(req, res) {
     const user = req.body;
     User.create(user, (err, data) => {

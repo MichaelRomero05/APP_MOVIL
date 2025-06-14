@@ -3,8 +3,8 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'nodejs_base1',
-  port: 3307
+  database: 'db_node_react',
+  port: 3306
 });
 
 db.connect(function(err) {
