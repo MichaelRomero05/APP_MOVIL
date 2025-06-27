@@ -17,7 +17,7 @@ require('./config/passport')(passport);
 app.disable('x-powered-by');
 app.set('port', port);
 usersRoutes(app);
-server.listen(3000, '192.168.1.77' || 'localhost', function(){
+server.listen(3000, '192.168.1.18' || 'localhost', function(){
   console.log('App node.js ' + process.pid + ' ejecutando en ' + server.address().address + ':' + server.address().port);
 });
 app.get('/', (req, res) => {
